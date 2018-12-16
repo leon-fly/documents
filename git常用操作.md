@@ -8,6 +8,18 @@
 
 克隆远程仓库
 
+> branch
+
+创建分支
+
+>checkout
+
+检出分支
+
+```txt
+git checkout -b branchName #
+```
+
 > merge
 
 合并分支，合并后时间线是并行的。
@@ -15,6 +27,11 @@
 > rebase
 
 线性合并分支，合并后的分支成一条时间线，这是与merge的唯一不同，看起来提交清晰。
+
+```txt
+git rebase branchName  #设置父节点为新指定的分支。
+git rebase -i commitNode #交互式调整提交内容
+```
 
 > fetch
 
