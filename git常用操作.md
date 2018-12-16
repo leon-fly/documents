@@ -1,39 +1,68 @@
 # git常用操作命令
 
-> init
+## init
 
-初始化一个仓库
+初始化一个仓库。
+当从远程创建一个仓库后，可以通过git clone克隆下来并通过git init初始化该仓库，提交并push上去
 
-> clone  
+## clone  
 
 克隆远程仓库
 
-> branch
+```txt
+git clone 仓库地址
+```
+
+## branch
 
 创建分支
 
->checkout
+```txt
+git branch #展示当前分支状况
+git branch branchName #创建分支
+git branch -f branchName HEAD~num #强制branch回退到(以当前HEAD指向为基础的)num个提交
+```
+
+## checkout
 
 检出分支
 
 ```txt
-git checkout -b branchName #
+git checkout branchNmae #切换到分支branchName
+git checkout -b branchName #创建branch并切换到该分支
+git checkout branchName^ #HEAD指向branch的父节点。
 ```
 
-> merge
+## merge
 
 合并分支，合并后时间线是并行的。
 
-> rebase
+```txt
+git merge branchName #将branch合并到当前分支
+```
+
+## rebase
 
 线性合并分支，合并后的分支成一条时间线，这是与merge的唯一不同，看起来提交清晰。
 
 ```txt
 git rebase branchName  #设置父节点为新指定的分支。
-git rebase -i commitNode #交互式调整提交内容
+git rebase -i commitNode #交互式调整提交内容,不要随意删除某个提交，删除后不可恢复
 ```
 
-> fetch
+场景：
+发现某个提交需要小的修改（内容或者commit的message）如何做？
+
+```txt
+1. git rebase -i HEAD~indexNum
+2. 找到要修改的某次提交移动到最底部，保存进行rebase。
+3. 修改
+4. git commit --amend
+5. git rebase -i HEAD~indexNum
+6. 恢复原提交顺序，保存进行rebase
+```
+
+## fetch
 
 （仅）从远程下载未同步的内容。
 
@@ -44,7 +73,7 @@ git fetch origin <source>:<target> #下载指定的远程分支到指定的本�
 git fetch origin :target #创建本地分支
 ```
 
-> pull
+## pull
 
 从远程下载未同步的内容并合并到本地分支中。
 
@@ -54,7 +83,7 @@ git pull origin <source>:<target>
 git pull origin :<target>
 ```
 
-> push
+## push
 
 提交到远程分支
 
@@ -69,11 +98,18 @@ git push origin :<target> #删除远程target分支
 
 参考fetch,数据反向操作
 
-> HEAD
+## HEAD
 
-用于指向当前操作
+HEAD总是指向当前分支上的最近一次提交记录，运行git命令，HEAD会调整指向。可以在分支上使用引用符号^和~手动设置HEAD的指向。
 
-> tag
+```txt
+git checkout master^ #head指向master的父节点（master的上一次提交）,每加一个^往上一层。
+git checkout HEAD^ #以当前HEAD指向向父节点移动
+
+git checkout master~3 #head指向master的上三级父节点
+```
+
+## tag
 
 git标签，用于定格某个时间点的某次提交状态
 
@@ -81,9 +117,9 @@ git标签，用于定格某个时间点的某次提交状态
 git tag tagName commitId
 ```
 
-> cherry-pick
+## cherry-pick
 
-用于选择性合并提交到当前分支。
+用于选择性合并其他分支的提交到当前分支。
 
 ``` txt
 git cherry-pic c1 c2 c3 ...
