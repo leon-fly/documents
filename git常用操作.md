@@ -1,4 +1,8 @@
-# git常用操作命令
+# git常用操作
+
+超棒网站：
+<https://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html>
+<https://learngitbranching.js.org/?demo>
 
 ## init
 
@@ -21,6 +25,8 @@ git clone 仓库地址
 git branch #展示当前分支状况
 git branch branchName #创建分支
 git branch -f branchName HEAD~num #强制branch回退到(以当前HEAD指向为基础的)num个提交
+git branch -d branchName 删除本地分支
+git push origin :branchName 删除远程分支
 ```
 
 ## checkout
@@ -109,6 +115,28 @@ git checkout HEAD^ #以当前HEAD指向向父节点移动
 git checkout master~3 #head指向master的上三级父节点
 ```
 
+## reset
+
+撤销提交，主要用于撤销本地提交
+
+```txt
+git reset commitId/Head表达方式  #本地分支提交重置到某次提交，该次提交之后的提交从提交历史移除，不暂存处理
+
+git reset --soft commitId/Head表达方式 #本地分支提交重置到某次提交，该次提交之后的代码均为待提交状态。
+git reset --mixed commitId/Head表达方式 #默认的参数，见无参数的reset
+git reset --hard commitId/Head表达方式 #本地分支提交重置到某次提交，该次提交之后的代码均删除。
+
+```
+
+## revert
+
+回滚操作，用于远程回滚。
+
+```txt
+git revert commitId/Head表达式 #回滚到某次提交，原来的提交历史不变，新增一次提交
+```
+
+
 ## tag
 
 git标签，用于定格某个时间点的某次提交状态
@@ -123,4 +151,12 @@ git tag tagName commitId
 
 ``` txt
 git cherry-pic c1 c2 c3 ...
+```
+
+## remote
+
+查看远程仓库信息
+
+```txt
+git remote show origin  #origin为仓库名
 ```
