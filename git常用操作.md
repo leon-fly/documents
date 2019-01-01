@@ -136,7 +136,6 @@ git reset --hard commitId/Head表达方式 #本地分支提交重置到某次提
 git revert commitId/Head表达式 #回滚到某次提交，原来的提交历史不变，新增一次提交
 ```
 
-
 ## tag
 
 git标签，用于定格某个时间点的某次提交状态
@@ -160,3 +159,12 @@ git cherry-pic c1 c2 c3 ...
 ```txt
 git remote show origin  #origin为仓库名
 ```
+
+## 应用
+
+1. 本地删除了文件需要恢复
+    > git checkout -- filename
+
+2. 远程出现错误的提交需要回滚
+    > git revert 此回滚操作将留下操作记录，推荐做法。
+    > git reset 此方式处理比较生硬，git push 使用force参数可提交到远程。此方式处理后原提交记录删除，谨慎使用。
