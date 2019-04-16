@@ -160,6 +160,21 @@ git cherry-pic c1 c2 c3 ...
 git remote show origin  #origin为仓库名
 ```
 
+## stash
+
+本地贮藏 git stash --help
+
+1. 保存save
+    > git stash save 'this is stash message'
+2. 使用贮藏pop或apply + index
+    > git stash pop|apply 0
+3. 查看贮藏列表list
+    > git stash list
+4. 查看某一贮藏中的更改内容 show + index
+    > git show 0
+5. 删除贮藏 drop + index
+    > git drop 0
+
 ## 应用
 
 1. 本地删除了文件需要恢复
