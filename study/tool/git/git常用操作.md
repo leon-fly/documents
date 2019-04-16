@@ -1,8 +1,8 @@
 # git常用操作
 
 超棒网站：
-<https://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html>
-<https://learngitbranching.js.org/?demo>
+[git-flow](https://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html)
+[git learning](https://learngitbranching.js.org/?demo)
 
 ## init
 
