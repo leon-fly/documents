@@ -1,0 +1,1 @@
+dirs = ll|grep ^d|awk '{print $9}'

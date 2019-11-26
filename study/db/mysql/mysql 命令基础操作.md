@@ -7,7 +7,7 @@
     ```text
     mysql -h host -u user -p databaseName
     #本机操作可以省略主机信息
-    mysl -u user -p
+    mysql -u user -p
     #databasName可以不指定，不指定时仅建立连接
     ```
 2. 退出
@@ -44,6 +44,20 @@
     ```
 
 ## 三、数据库操作
+
+1. 创建
+
+
+```
+CREATE DATABASE IF NOT EXISTS dbname DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+```
+
+2. 删除数据库
+
+```
+DROP DATABSE dbname;
+```
+
 
 ## 四、表操作
 
