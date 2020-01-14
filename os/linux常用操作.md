@@ -26,7 +26,11 @@
 
 > du -sh [目录名] 返回该文件夹大小
 
-### 3. 系统使用情况查看
+### 3. 查看系统版本
+
+> uname -a
+
+### 4. 系统使用情况查看
 
 > free 查看瞬间运行存储空间
 
@@ -57,7 +61,7 @@ iostat英文 I/O statistics 的缩写。它的特点是汇报磁盘活动统计�
 **常用参数**
 
 ```
--C 显示 CPU 使用情况
+-c 显示 CPU 使用情况
 -d 显示磁盘使用情况
 -k 以 KB 为单位显示
 -m 以 M 为单位显示
@@ -69,6 +73,22 @@ iostat英文 I/O statistics 的缩写。它的特点是汇报磁盘活动统计�
 -V 显示版本信息
 ```
 
+> vmstat
+* 可以查看内存、交互分区、I/O操作、上下文切换、时钟中断以及CPU的使用情况
+* 可以指定采样频率和采样次数，如每秒采样1次，共5次：vmstat 1 5 
+显示示例：
+
+```
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 0  0      0 1185628 271488 1725416    0    0     0     2    2    1  0  0 99  0  0
+ 0  0      0 1185660 271488 1725416    0    0     0     0 1381 2696  1  0 99  0  0
+ 0  0      0 1185660 271488 1725416    0    0     0     0 1287 2516  0  1 99  0  0
+ 0  0      0 1185544 271488 1725416    0    0     0     0 1447 2794  2  1 97  0  0
+ 0  0      0 1185568 271488 1725416    0    0     0     0 1288 2508  1  0 99  0  0
+```
+
+> pidstat
 
 > [top](https://www.cnblogs.com/kelamoyujuzhen/p/10125512.html) 查看实时运行存储,显示示例：
 
@@ -181,10 +201,38 @@ T 由该Process使用的cpu时间累计（TIME+）排序
 > htop
 
 
-### 4. 系统进程查看
+### 5. 系统进程查看
 
 > ps
 
+### 6. 网络状况查看
+
+* 网络联通性查看
+  > ping hostname/ip
+  
+  示例：
+  ```
+  ping www.baidu.com
+  ping 118.132.34.211
+  ```
+
+* 端口可联通性
+  > telnet hostname/ip port
+
+  示例:
+  ```
+  telnet wwww.baidu.com 22
+  ```
+
+
+* 本地网络端口启用情况
+  > netstat 
+
+  示例:
+  ```
+  netstat -an
+  netstat -tnlp
+  ```
 ## 二、字符处理
 
 ### 1. [awk文本分析工具](http://www.ruanyifeng.com/blog/2018/11/awk.html)
@@ -317,3 +365,7 @@ $ awk -F ':' '{if ($1 > "m") print $1; else print "---"}' demo.txt
 > apt
 
 > yum
+
+## 五、 命令技巧
+* ctrl+r  历史命令搜索
+* history 历史命令
