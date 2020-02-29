@@ -1,6 +1,4 @@
-# HttpStatus状态码设计
-
-业务规则错误建议的HTTP返回码
+# 业务规则错误建议的HTTP返回码
 
 [参考分析1](https://softwareengineering.stackexchange.com/questions/341732/should-http-status-codes-be-used-to-represent-business-logic-errors-on-a-server)
 
@@ -13,3 +11,24 @@
 > 400 Bad Request
 > 403 Forbidden
 > 409 Conflict
+
+# 最常用的返回码
+
+## 2XX 成功
+200 请求成功
+## 3XX 重定向
+302 临时重定向
+303 临时重定向，客户端应该采用get方法获取资源
+
+## 4XX 客户端错误码
+400 错误请求
+401 未授权
+403 Forbidden请求被服务器拒绝
+404 NotFound 未找到
+405 MethodNotAllowed 不支持的请求方法
+
+## 5XX 服务器端错误
+500 Internal Server Error(内部服务器错误)
+502 Bad Gateway（网关故障）
+503 Service Unavailable（服务不可用）
+504 Gateway Timeout（网关超时）	

@@ -126,7 +126,7 @@ public RestTemplate restTemplate(){
 </dependency>
 ```
 * 启动类中增加注解 **@EnableFeignClients**
-* 编写调用第三方服务的接口类，分别在类上增加 **@FeignClient** 注解，方法上增加注解**@RequestMapping**。
+* 编写调用第三方服务的接口类，分别在类上增加 **@FeignClient** 注解，方法上增加注解 **@RequestMapping**。
 
     示例：
     ```
@@ -198,7 +198,7 @@ public interface HelloService {
 
 ### 5.5.2. hystrix配置
 
-* 全局配置同Spring Cloud伈bbon的全局配置一样，直接使用它的默认配置前缀**hystrix.command.defaut**就可以进行设置
+* 全局配置同Spring Cloud ribbon的全局配置一样，直接使用它的默认配置前缀**hystrix.command.defaut**就可以进行设置
 
 * 禁用配置
     * 全局禁用
