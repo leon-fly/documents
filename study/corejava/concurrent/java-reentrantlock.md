@@ -42,6 +42,7 @@ ReentrantLock的解锁过程对于公平锁和非公平锁都一样，解锁过�
 
 ![ReentrancLock-sequence-unlock](../../../picture/ReentrancLock-sequence-unlock.png)
 
+
 ## 1.5. 基本使用示例代码
 ```
 public class ReentrantLockDemo {
@@ -60,8 +61,17 @@ public class ReentrantLockDemo {
 }
 ```
 
-# 2. 相关技术文档
+# 2. 关于Condiction
+* Condiction是Lock接口提供的一个绑定对象，通过newCondition方法进行绑定，用于条件等待和唤醒，调用await当前线程将阻塞，调用线程signal/signalAll将唤醒所有Condiction等待线程。
+* ReentrantLock实现中有两个队列，本类中有一个锁等待队列，用于锁竞争，内部类Condiction有一个条件等待队列，用于存储等待条件的线程。在调用await时线程节点在条件等待队列入队并释放锁，接下来使用LockSuppor的park阻塞线程，在被其他线程调用了该条件对象的signal/signalAll后，阻塞解除重新获取锁执行await后逻辑。
+
+![ReentrancLock-Condiction-Logic](../../../picture/ReentrancLock-Condiction-Logic.png)
+
+
+
+# 3. 相关技术文档
 [官方ReentrantLock说明](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/ReentrantLock.html)
+[官方ReentrantLock.Condiction说明](https://docs.oracle.com/cd/E17802_01/j2se/j2se/1.5.0/jcp/beta1/apidiffs/java/util/concurrent/locks/ReentrantLock.ConditionObject.html)
 [ReentrantLock可中断锁示例代码参考](https://blog.csdn.net/dongyuxu342719/article/details/94395877)
 [synchronized和ReentrantLock区别](https://blog.csdn.net/zheng548/article/details/54426947)
 [ReentrantLock Condition使用详解](https://www.cnblogs.com/hongdada/p/6150699.html)
