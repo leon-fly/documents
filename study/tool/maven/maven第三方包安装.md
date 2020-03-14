@@ -1,10 +1,8 @@
-# maven第三方包安装
-
 | version  | updated by  | update at | remark |
 |:-------------: |:---------------:| -------------:|-------------:|
 | v1.0      | LeonWang |         20180926 | Create
 
-## 方式一：mvn命令方式
+# 方式一：mvn命令方式
 
 >完整命令
 
@@ -25,7 +23,7 @@ mvn install:install-file -Dfile=<path-to-file> -DpomFile=<path-to-pomfile>
 mvn install:install-file -Dfile=<path-to-file>
 ```
 
-## 方式二：插件+命令方式
+# 方式二：插件+命令方式
 
 ```mvn
 <build>
@@ -61,7 +59,7 @@ mvn install:install-file -Dfile=<path-to-file>
 
 <font color=red>关键：触发安装第三方包的命令必须与其他命令分开，否则maven执行解析不到本地参考或远程有依赖的第三方文件，出错</font>
 
-### 传送门
+## 传送门
 
 > [参考中文站](https://www.yiibai.com/maven/install-project-into-maven-local-repository.html)
 > [官方文档](http://maven.apache.org/users/index.html)

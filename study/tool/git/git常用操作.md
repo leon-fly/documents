@@ -1,15 +1,13 @@
-# git常用操作
-
 超棒网站：
 [git-flow](https://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html)
 [git learning](https://learngitbranching.js.org/?demo)
 
-## init
+# init
 
 初始化一个仓库。
 当从远程创建一个仓库后，可以通过git clone克隆下来并通过git init初始化该仓库，提交并push上去
 
-## clone  
+# clone  
 
 克隆远程仓库
 
@@ -17,7 +15,7 @@
 git clone 仓库地址
 ```
 
-## branch
+# branch
 
 创建分支
 
@@ -29,7 +27,7 @@ git branch -d branchName 删除本地分支
 git push origin :branchName 删除远程分支
 ```
 
-## checkout
+# checkout
 
 检出分支
 
@@ -39,7 +37,7 @@ git checkout -b branchName #创建branch并切换到该分支
 git checkout branchName^ #HEAD指向branch的父节点。
 ```
 
-## merge
+# merge
 
 合并分支，合并后时间线是并行的。
 
@@ -47,7 +45,7 @@ git checkout branchName^ #HEAD指向branch的父节点。
 git merge branchName #将branch合并到当前分支
 ```
 
-## rebase
+# rebase
 
 线性合并分支，合并后的分支成一条时间线，这是与merge的唯一不同，看起来提交清晰。
 
@@ -68,7 +66,7 @@ git rebase -i commitNode #交互式调整提交内容,不要随意删除某个�
 6. 恢复原提交顺序，保存进行rebase
 ```
 
-## fetch
+# fetch
 
 （仅）从远程下载未同步的内容。
 
@@ -79,7 +77,7 @@ git fetch origin <source>:<target> #下载指定的远程分支到指定的本�
 git fetch origin :target #创建本地分支
 ```
 
-## pull
+# pull
 
 从远程下载未同步的内容并合并到本地分支中。
 
@@ -89,7 +87,7 @@ git pull origin <source>:<target>
 git pull origin :<target>
 ```
 
-## push
+# push
 
 提交到远程分支
 
@@ -104,7 +102,7 @@ git push origin :<target> #删除远程target分支
 
 参考fetch,数据反向操作
 
-## HEAD
+# HEAD
 
 HEAD总是指向当前分支上的最近一次提交记录，运行git命令，HEAD会调整指向。可以在分支上使用引用符号^和~手动设置HEAD的指向。
 
@@ -115,7 +113,7 @@ git checkout HEAD^ #以当前HEAD指向向父节点移动
 git checkout master~3 #head指向master的上三级父节点
 ```
 
-## reset
+# reset
 
 撤销提交，主要用于撤销本地提交
 
@@ -128,7 +126,7 @@ git reset --hard commitId/Head表达方式 #本地分支提交重置到某次提
 
 ```
 
-## revert
+# revert
 
 回滚操作，用于远程回滚。
 
@@ -136,7 +134,7 @@ git reset --hard commitId/Head表达方式 #本地分支提交重置到某次提
 git revert commitId/Head表达式 #回滚到某次提交，原来的提交历史不变，新增一次提交
 ```
 
-## tag
+# tag
 
 git标签，用于定格某个时间点的某次提交状态
 
@@ -144,7 +142,7 @@ git标签，用于定格某个时间点的某次提交状态
 git tag tagName commitId
 ```
 
-## cherry-pick
+# cherry-pick
 
 用于选择性合并其他分支的提交到当前分支。
 
@@ -152,7 +150,7 @@ git tag tagName commitId
 git cherry-pic c1 c2 c3 ...
 ```
 
-## remote
+# remote
 
 查看远程仓库信息
 
@@ -160,7 +158,7 @@ git cherry-pic c1 c2 c3 ...
 git remote show origin  #origin为仓库名
 ```
 
-## stash
+# stash
 
 本地贮藏 git stash --help
 
@@ -175,7 +173,7 @@ git remote show origin  #origin为仓库名
 5. 删除贮藏 drop + index
     > git drop 0
 
-## 应用
+# 应用
 
 1. 本地删除了文件需要恢复
     > git checkout -- filename

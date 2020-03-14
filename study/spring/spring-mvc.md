@@ -1,12 +1,10 @@
-# 1. spring mvc架构
-
-## 1.1. 来自官方的架构图
+# 1. 来自官方的架构图
 ![官方架构图](../../picture/spring-mvc-architecure.png)
 
-## 1.2. 个人梳理核心请求流程
+# 2. 个人梳理核心请求流程
 ![请求流程](../../picture/springmvc-workflow.png)
 
-### 1.2.1. 核心类
+## 2.1. 核心类
 * DispatcherServlet
 该类为spring mvc最核心的类，本质上为servlet，配置在web容器中，拦截所有的请求。请求进入后调用父类Servlet的service方法，最终会调用到DispatcherServlet到doDispatch方法。
 

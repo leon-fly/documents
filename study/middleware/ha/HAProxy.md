@@ -1,4 +1,4 @@
-## HAProxy安装
+# HAProxy安装
 
 ---
 20191130
@@ -6,7 +6,7 @@
 
 ---
 
-## 过程
+# 过程
 * 下载[HAProxy](http://www.haproxy.org/)
 * 解压
     > haproxy-2.1.0.tar.gz

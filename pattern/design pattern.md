@@ -1,11 +1,7 @@
-# 设计模式总结
 
-参考：
-https://www.runoob.com/design-pattern/factory-pattern.html
+# 1. 创建型设计模式
 
-## 创建型设计模式
-
-1. 简单工厂模式
+## 1.1. 简单工厂模式
 
     * 实现步骤
       * 创建产品接口
@@ -90,5 +86,7 @@ public class FactoryPatternDemo {
 
 ```
 
-2. 工厂方法模式
+## 1.2. 工厂方法模式
 
+# 2. 参考
+https://www.runoob.com/design-pattern/factory-pattern.html

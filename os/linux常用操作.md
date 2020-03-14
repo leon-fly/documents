@@ -1,8 +1,6 @@
-# linux常用操作
+# 一、系统信息查看
 
-## 一、系统信息查看
-
-### 1. cpu信息查看
+## 1. cpu信息查看
 
 1.1 查看CPU个数
 
@@ -15,7 +13,7 @@
 1.3 查看CPU型号
 > cat /proc/cpuinfo | grep 'model name' |uniq
 
-### 2. 磁盘空间查看
+## 2. 磁盘空间查看
 
 2.1 查看系统空间
 >  df -h
@@ -26,11 +24,11 @@
 
 > du -sh [目录名] 返回该文件夹大小
 
-### 3. 查看系统版本
+## 3. 查看系统版本
 
 > uname -a
 
-### 4. 系统使用情况查看
+## 4. 系统使用情况查看
 
 > free 查看瞬间运行存储空间
 
@@ -201,11 +199,11 @@ T 由该Process使用的cpu时间累计（TIME+）排序
 > htop
 
 
-### 5. 系统进程查看
+## 5. 系统进程查看
 
 > ps
 
-### 6. 网络状况查看
+## 6. 网络状况查看
 
 * 网络联通性查看
   > ping hostname/ip
@@ -239,9 +237,9 @@ T 由该Process使用的cpu时间累计（TIME+）排序
   示例：dig www.baidu.com
   
   
-## 二、字符处理
+# 二、字符处理
 
-### 1. [awk文本分析工具](http://www.ruanyifeng.com/blog/2018/11/awk.html)
+## 1. [awk文本分析工具](http://www.ruanyifeng.com/blog/2018/11/awk.html)
 
 1.1  基本语法
 
@@ -355,16 +353,16 @@ $ awk -F ':' '{if ($1 > "m") print $1; else print "---"}' demo.txt
 
  1.5 for及while循环语句  
 
- ### 2.[grep文本搜索工具]()
+ ## 2.[grep文本搜索工具]()
 
- ### 3.[sed文本编辑工具]()
+ ## 3.[sed文本编辑工具]()
 
-## 三、文件操作
+# 三、文件操作
 
-### 1. [find查找文件]()
+## 1. [find查找文件]()
 
 
-## 四、软件安装
+# 四、软件安装
 
 > brew
 
@@ -372,6 +370,6 @@ $ awk -F ':' '{if ($1 > "m") print $1; else print "---"}' demo.txt
 
 > yum
 
-## 五、 命令技巧
+# 五、 命令技巧
 * ctrl+r  历史命令搜索
 * history 历史命令

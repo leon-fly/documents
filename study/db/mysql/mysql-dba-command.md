@@ -1,6 +1,4 @@
-# mysql管理员常用命令
-
-## 一、[查看系统相关信息](https://dev.mysql.com/doc/refman/5.7/en/show.html)
+# 一、[查看系统相关信息](https://dev.mysql.com/doc/refman/5.7/en/show.html)
 
 ```
 SHOW {BINARY | MASTER} LOGS
@@ -43,4 +41,4 @@ SHOW TRIGGERS [FROM db_name] [like_or_where]
 SHOW [GLOBAL | SESSION] VARIABLES [like_or_where]
 ```
 
-## 二、[用户管理及授权](https://dev.mysql.com/doc/refman/5.7/en/account-management-statements.html)
+# 二、[用户管理及授权](https://dev.mysql.com/doc/refman/5.7/en/account-management-statements.html)

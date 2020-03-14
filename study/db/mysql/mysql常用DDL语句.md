@@ -1,6 +1,4 @@
-# mysql常用DDL语句
-
-## 一、创建数据库
+# 一、创建数据库
 
 * 示例
 
@@ -13,7 +11,7 @@
   * 字符集 charset
   * 字符序/排序规则 collate
 
-## 二、建表语句
+# 二、建表语句
 
 1. 完整示例
     ```mysql
@@ -37,7 +35,7 @@
     CREATE TABLE person_copy AS SELECT * FROM person;
     ```
 
-## 三、修改表
+# 三、修改表
 
 1. 重命名表名
     ```txt
@@ -67,7 +65,7 @@
     ALTER TABLE person DROP COLUMN birthday;
     ```
 
-## 四、索引
+# 四、索引
 
 1. 增加索引
     ```txt
