@@ -40,6 +40,7 @@
     - [6.2. 监控命令](#62-监控命令)
     - [6.3. jdk性能监控工具](#63-jdk性能监控工具)
     - [6.4. 图形化监控工具](#64-图形化监控工具)
+    - [6.5. 大杀器arthas](#65-大杀器arthas)
 - [7. 锁](#7-锁)
     - [7.1. 锁的基本概念和实现](#71-锁的基本概念和实现)
     - [7.2. java虚拟机中锁实现及优化](#72-java虚拟机中锁实现及优化)
@@ -526,6 +527,18 @@ help
 
 * MAT 简单易用，针对性强。
 
+## 6.5. 大杀器arthas
+**arthas的功能**
+* 这个类从哪个 jar 包加载的？为什么会报各种类相关的 Exception？
+* 我改的代码为什么没有执行到？难道是我没 commit？分支搞错了？
+* 遇到问题无法在线上 debug，难道只能通过加日志再重新发布吗？
+* 线上遇到某个用户的数据处理有问题，但线上同样无法 debug，线下无法重现！
+* 是否有一个全局视角来查看系统的运行状况？
+* 有什么办法可以监控到JVM的实时运行状态？
+* 怎么快速定位应用的热点，生成火焰图？
+
+[arthas官方文档](https://alibaba.github.io/arthas/)
+
 # 7. 锁
 
 ## 7.1. 锁的基本概念和实现
@@ -579,12 +592,10 @@ help
 * Happens-Before原则
     
         
-        
 # 8. 参考资料
-
 * 👉 【实战java虚拟机 jvm故障诊断及性能调优】  葛一鸣
+* 👉 【并发编程的艺术 】 方腾飞 魏鹏 程晓明著
 * 👉 [垃圾回收器使用参考资料](https://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html#available_collectors.selecting)
 * 👉  [oracle官方完整配置参数](https://www.oracle.com/technetwork/articles/java/vmoptions-jsp-140102.html)
 * 👉  [美团垃圾回收及优化参考资料](https://tech.meituan.com/2017/12/29/jvm-optimize.html)
-
 * 👉 [默认垃圾回收器](https://www.javamadesoeasy.com/2016/12/what-is-default-garbage-collector-for.html)

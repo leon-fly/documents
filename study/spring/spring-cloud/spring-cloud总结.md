@@ -206,7 +206,79 @@ public interface HelloService {
     * 部分client禁用需要通过使用@Scope ("prototype")注解为指定的客户端配置Feign.Builder实例
 * 指定命令配置、服务降级配置、日志配置及其他配置（如服务请求及返回压缩）
 
-# 6. Spring Cloud Zuul - Api网
+# 6. Spring Cloud Zuul - Api网关
+## 6.1. zuul的作用
+zuul在微服务架构中作为网关的角色，主要包括两部分：
+* 请求路由
+* 统一安全管控
+在没有网关的微服务架构中，微服务提供的服务安全处理各自为战，存在大量的冗余，请求路径也可可能根据服务编码组的不同杂乱无章。网关的出现通过统一安全处理，统一请求路径，从外部看整齐划一，这是设计模式中的典型的门面模式。
+
+## 6.2. 在spring cloud 体系中 zuul的使用
+zuul本身是一个独立的项目，使用java语言开发，提供的核心功能即上面提到的两部分。spring cloud zuul通过将zuul与euraka、hystrix、ribbon组合形成一个足够灵活、健壮、高可用的网关架构体系。
+
+### 6.2.1. 基本使用
+* 依赖导入
+    ```
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-zuul</artifactId>
+    </dependency>
+    ```
+* 配置服务名、端口、路由规则
+* 启用zuul，需要在入口类增加核心注解如下：
+    > @EnableZuulProxy
+  
+  但是不能忘了这个是急于spring cloud环境，所以还需要 **@SpringCloudApplication**
+### 6.2.2. 安全处理
+以上完成类最基本的使用工作，达到了路由的目的。那么**安全怎么处理？**
+在zuul中是通过Filter来达到这个目的的，在zuul中有一个**抽象类Filter**，子类继承该类后形成一个过滤器链，在过滤器中可以通过RequestContent（请求的一个上下文）来处理请求内容，如鉴权，对请求头等进行修改达到某种作用。示例代码：
+```
+public class AccessFilter extends ZuulFilter {
+    @Override
+    public String filterType() {
+        return "pre";
+    }
+
+    @Override
+    public int filterOrder() {
+        return 0;
+    }
+
+    @Override
+    public boolean shouldFilter() {
+        return true;
+    }
+
+    @Override
+    public Object run() {
+        RequestContext requestContext = RequestContext.getCurrentContext();
+        HttpServletRequest request = requestContext.getRequest();
+        log.info("send {} request to{}", request.getMethod(),
+                request.getRequestURL().toString());
+
+        Object accessToken = request.getParameter("accessToken");
+        if (accessToken == null) {
+            log.warn("access token is empty");
+            requestContext.setSendZuulResponse(false);
+            requestContext.setResponseStatusCode(401);
+            return null;
+        }
+
+        log.info("access token ok");
+        return null;
+    }
+}
+```
+**从以上可以看出，子类需要重写四个方法：**
+* filterType 过滤类型，用于确定过滤器在什么时机执行，官方列出的几个可选值及说明如下：
+    * Standard types in Zuul are "pre" for pre-routing filtering,
+    * "route" for routing to an origin, "post" for post-routing filters
+    * "error" for error handling.
+* filterOrder 过滤器排序
+* shouldFilter 是否要过滤当前请求
+* run() 过滤具体执行的逻辑。
+
+### 路由配置
 
 # 7. Spring Cloud Config - 分布式配置中心
 

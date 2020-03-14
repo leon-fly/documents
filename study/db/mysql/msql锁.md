@@ -25,6 +25,7 @@
         |S   |**<font color=red>Conflict</red>**|**<font color=red>Conflict</red>**| Compatible| Compatible|
         |IS  |**<font color=red>Conflict</red>**| Compatible| Compatible| Compatible|
         总结：
+        排他锁与任务锁都互斥，共享锁与共享锁兼容。
 
 3. 记录锁/行锁（Record Locks）
     * 加在单行索引记录上的锁。

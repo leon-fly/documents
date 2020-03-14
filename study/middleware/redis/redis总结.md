@@ -38,7 +38,7 @@
 设置
 > SET key value 
 
-> MSET [key value]...  一次性设置多个，高校
+> MSET [key value]...  一次性设置多个，高效
 
 > SETNX key value   仅当不存在时设置
 

@@ -233,6 +233,12 @@ T 由该Process使用的cpu时间累计（TIME+）排序
   netstat -an
   netstat -tnlp
   ```
+* 查看域名映射信息（比如该域名有几台服务器负载）
+  > dig
+
+  示例：dig www.baidu.com
+  
+  
 ## 二、字符处理
 
 ### 1. [awk文本分析工具](http://www.ruanyifeng.com/blog/2018/11/awk.html)
