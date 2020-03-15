@@ -1,3 +1,8 @@
+---
+title: "redis总结"
+date: 2018-01-01T00:00:00+08:00
+draft: true
+---
 # 安装及启动
 [官方安装指南](https://redis.io/download)
 

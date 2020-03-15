@@ -1,3 +1,8 @@
+---
+title: "msql锁"
+date: 2018-01-01T00:00:00+08:00
+draft: true
+---
 # 一、锁分类
 
 1. 共享锁（S）/排他锁 (X) （Shared and Exclusive Locks）

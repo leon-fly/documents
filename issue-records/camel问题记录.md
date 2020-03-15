@@ -1,3 +1,8 @@
+---
+title: "camel问题记录"
+date: 2018-01-01T00:00:00+08:00
+draft: true
+---
 # 一、AsyncProcessor接口中process方法的callback参数
 
 * 问题描述：在项目停止后有camel消息队列中有大量未处理消息（实际这些消息已处理）

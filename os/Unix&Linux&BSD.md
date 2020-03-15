@@ -1,3 +1,8 @@
+---
+title: "Unix&Linux&BSD"
+date: 2018-01-01T00:00:00+08:00
+draft: true
+---
 # 1. 关于unix与linux
 
 [参考文档-wiki UNIX](https://zh.wikipedia.org/wiki/UNIX)

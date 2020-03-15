@@ -1,3 +1,8 @@
+---
+title: "ts-mysql-root用户重置"
+date: 2018-01-01T00:00:00+08:00
+draft: true
+---
 # mysql root密码重置
 👉 [参考资料](https://www.techrepublic.com/article/how-to-set-change-and-recover-a-mysql-root-password/)
 

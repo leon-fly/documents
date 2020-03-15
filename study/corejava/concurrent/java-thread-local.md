@@ -1,3 +1,8 @@
+---
+title: "java-thread-local"
+date: 2018-01-01T00:00:00+08:00
+draft: true
+---
 # 1. ThreadLocal简介
 官方说：ThreadLocal提供线程级别的变量，这些变量与普通变量不同，每个线程都有独立的初始化的变量副本。简单理解，ThreadLocal提供了一个线程执行中的上下文环境，各自线程拥有与其他线程互不干扰的变量环境。
 

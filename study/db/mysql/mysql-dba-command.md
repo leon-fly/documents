@@ -1,3 +1,8 @@
+---
+title: "mysql-dba-command"
+date: 2018-01-01T00:00:00+08:00
+draft: true
+---
 # 一、[查看系统相关信息](https://dev.mysql.com/doc/refman/5.7/en/show.html)
 
 ```

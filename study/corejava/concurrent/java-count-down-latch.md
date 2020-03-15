@@ -1,3 +1,8 @@
+---
+title: "java-count-down-latch"
+date: 2018-01-01T00:00:00+08:00
+draft: true
+---
 # 1. CountDownLatch简介
 这是一个同步实现，旨在将一个或多个线程阻塞等待直到其他线程中一些列操作被执行结束。也是基于AQS的实现，提供的方法比较简单。
 
