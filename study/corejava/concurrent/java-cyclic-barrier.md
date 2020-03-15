@@ -1,8 +1,3 @@
----
-title: "java-cyclic-barrier"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 # 1. CyclicBarrier循环屏障简介
 CyclicBarrier基于ReentrancLock实现，这个同步器是允许一系列线程在同一个屏障点等待，直到所有的线程都到达屏障点后唤醒，每一次突破屏障点可以执行一个Runable任务，这个屏障可以重复使用。
 

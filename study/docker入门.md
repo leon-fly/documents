@@ -1,8 +1,3 @@
----
-title: "docker入门"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 <!-- TOC -->
 
 - [1. docker安装](#1-docker安装)

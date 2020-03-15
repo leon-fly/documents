@@ -1,8 +1,3 @@
----
-title: "nginx"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 # 1. nginx基本配置示例
 ```
 # For more information on configuration, see:

@@ -1,8 +1,3 @@
----
-title: "IssueReport组件使用"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 # 线上问题报告组件IssueReport使用说明
 
 ## 一、组件基本使用（基于spring）

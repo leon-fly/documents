@@ -1,8 +1,3 @@
----
-title: "TCP协议"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 # 1. TCP三次握手建立连接
 
 ![tcp三次握手](../../picture/TCP三次握手.png)

@@ -1,8 +1,3 @@
----
-title: "java-reentrant-read-write-lock"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 # 1. ReentrantReadWriteLock简介
 ReentrantReadWriteLock可重入式读写锁，同样基于AQS框架实现。**ReentrantReadWriteLock特点：**
 * 可重入锁

@@ -1,8 +1,3 @@
----
-title: "rabbitmq-集群模版"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 [官网集群](https://www.rabbitmq.com/clustering.html)
 
 [集群搭建参考1](https://www.jianshu.com/p/6376936845ff)

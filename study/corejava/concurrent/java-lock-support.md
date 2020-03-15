@@ -1,8 +1,3 @@
----
-title: "java-lock-support"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 # 1. LockSupport简介
 LockSupport是一个为其他类提供的创建锁和同步类的基本阻塞原语，这是官方的说法。简单来说，LockSupport提供了如下功能：
 * park方法，当获取到许可时直接返回，否则阻塞。

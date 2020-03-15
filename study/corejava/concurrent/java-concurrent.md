@@ -1,8 +1,3 @@
----
-title: "java-concurrent"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 <!-- TOC -->
 
 - [1. 线程生命周期](#1-线程生命周期)

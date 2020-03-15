@@ -1,8 +1,3 @@
----
-title: "java-atomic"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 # 1. atomic相关类简介
 atomic相关类是java.util.concurrent下提供的一系列封装了原子性操做的类，主要包括基本数据类型包装类的原子操作类，如AtomicBoolean、AtomicInteger，以及数组及其他对象的原子操作类，如AtomicReference<V>、AtomicReferenceArray<E>。
 

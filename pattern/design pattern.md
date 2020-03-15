@@ -1,8 +1,3 @@
----
-title: "design pattern"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 
 # 1. 创建型设计模式
 

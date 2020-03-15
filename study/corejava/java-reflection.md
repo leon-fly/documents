@@ -1,8 +1,3 @@
----
-title: "java-reflection"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 <!-- TOC -->
 
 - [1. java reflection简介](#1-java-reflection简介)

@@ -1,8 +1,3 @@
----
-title: "java-annotation"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 <!-- TOC -->
 
 - [1. annotation简介](#1-annotation简介)

@@ -1,8 +1,3 @@
----
-title: "rabbitmq-总结"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 [官网指南](http://www.rabbitmq.com/getstarted.html)
 
 # 一、关于rabbitMQ

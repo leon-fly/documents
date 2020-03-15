@@ -1,8 +1,3 @@
----
-title: "specification-db"
-date: 2018-01-01T00:00:00+08:00
-draft: true
----
 转自[猿码道研发库表设计规范](https://juejin.im/post/5b875655f265da432a6aecb8)
 <!-- TOC -->
 
