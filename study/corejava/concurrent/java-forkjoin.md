@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- corejava
+- concurrent
+title: java-forkjoin
+---
 <!-- TOC -->
 
 - [1. fork/join简介](#1-forkjoin简介)

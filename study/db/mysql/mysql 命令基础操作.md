@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- db
+- mysql
+title: mysql 命令基础操作
+---
 # 一、数据库连接操作
 
 1. 连接

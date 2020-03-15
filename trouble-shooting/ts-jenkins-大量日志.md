@@ -1,3 +1,12 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- trouble-shooting
+title: ts-jenkins-大量日志
+---
 # jenkins问题
 
 ## 💣 大量日志 

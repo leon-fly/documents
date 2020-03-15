@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- corejava
+- concurrent
+title: java-semaphore
+---
 <!-- TOC -->
 
 - [1. 官方对于信号量Semaphore[ˈseməfɔːr]说明](#1-官方对于信号量semaphoreˈseməfɔːr说明)

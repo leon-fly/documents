@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- corejava
+- concurrent
+title: java-abstract-queued-synchronized
+---
 # 1. AbstractQueuedSynchronizer简介
 * AQS是jdk提供的一个用于实现阻塞锁和相关同步的框架，其基于先进先出的等待队列。这个类提供了大部分的同步器（依靠一个原子int值来呈现状态）的基础。
 

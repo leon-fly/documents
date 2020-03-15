@@ -1,3 +1,12 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- git-doc
+title: IssueReport组件使用
+---
 # 线上问题报告组件IssueReport使用说明
 
 ## 一、组件基本使用（基于spring）

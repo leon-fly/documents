@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- middleware
+- redis
+title: redis总结
+---
 # 安装及启动
 [官方安装指南](https://redis.io/download)
 

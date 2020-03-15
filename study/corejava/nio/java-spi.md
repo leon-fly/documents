@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- corejava
+- nio
+title: java-spi
+---
 # 1. java spi
 **spi是一种java规范**，规范大致如下：
 1. 由制定规范的一方定义好接口，制定规范的一方开发中面向接口编程，不依赖于具体实现类。具体实现类在运行时通过如下方法进行获取：

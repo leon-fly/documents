@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- corejava
+- concurrent
+title: java-concurrent
+---
 <!-- TOC -->
 
 - [1. 线程生命周期](#1-线程生命周期)

@@ -1,3 +1,12 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- network
+title: TCP协议
+---
 # 1. TCP三次握手建立连接
 
 ![tcp三次握手](../../picture/TCP三次握手.png)

@@ -1,3 +1,12 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- interview
+title: interview准备
+---
 # 一、java 基础
 ## 集合
 ## 多线程/并发/锁

@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- corejava
+- concurrent
+title: java-reentrantlock
+---
 # 1. 经典的锁：ReentrantLock可重入锁
 什么是可重入锁？
 一个线程不能获取被其他线程拥有的锁，但是线程可以获取一个它已经拥有的锁，这种能力即可重入的，能达到这种效果的锁即可重入锁。

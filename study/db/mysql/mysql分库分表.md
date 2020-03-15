@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- db
+- mysql
+title: mysql分库分表
+---
 <!-- TOC -->
 
 - [1. 数据库分库分表](#1-数据库分库分表)

@@ -1,3 +1,12 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- corejava
+title: java-reflection
+---
 <!-- TOC -->
 
 - [1. java reflection简介](#1-java-reflection简介)

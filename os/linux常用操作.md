@@ -1,3 +1,12 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- os
+title: linux常用操作
+---
 # 一、系统信息查看
 
 ## 1. cpu信息查看

@@ -1,3 +1,12 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- pattern
+title: design pattern
+---
 
 # 1. 创建型设计模式
 

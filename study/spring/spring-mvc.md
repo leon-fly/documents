@@ -1,3 +1,12 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- spring
+title: spring-mvc
+---
 # 1. 来自官方的架构图
 ![官方架构图](../../picture/spring-mvc-architecure.png)
 

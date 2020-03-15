@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- tool
+- maven
+title: maven第三方包安装
+---
 | version  | updated by  | update at | remark |
 |:-------------: |:---------------:| -------------:|-------------:|
 | v1.0      | LeonWang |         20180926 | Create

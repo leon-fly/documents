@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- db
+- mysql
+title: msql锁
+---
 # 一、锁分类
 
 1. 共享锁（S）/排他锁 (X) （Shared and Exclusive Locks）

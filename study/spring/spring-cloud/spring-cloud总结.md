@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- spring
+- spring-cloud
+title: spring-cloud总结
+---
 # 1. spring boot - Spring Cloud的基础（Edgware.SR3）
 
 ## 1.1. spring boot项目初始化

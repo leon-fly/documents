@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- middleware
+- nginx
+title: nginx
+---
 # 1. nginx基本配置示例
 ```
 # For more information on configuration, see:

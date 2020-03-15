@@ -1,3 +1,12 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- specification
+title: specification-db
+---
 转自[猿码道研发库表设计规范](https://juejin.im/post/5b875655f265da432a6aecb8)
 <!-- TOC -->
 

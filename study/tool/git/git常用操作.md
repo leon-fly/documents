@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- tool
+- git
+title: git常用操作
+---
 超棒网站：
 [git-flow](https://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html)
 [git learning](https://learngitbranching.js.org/?demo)

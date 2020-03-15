@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- corejava
+- concurrent
+title: java-executors
+---
 <!-- TOC -->
 
 - [1. Executor框架简介](#1-executor框架简介)

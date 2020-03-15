@@ -1,3 +1,12 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- trouble-shooting
+title: ts-mysql-远程访问
+---
 # mysql远程访问问题
 
 ## 💣 mysql安装之后无法远程访问

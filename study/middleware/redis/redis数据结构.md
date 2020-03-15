@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- middleware
+- redis
+title: redis数据结构
+---
 redis数据库是由键值对组成，键总是字符串对象，值可以是字符串、集合、列表等多种类型的对象
 
 # 一、字符串

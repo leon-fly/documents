@@ -1,3 +1,14 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- middleware
+- mq
+- rabbitmq
+title: rabbitmq-集群模版
+---
 [官网集群](https://www.rabbitmq.com/clustering.html)
 
 [集群搭建参考1](https://www.jianshu.com/p/6376936845ff)

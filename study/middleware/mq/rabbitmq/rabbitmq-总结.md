@@ -1,3 +1,14 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- middleware
+- mq
+- rabbitmq
+title: rabbitmq-总结
+---
 [官网指南](http://www.rabbitmq.com/getstarted.html)
 
 # 一、关于rabbitMQ

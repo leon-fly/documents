@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- db
+- mysql
+title: mysql-dba-command
+---
 # 一、[查看系统相关信息](https://dev.mysql.com/doc/refman/5.7/en/show.html)
 
 ```

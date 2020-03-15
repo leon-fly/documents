@@ -1,3 +1,12 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- analysis
+title: analysis-jvm
+---
 <!-- TOC -->
 
 - [1. 常用命令及参数](#1-常用命令及参数)

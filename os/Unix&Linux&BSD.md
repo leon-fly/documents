@@ -1,3 +1,12 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- os
+title: Unix&Linux&BSD
+---
 # 1. 关于unix与linux
 
 [参考文档-wiki UNIX](https://zh.wikipedia.org/wiki/UNIX)

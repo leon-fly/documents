@@ -1,3 +1,12 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- mybatis
+title: mybatis总结
+---
 # 1. mybatis入门
 [官方清晰入门教程 传送门](https://mybatis.org/mybatis-3/zh/index.html)
 ## 1.1. mybatis执行过程

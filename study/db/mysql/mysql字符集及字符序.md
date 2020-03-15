@@ -1,3 +1,13 @@
+---
+date: "2018-01-01"
+draft: false
+lastmod: "2018-01-01"
+publishdate: "2018-01-01"
+tags:
+- db
+- mysql
+title: mysql字符集及字符序
+---
 # mysql字符集及字符序
 
 * [参考文档-MySQL字符集及字符序概念及设置](https://www.cnblogs.com/chyingp/p/mysql-character-set-collation.html)
