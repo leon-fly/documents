@@ -5,7 +5,7 @@ lastmod: "2018-01-01"
 publishdate: "2018-01-01"
 tags:
 - project
-title: 金桔自营平台
+title: Jinju自营平台
 ---
 # 1. 项目后端架构
 * 整体采用基于spring boot微服务架构，接口为restful规范。
