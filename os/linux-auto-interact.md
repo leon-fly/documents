@@ -24,7 +24,7 @@ title: linux自动交互-expect
     > expect: /usr/bin/expect /usr/share/man/man1/expect.1.gz
 
 ## 2. 使用示例
-以下示例
+示例: 执行git pull, 过程需要输入密码完成操作
 ```
 #!/usr/bin/expect
 # 进入git目录
