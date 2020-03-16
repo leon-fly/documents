@@ -60,7 +60,7 @@ expect "*passphrase*"
 send "mypassword\r"
 expect eof
 !
-echo "$(date) git pull finished"
+echo "$(date) git pull finished" 
 ```
 
 ## 4. 相关技术文档
