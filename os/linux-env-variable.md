@@ -25,3 +25,7 @@ title: linux环境变量配置及使用
 > $变量名
 
 如 echo $path 将打印path变量
+
+## 3. 查看环境变量列表
+
+> env

@@ -30,11 +30,11 @@ title: linux自动交互-expect
 # 进入git目录
 cd /home/ops/git-doc
 
-# 使用expect内部命令spawn运行需要交互的命令
+# 使用命令spawn运行git命令（需要交互的命令），会fork一个子进程，后续的expect的相关命令都是围绕该进程通信
 spawn git pull
 
-# 等待命令返回
-set timeout 5
+# 等待命令返回时间，超时之后执行后面的命令。-1代表不超时
+set timeout 60
 
 # 判断命令返回中预期内容
 expect "*passphrase*"
@@ -46,5 +46,6 @@ send "mypassword\r"
 interact
 ```
 
+## 说明
 ## 3. 相关技术文档
 [传送门](https://man.linuxde.net/expect1)
