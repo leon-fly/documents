@@ -70,3 +70,11 @@ cron表达格式为：
 
 > 0 0 * * * #每天0晨
 
+## 4. 日志相关问题
+在使用cron时我们可能需要排查问题，那么通过日志分析是一个关键途径，ubuntu在默认情况下cron日志是关闭的。需求如下处理：
+1. 修改配置文件（ubuntu中配置文件路径为/etc/rsyslog.d/50-default.conf，将cron.* 注释去掉即可。）
+2. 重启日志服务（**sudo service rsyslog restart**）
+3. 重启cron服务。
+crontab日志打开
+
+[日志配置打开相关问题](https://blog.csdn.net/disappearedgod/article/details/43191693)

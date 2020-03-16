@@ -46,6 +46,22 @@ send "mypassword\r"
 interact
 ```
 
-## 说明
-## 3. 相关技术文档
-[传送门](https://man.linuxde.net/expect1)
+## 3. bash环境下使用expect
+有时候expect需要在bash环境下执行，比如cron(运行在bash环境) + expect，上面示例中的脚本将无法正常执行。需要通过改写为bash环境：
+
+```
+#!/bin/sh
+echo "$(date) git pull start..."
+expect <<!
+cd /home/ops/git-doc
+set timeout 120
+spawn git pull
+expect "*passphrase*"
+send "mypassword\r"
+expect eof
+!
+echo "$(date) git pull finished"
+```
+
+## 4. 相关技术文档
+[命令清单传送门](https://man.linuxde.net/expect1)
