@@ -6,7 +6,7 @@ publishdate: "2018-01-01"
 tags:
 - corejava
 - collection
-title: java-abstract-queued-synchronized
+title: hashmap
 ---
 
 # 1. hashmap简介
