@@ -11,6 +11,7 @@ title: hashmap
 
 # 1. hashmap简介
 hashmap实现了map接口，存储了key-value的数据形式。内部使用的数据、链表、红黑树的数据结构。
+
 ![hashmap](../../../picture/hashmap.png)
 
 # 2. 重要概念
