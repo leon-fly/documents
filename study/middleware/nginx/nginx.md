@@ -215,10 +215,10 @@ server {
 ```
 
 ### 7.3. HTTP Upsteam负载均衡模块
-###### 7.3.1. ip_hash指令
+#### 7.3.1. ip_hash指令
 对ip进行hash操作，分配到指定的服务器上。通过这种方式能达到有会话状态要求的转发要求。采用这种负载策略且有会话状态要求情况下，如果要下线某台服务器直接注释还是down，直接注释后原来的ip再次请求分配的可能不是原来那台机器，服务器可能没有请求相关的会话信息。
 
-###### 7.3.2. upstream的server指令
+#### 7.3.2. upstream的server指令
 语法：
 > server name [parameters]
 
@@ -228,7 +228,7 @@ server {
 * fail_timeout=TIME 标记失败后暂停服务时间
 * down 标记服务器离线。
 
-###### 7.3.3. upstream指令
+#### 7.3.3. upstream指令
 * 语法： 
   > upsteam name {...}
 
