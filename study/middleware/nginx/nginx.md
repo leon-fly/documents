@@ -8,6 +8,7 @@ tags:
 - nginx
 title: nginx
 ---
+
 ## 1. nginx基本配置示例
 ```
 ## 使用的用户及群组
@@ -123,7 +124,7 @@ server
 ```
 
 ## 3. 日志
-###### 3.1. 设置日志名称及对应格式（日志格式的定义）
+### 3.1. 设置日志名称及对应格式（日志格式的定义）
 > log_format name format [format ...]
 
 name必须唯一，format由一个个子项组成。nginx有一个默认的日志格式combined。
@@ -136,20 +137,20 @@ log_format upstream_time '$remote_addr - $remote_user [$time_local] '
                              'rt=$request_time uct="$upstream_connect_time" uht="$upstream_header_time" urt="$upstream_response_time"';
 ```
 
-###### 3.2. 日志文件
+### 3.2. 日志文件
 日志文件可以关闭，可以使用静态，也可以使用动态，即允许在路径中使用参数，比如 **$server_name** 代表服务名。
 如果使用动态路径，写日志缓存将不可用，每次写入都要打开-写入-关闭文件，需要通过open_log_file_cache指令设置经常被使用的日志文件描述符缓存，该指令默认是禁止的。
 
-###### 3.3. 日志文件切割
+### 3.3. 日志文件切割
 nginx本身不支持按照时间来切割日志文件，需要借助mv、kill及crontab实现。
 > kill -USR1 Nginx 主进程号 让nginx重新生成一个日志文件
-###### 3.4. 错误日志级别
+### 3.4. 错误日志级别
 格式：
 > error_log logpath level
 
 错误级别分为 debug｜info|notice|warn|error|crit
 
-###### 3.5. 日志缓冲
+### 3.5. 日志缓冲
 在指定日志的时候指定缓冲大小，关键一点，当日志路径为动态时缓冲失效，具体优化见日志文件说明。
 
 ## 4. 压缩
@@ -178,11 +179,11 @@ autoindex_localtime on|off
 
 ## 7. nginx负载均衡与反向代理
 
-###### 7.1. 负载之DNS做负载
+### 7.1. 负载之DNS做负载
     * 可靠性低。某台故障，即使从DNS服务器去掉故障机器，由于网络运营商为了提升效率低缓存策略，生效可能需要几个小时，那么分发到这台的请求将不能正常处理。
     * 负载分配不均衡，DNS采用简单轮询策略，不能区分服务性能差异和负载差异，另外本地DNS服务器会缓冲已解析的域名ip，一段时间内访问的都是同一台服务器。
 
-###### 7.2. nginx负载均衡配置简单示例
+### 7.2. nginx负载均衡配置简单示例
 仅负载和转发部分简要配置示例
 ```
 ## 定义一条负载均衡（负载名称和该负载对应的服务信息及负载规则）
@@ -213,11 +214,11 @@ server {
 }
 ```
 
-###### 7.3. HTTP Upsteam负载均衡模块
-############ 7.3.1. ip_hash指令
+### 7.3. HTTP Upsteam负载均衡模块
+###### 7.3.1. ip_hash指令
 对ip进行hash操作，分配到指定的服务器上。通过这种方式能达到有会话状态要求的转发要求。采用这种负载策略且有会话状态要求情况下，如果要下线某台服务器直接注释还是down，直接注释后原来的ip再次请求分配的可能不是原来那台机器，服务器可能没有请求相关的会话信息。
 
-############ 7.3.2. upstream的server指令
+###### 7.3.2. upstream的server指令
 语法：
 > server name [parameters]
 
@@ -227,7 +228,7 @@ server {
 * fail_timeout=TIME 标记失败后暂停服务时间
 * down 标记服务器离线。
 
-############ 7.3.3. upstream指令
+###### 7.3.3. upstream指令
 * 语法： 
   > upsteam name {...}
 
@@ -241,7 +242,7 @@ server {
     > \$upstream_response_time
 
     >\$upstream_http_\$HEADER 任意的http协议头，如：\$upstream_http_host
-###### 7.4. nginx负载均衡服务器的双机高可用（避免nginx单点故障）
+### 7.4. nginx负载均衡服务器的双机高可用（避免nginx单点故障）
 虚拟IP（漂移IP）实现，基于Linux/Unix的IP别名技术。
 
 两种方式实现高可用：
@@ -249,7 +250,7 @@ server {
 * 双活  (使用两个公网ip分别绑定到两台主机，当其中一台故障，另一台接管故障机器的虚拟ip)
 
 
-###### 7.5. 负载均衡策略
+### 7.5. 负载均衡策略
 
 ## 8. nginx初始化安全配置
 
