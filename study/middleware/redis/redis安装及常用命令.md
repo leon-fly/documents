@@ -33,6 +33,8 @@ title: redis安装及常用命令
     redis> get foo
     "bar"
     ```
+* 关闭服务
+    通过redis-cli连接到服务之后执行shutdown
 
 
 ## 2. 数据类型及常用命令
@@ -83,12 +85,12 @@ title: redis安装及常用命令
 自减N
 > DECRBY key N
 
-### 2.2. 列表（链表）
-* 支持从列表左边或者右边推入或推出元素，支持指定位置值设置，指定位置前插入
+### 2.2. 列表（链表）
+* 支持从列表左边或者右边推入或推出元素，支持指定位置值设置，指定位置前插入
 * 支持获取指定位置，指定范围元素
-* 支持修剪元素，保留指定范围
+* 支持修剪元素，保留指定范围
 
-**命令以L|R打头，L代表list，R表示Right**
+**命令以L|R打头，L代表list，R表示Right**
 > LPUSH｜RPUSH key value...
 
 > LPOP|RPOP key
@@ -108,7 +110,7 @@ title: redis安装及常用命令
 * 支持元素移动到其他集合
 * 支持集合操作，如交集、差集、并集等
 
-**命令以S打头,S表示SET**
+**命令以S打头,S表示SET**
 添加
 > SADD key item...
 
@@ -168,7 +170,7 @@ title: redis安装及常用命令
 > HLEN key
 
 散列中是否存在指定键
-> HEXISTS key key
+> HEXISTS key key
 
 获取散列中所有的键
 > HKEYS key
@@ -179,15 +181,15 @@ title: redis安装及常用命令
 获取散裂中所有的键值对
 > HGETALL key
 
-将散列表中的指定键的值增加
-> HINCRBY | HINCRBYFLOAT key key increment
+将散列表中的指定键的值增加
+> HINCRBY | HINCRBYFLOAT key key increment
 
 
 ### 2.5. 有序集合
 
 结构类似于散列表，不允许重复的元素，有序集合里存储着成员及成员对应分值，并且提供分值处理命令，排序规则即通过分值来的。
 
-**命令以Z打头，集合计算Z命令一般有对应的ZREV，分数逆序计算**
+**命令以Z打头，集合计算Z命令一般有对应的ZREV，分数逆序计算**
 
 添加带分值的成员
 > ZADD key [score member]...
@@ -236,7 +238,7 @@ title: redis安装及常用命令
 * WATCH,监视指定key，配合MULTI...EXEC使用，如果watch键值变化则事务失败
 > WATCH key...
 * UNWATCH,重置连接,不在监视。
-* MULTI redis事物开启标识，该命令之后，EXEC之前的命令将存储在redis的执行队列，调用EXEC之后才会连续执行队列里的任务。
+* MULTI redis事物开启标识，该命令之后，EXEC之前的命令将存储在redis的执行队列，调用EXEC之后才会连续执行队列里的任务。
 * EXEC 事物执行
 * DISCARD 该命令用在MULTI之后，EXEC之前，命令之前的内容将被重置丢弃。
 
@@ -244,7 +246,7 @@ title: redis安装及常用命令
 * PING
 * ECHO
 * OBJECT
-通过OBJECT命令可以从内部察看给定 key 的 Redis 对象， 它通常用在除错(debugging)或者了解为了节省空间而对 key 使用特殊编码的情况。 当将Redis用作缓存程序时，你也可以通过 OBJECT 命令中的信息，决定 key 的驱逐策略(eviction policies)。
+通过OBJECT命令可以从内部察看给定 key 的 Redis 对象，它通常用在除错(debugging)或者了解为了节省空间而对 key 使用特殊编码的情况。 当将Redis用作缓存程序时，你也可以通过 OBJECT 命令中的信息，决定 key 的驱逐策略(eviction policies)。
     > OBJECT  subcommand [arguments...]
 可选的subcommand为：
     * OBJECT REFCOUNT key
@@ -256,7 +258,7 @@ title: redis安装及常用命令
 用于服务优化时查询key相关的内部数据，如数据编码
 * SLOWLOG
 用于记录慢查询的日志
-    * 可设置要记录的查询最低耗时和最大日志记录数，日志记录采用队列方式，当日志记录超过最大日志记录数，老的记录先删掉
+    * 可设置要记录的查询最低耗时和最大日志记录数，日志记录采用队列方式，当日志记录超过最大日志记录数，老的记录先删掉
     * 可以获取当前日志记录，当前记录数
     * 可以情况当前日志记录
 

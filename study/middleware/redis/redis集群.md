@@ -8,7 +8,7 @@ tags:
 - redis
 title: redis集群
 ---
-### 3.2. redis主从节点
+## 1. redis主从节点
 * redis主从节点设置方式
     * 配置文件 slaveof host port 
     * 执行命令 SLAVEOF host port
@@ -25,7 +25,7 @@ title: redis集群
     * 主服务器的内存使用设置50%～65%，其他用于执行BGSAVE和创建记录写命令的缓冲区
 
 
-### 3.3. [哨兵模式](https://redis.io/topics/sentinel)
+## 2. [哨兵模式](https://redis.io/topics/sentinel)
 
 * sentinel启动的两种方式
     > redis-sentinel /path/to/sentinel.conf

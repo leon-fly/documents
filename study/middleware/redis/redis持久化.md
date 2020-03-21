@@ -53,7 +53,16 @@ redis可以通过创建快照获取存储在内容里面的数据在某个时间
     * auto-aof-rewrite-percentage 每次重写需要超过上次重写的百分比
     * auto-aof-rewrite-min-size 重写的最小文件大小
 
-### SAVE & BGSAVE & BGREWRITEAOF并行性
+### 3.3. SAVE & BGSAVE & BGREWRITEAOF并行性
 * SAVE和BGSAVE互斥，只能有一个执行，防止产生竞争条件。
 * SAVE执行期间，拒绝任何请求
 * 执行BGSAVE时，如果客户端发送BGREWITEAOF，那么会被延迟到BGSAVE结束之后执行。本身两个命令的执行在操作方面没有什么冲突，只是考虑两个子进程都同时执行大量磁盘写入的问题。
+
+
+### RDB&AOF混合模式（4.0之后）
+这种持久化能够通过 AOF 重写操作创建出一个同时包含 RDB 数据和 AOF 数据的 AOF 文件， 其中 RDB 数据位于 AOF 文件的开头， 它们储存了服务器开始执行重写操作时的数据库状态： 至于那些在重写操作执行之后执行的 Redis 命令， 则会继续以 AOF 格式追加到 AOF 文件的末尾， 也即是 RDB 数据之后。
+
+参数配置
+* appendonly yes
+* aof-use-rdb-preamble
+[黄健宏 RDB-AOF 混合持久化](https://blog.huangz.me/2017/redis-rdb-aof-mixed-persistence.html)
