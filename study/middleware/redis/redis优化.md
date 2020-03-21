@@ -6,8 +6,9 @@ publishdate: "2018-01-01"
 tags:
 - middleware
 - redis
-title: redis优化
+title: redis优化
 ---
+
 ## 性能优化
 * 查看机器运行redis进行各项服务性能，该性能仅为执行计算命令性能，不包行对客户端的应答，实际客户单不实用pipeline的情况下大概有测试结果的50%～60%，如果达不到该性能指标要关注是否每次发送命令时都创建了新连接。
     > redis-benchmark -c 1 -q
