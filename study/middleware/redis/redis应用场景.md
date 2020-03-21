@@ -6,7 +6,7 @@ publishdate: "2018-01-01"
 tags:
 - middleware
 - redis
-title: redis经典使用场景
+title: redis经典使用场景
 ---
 ## 1. 分布式锁
 * 实现方式
