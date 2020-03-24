@@ -8,7 +8,8 @@ tags:
 - mysql
 title: mysql 命令基础操作
 ---
-# 一、数据库连接操作
+
+## 1. 数据库连接操作
 
 1. 连接
 
@@ -23,8 +24,10 @@ title: mysql 命令基础操作
     ```mysql
     QUIT
     ```
+3. 清屏
+    > system clear
 
-# 二、数据库信息查询
+## 2. 数据库信息查询
 
 1. 查询数据库版本
 
@@ -51,7 +54,7 @@ title: mysql 命令基础操作
     SELECT USER();
     ```
 
-# 三、数据库操作
+## 3. 数据库操作
 
 1. 创建
 
@@ -67,7 +70,7 @@ DROP DATABSE dbname;
 ```
 
 
-# 四、表操作
+## 4. 表操作
 
 1. 查询表列表
 
@@ -81,9 +84,21 @@ DROP DATABSE dbname;
     DECRIBE tablename;
     ```
 
-# 五、事务操作
+## 5. 事务操作
+1. **查看当前会话事务隔离级别**
+    > SELECT @@tx_isolation;
 
-1. **事务基本操作**
+    ```
+    +-----------------+
+    | @@tx_isolation  |
+    +-----------------+
+    | REPEATABLE-READ |
+    +-----------------+
+    ```
+2. **查看当前数据库默认事务隔离级别** 
+    > select @@global.tx_isolation;
+
+2. **事务基本操作**
 
     ```mysql
     SET [GLOBAL | SESSION] TRANSACTION
@@ -105,8 +120,8 @@ DROP DATABSE dbname;
 
     **示例**
     ```mysql
-    # 设置当前会话隔离级别为可重复读
-    SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+    #设置当前会话隔离级别为可重复读
+    SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
     #启动事务
     START TRANSACTION; [或者SET AUTOCOMMIT=FALSE;]
     #执行语句
@@ -114,7 +129,7 @@ DROP DATABSE dbname;
     #提交|回滚
     COMMIT;|ROLLBACK;
     ```
-2. 还原点
+3. 还原点
 
     ```mysql
     #创建还原点
