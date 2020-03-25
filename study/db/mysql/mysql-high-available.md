@@ -53,7 +53,13 @@ Slave_SQL_Running=Yes
 ### 2.4. binlog
 binlog用来记录mysql的数据更新或者潜在更新.
 #### 2.4.1. binglog格式
+* statement ： 基于sql语句的模式。update table set name =””; effect row 1000； uuid、now() other function
+* row： 基于行模式; 存在1000条数据变更；  记录修改以后每一条记录变化的值
+* mixed: 混合模式，由mysql自动判断处理.
 
+#### 2.4.2. binlog格式设置
+* 方式一 修改binlog_formater,通过在mysql客户端输入如下命令可以修改set global binlog_format=’row/mixed/statement’;
+* 方式二 mysql配置文件[mysqld]下增加binlog_format=‘mixed’
 
 ### 2.5. 中从同步延时问题及解决方案
 * 同步延迟产生原因：
