@@ -84,7 +84,42 @@ DROP DATABSE dbname;
     DECRIBE tablename;
     ```
 
-## 5. 事务操作
+## 5. 索引操作
+
+### 5.1. 创建索引
+
+#### 5.1.1. ALTER TABLE 创建普通索引、唯一索引、主键
+给表创建普通索引
+> ALTER TABLE table_name ADD INDEX index_name (column1,column2..columnN)
+
+给表创建唯一索引
+> ALTER TABLE table_name ADD UNIQUE index_name (column1,column2..columnN)
+
+给表创建主键
+> ALTER TABLE table_name ADD PRIMARY KEY key_name (column1,column2..columnN)
+
+#### 5.1.2. CREATE INDEX 创建普通索引和唯一索引
+
+创建普通索引
+> CREATE INDEX index_name ON table_name (column1,column2..columnN)
+
+创建唯一索引
+> CREATE UNIQUE INDEX index_name ON table_name (column1,column2..columnN)1
+
+### 5.2. 删除索引
+> DROP INDEX index_name ON talbe_name
+
+> ALTER TABLE table_name DROP INDEX index_name
+
+> ALTER TABLE table_name DROP PRIMARY KEY
+
+### 5.3. 查看索引
+> SHOW INDEX FROM tblname;
+
+> SHOW KEYS FROM tblname;
+
+
+## 6. 事务操作
 1. **查看当前会话事务隔离级别**
     > SELECT @@tx_isolation;
 
