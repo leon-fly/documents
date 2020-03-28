@@ -61,7 +61,7 @@ binlog用来记录mysql的数据更新或者潜在更新.
 * 方式一 修改binlog_formater,通过在mysql客户端输入如下命令可以修改set global binlog_format=’row/mixed/statement’;
 * 方式二 mysql配置文件[mysqld]下增加binlog_format=‘mixed’
 
-### 2.5. 中从同步延时问题及解决方案
+### 2.5. 主从同步延时问题及解决方案
 * 同步延迟产生原因：
 1.  当master库tps比较高的时候，产生的DDL数量超过slave一个sql线程所能承受的范围，或者slave的大型query语句产生锁等待
 2.  网络传输： bin文件的传输延迟
@@ -75,3 +75,18 @@ sync_binlog=n
 3.  增加延时监控
 Nagios做网络监控
 mk-heartbeat
+
+## 3. 常用的方案
+方案考虑的内容越多，设计可能也就越复杂，有时候需要化繁为简，会加法也得会减法，在业务可承受范围内将方案化简。以下方案仅阐述常用的两个维度，针对业务复杂情况可能会发生变化，比如从库的数量调整，分片。
+### 3.1. 读写分离
+![mysql-read-write-architecture.png](../../../picture/mysql-read-write-architecture.png)
+
+### 3.2. 双主
+![mysql-highavailable.pngg](../../../picture/mysql-highavailable.png)
+
+HAProxy + keepalived
+[HAProxy官网](http://www.haproxy.org/)
+[keepalived官网](https://www.keepalived.org/)
+[keepalived参考资料](https://www.jianshu.com/p/b050d8861fc1)
+
+
