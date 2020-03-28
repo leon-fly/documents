@@ -8,6 +8,7 @@ tags:
 - mysql
 title: mysql explain
 ---
+**REF：高性能mysql**
 
 ## 1. 关于mysql explain
 * explain是mysql提供的用于查看对于一条sql语句mysql的执行计划，比如查询次数，查询是否使用索引，预期扫描行数等等，可以使用该工具进行mysql优化。
@@ -188,7 +189,7 @@ mysql估计为了找到所需的行而要读取对行数，估算不精确。
 显示的是针对表里符合某个条件对记录数的悲观比例估算。
 
 #### 2.2.12. Extra
-在其他列不适合展示对信息。常见信息如下：
+在其他列不适合展示的信息。常见信息如下：
 * Using inxex
 此值表示mysql将使用覆盖索引
 * Using where
