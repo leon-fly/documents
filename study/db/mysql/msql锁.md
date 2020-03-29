@@ -26,7 +26,7 @@ title: msql锁
         * 在事务获取排他行锁之前必须先获取该表到意图排他锁。
     * 表级锁类型兼容性
 
-        ||X|IX|S|IS|
+        |...|X|IX|S|IS|
         |:----|:----|:----|:----|:----|
         |X   |**<font color=red>Conflict</red>**|**<font color=red>Conflict</red>**|**<font color=red>Conflict</red>**|**<font color=red>Conflict</red>**|
         |IX  |**<font color=red>Conflict</red>**| Compatible |**<font color=red>Conflict</red>**|Compatible|
@@ -50,7 +50,7 @@ title: msql锁
     * 行锁和间隙锁的组合
 
 6. 插入意图锁（Insert Intention Locks）
-    * 插入意图锁定是一种由INSERT行插入之前的操作设置的间隙锁定 。该锁定表示以这样的方式插入的意图：如果插入到相同索引间隙中的多个事务不插入间隙内的相同位置，则不需要等待彼此。假设存在值为4和7的索引记录分别尝试插入值5和6的事务分别在获取插入行上的排它锁之前用插入意图锁定锁定4和7之间的间隙，但是不要互相阻塞，因为这些行是非冲突的。
+    * 插入意图锁定是一种由INSERT行插入之前的操作设置的间隙锁定。该锁定表示以这样的方式插入的意图：如果插入到相同索引间隙中的多个事务不插入间隙内的相同位置，则不需要等待彼此。假设存在值为4和7的索引记录，分别尝试插入值5和6的事务分别在获取插入行上的排它锁之前用插入意图锁锁定4和7之间的间隙，但是不会互相阻塞，因为这些行是非冲突的。
 
 7. 自增锁（AUTO-INC Locks）
     * 一个AUTO-INC锁是通过交易将与表中取得一个特殊的表级锁 AUTO_INCREMENT列。在最简单的情况下，如果一个事务正在向表中插入值，则任何其他事务必须等待对该表执行自己的插入，以便第一个事务插入的行接收连续的主键值。
@@ -71,9 +71,7 @@ title: msql锁
 mysql支持四种事务隔离级别，由常用到不常用如下：
 
 * REPEATABLE READ
-
-	mysql默认的隔离级别
-
+mysql默认的隔离级别
 * READ COMMITTED
 * READ UNCOMMITTED
 * SERIALIZABLE
