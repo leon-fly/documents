@@ -22,8 +22,9 @@ title: mysql索引
 ### 2.1. B树索引
 合理使用B树索引，可以提升查询及排序性能，B树本事为支持有序遍历的数据结构。
 #### 2.1.1. 索引结构
-B树索引在InnoDB的实现为B+树
-TODO
+B树索引在InnoDB的实现为B+树，非叶子节点存储索引key，只有叶子节点才存储数据，并在叶子节点增加一个指针指向相邻叶子节点（页上会存储上一页和下一页）就形成了带有顺序访问指针的B+树。
+[MYSQL-B+TREE索引原理以及为什么使用的B+Tree而非B-Tree](https://www.jianshu.com/p/486a514b0ded)
+[B+Tree index structures in InnoDB](https://blog.jcole.us/2013/01/10/btree-index-structures-in-innodb/)
 #### 2.1.2. B树适用的查询类型
 B树索引适用于全键值、键值范围和键前缀查找。其中键前缀查找只适用于根据最左前缀查找。
 * 全值匹配
