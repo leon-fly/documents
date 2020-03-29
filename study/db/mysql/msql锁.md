@@ -32,6 +32,7 @@ title: msql锁
         |IX  |**<font color=red>Conflict</red>**| Compatible |**<font color=red>Conflict</red>**|Compatible|
         |S   |**<font color=red>Conflict</red>**|**<font color=red>Conflict</red>**| Compatible| Compatible|
         |IS  |**<font color=red>Conflict</red>**| Compatible| Compatible| Compatible|
+        
         总结：
         排他锁与任务锁都互斥，共享锁与共享锁兼容。
 
