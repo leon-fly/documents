@@ -30,7 +30,7 @@ events {
     ## 使用都I/O模型，Linux系统推荐采用epoll模型，FreeBSD系统推荐采用kqueue模型
     use epoll;
 
-    ## 允许都链接数，配置准则？？？？？TODO
+    ## 允许的链接数，受Linux系统进程的最大打开文件数限制，该参数要根据服务器性能和内存使用量来调整。
     worker_connections 1024;
 }
 
@@ -251,6 +251,7 @@ server {
 
 
 ### 7.5. 负载均衡策略
+
 
 ## 8. nginx初始化安全配置
 
