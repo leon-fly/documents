@@ -77,3 +77,12 @@ services允许通过多个docker daemon来扩展容器，这些docker进程通�
 [Docker维基百科](https://zh.wikipedia.org/wiki/Docker)
 
 [Docker官网](https://docs.docker.com/engine/docker-overview/)
+
+## 9. 关联穿插 - 公司内部cicd事件流程示例（开发者角度）
+![cicd](../../picture/cicd-example.png)
+
+公司内部使用cicd进行开发全流程管理，以上为某次构建的流程。相关大致说明：
+
+1. 项目内创建了deploy.yml文件用来描述项目相关信息及docker构建指令。
+2. git提交代码注释增加[ci]触发docker的构建。docker构建过程即上面图示流程。
+3. 构建完成后登陆管理平台选择某个环境（SIT/UAT...）对本次构建进行部署
