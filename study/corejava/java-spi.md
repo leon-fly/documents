@@ -5,7 +5,6 @@ lastmod: "2018-01-01"
 publishdate: "2018-01-01"
 tags:
 - corejava
-- nio
 title: java-spi
 ---
 # 1. java spi
