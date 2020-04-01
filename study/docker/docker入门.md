@@ -45,7 +45,7 @@ docker file分为四部分：
 |  CMD \<command>     |   docker容器运行时的默认命令    |
 
 
-
+[dockerfile 官方完整内容](https://docs.docker.com/engine/reference/builder/)
 
 
 # 5. docker常用命令
@@ -77,4 +77,5 @@ docker file分为四部分：
 
 # 6. 参考文档
 👉 [阮一峰 Docker 入门教程](https://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
+
 👉 《微服务架构与实践》王磊著
