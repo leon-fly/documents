@@ -10,7 +10,8 @@ title: springboot workflow
 **springboot version:** v1.5.6
 
 ## 1. spring boot workflow
-![springboot-workflow.png](../../picture/springboot-workflow.svg)
+![springboot-workflow.png](../../picture/springboot-workflow.png)
+[springboot-workflow.svg](../../picture/springboot-workflow.svg)
 
 ## 2. 重点流程梳理
 
