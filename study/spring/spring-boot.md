@@ -11,6 +11,7 @@ title: springboot workflow
 
 ## 1. spring boot workflow
 ![springboot-workflow.png](../../picture/springboot-workflow.png)
+
 [springboot-workflow.svg](../../picture/springboot-workflow.svg)
 
 ## 2. 重点流程梳理
