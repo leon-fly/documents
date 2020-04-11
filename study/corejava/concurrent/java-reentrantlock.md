@@ -36,7 +36,7 @@ ReentrantLock.lock() -> Syn.lock() -> AbstractQueuedSynchronizer.acquire(int arg
 
 ### 1.3.2. 非公平锁获取锁时序图
 
-![ReentrancLock-NonFairLock-sequence-lock](../../../picture/ReentrancLock-NonFairLock-sequence-lock.png)
+![ReentrancLock-NonfairLock-sequence-lock](../../../picture/ReentrancLock-NonfairLock-sequence-lock.png)
 
 
 ### 1.3.3. 总结
