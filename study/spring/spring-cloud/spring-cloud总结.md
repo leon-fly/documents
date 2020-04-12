@@ -8,7 +8,7 @@ tags:
 - spring-cloud
 title: spring-cloud总结
 ---
-## 1. spring boot - Spring Cloud的基础（Edgware.SR3）
+## 1. spring boot - Spring Cloud的基础（Edgware.SR）
 
 ### 1.1. spring boot项目初始化
 * [Spring Initializr.](https://start.spring.io/)快速生成项目框架
@@ -20,7 +20,7 @@ title: spring-cloud总结
     * 本地开发访问原生端点出现权限问题，可以通过 **management.security.enabled=false** 进行关闭
 
 ## 2. Spring Cloud Eureka - 服务治理
-### 2.1. 核心功能 
+### 2.1. 核心功能
 * 服务注册
     * 服务方向注册中心注册服务，告知服务名、地址、端口、协议。
 * 服务发现
@@ -108,13 +108,13 @@ eureka:
 
 * 消费者通过注册中心调用服务的过程时怎么样的？
 
-Eureka客户端每30s（默认）从服务端更新一次服务注册信息。
+    Eureka客户端每30s（默认）从服务端更新一次服务注册信息。
 
 * Eureka概览
 ![Eureka模式](../../../picture/Eureka.png)
 
 
-#### 参考
+#### 2.2.5. 参考
 [Eureka缓存机制](https://www.infoq.cn/article/y_1BCrbLONU61s1gbGsU)
 
 
@@ -317,7 +317,7 @@ public class AccessFilter extends ZuulFilter {
 * shouldFilter 是否要过滤当前请求
 * run() 过滤具体执行的逻辑。
 
-#### 路由配置
+#### 6.2.3. 路由配置
 
 ## 7. Spring Cloud Config - 分布式配置中心
 
