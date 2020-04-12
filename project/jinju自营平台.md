@@ -7,7 +7,7 @@ tags:
 - project
 title: Jinju自营平台
 ---
-# 1. 项目后端架构
+## 1. 项目后端架构
 * 整体采用基于spring boot微服务架构，接口为restful规范。
 * 核心微服务模块
     * 保单微服务微服务模块
@@ -17,19 +17,19 @@ title: Jinju自营平台
     * 微信处理微服务模块
     * 财务微服务模块
     * 保司微服务模块
-    * 渠道微服务模块
+    * 渠道微服务模块`
     * 营销活动模块
     * API模块
-# 2. 关键设计
-## 2.1. 接口数据安全处理
+## 2. 关键设计
+### 2.1. 接口数据安全处理
 基于SpringSecurity实现，根据请求头信息满足合作方选择性对请求加解密。
 * 创建两个Filter,一个Filter用于将ServletRequest替换为可多次读的ServletRequest，并放入FilterChain中，另一个用于对请求进行AES加解密。
 * 实现HttpServletRequestWrapper和HttpServletResponseWrapper，一个用于对请求进行解密后的封装，一个用于对返回进行加密后封装。
-## 2.2. 日志脱敏组件
+### 2.2. 日志脱敏组件
 * 基于注解进行脱敏，创建脱敏的方法（脱敏时一层层解析，要注意循环引用二次脱敏）。
 * 创建脱敏关键字池（关键字有对应的敏感数据类型），对json、xml格式解析为数据片段，对片段匹配关键字进行脱敏。
 * 脱敏基础：敏感数据类型及对应脱敏规则
-## 2.3. 营销活动模块（基于抽奖必中）
+### 2.3. 营销活动模块（基于抽奖必中）
 * 功能：
     * 能够记录营销活动信息，某次营销活动的抽奖人数，领奖品人数
     * 支持抽取不同奖品领取（保险、电子券、实物）
@@ -47,23 +47,23 @@ title: Jinju自营平台
     * 活动奖品表
     * 抽奖及领取记录表
 
-## 2.4. RateTable
+### 2.4. RateTable
 
-## 2.5. 数据接口BaseCommponet、BaseAttribute
+### 2.5. 数据接口BaseCommponet、BaseAttribute
 
-# 3. 关键技术
+## 3. 关键技术
 
-## 3.1. spring boot
+### 3.1. spring boot
 
-## 3.2. spring security
+### 3.2. spring security
 
-## 3.3. spring data jpa
+### 3.3. spring data jpa
 
-## 3.4. spring security
+### 3.4. spring security
 
-## 3.5. apache camel
+### 3.5. apache camel
 
-## 3.6. 内存型数据库hsqldb
+### 3.6. 内存型数据库hsqldb
 [对比参考](https://blog.csdn.net/bcghgfr/article/details/83857285)
 * 选型 hsqldb vs h2
     共同点：
@@ -77,5 +77,8 @@ title: Jinju自营平台
     * hsqldb 2001年第一个版本，版本迭代到2.0+，h22005年
 
 
-## 3.7. 前端：vue
+### 3.7. 前端：vue
+
+## 4. 项目部署
+需求的开发上线流程基于基于jekins和docker半自动化的处理
 
