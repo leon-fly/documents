@@ -1,16 +1,16 @@
 ---
 date: "2018-01-01"
 draft: false
-lastmod: "2018-01-01"
+lastmod: "2020-04-18"
 publishdate: "2018-01-01"
 tags:
 - os
 - linux
 title: linux常用操作
 ---
-# 一、系统信息查看
+## 1. 系统信息查看
 
-## 1. cpu信息查看
+### 1.1. cpu信息查看
 
 1.1 查看CPU个数
 
@@ -23,7 +23,7 @@ title: linux常用操作
 1.3 查看CPU型号
 > cat /proc/cpuinfo | grep 'model name' |uniq
 
-## 2. 磁盘空间查看
+### 1.2. 磁盘空间查看
 
 2.1 查看系统空间
 >  df -h
@@ -34,11 +34,11 @@ title: linux常用操作
 
 > du -sh [目录名] 返回该文件夹大小
 
-## 3. 查看系统版本
+### 1.3. 查看系统版本
 
 > uname -a
 
-## 4. 系统使用情况查看
+### 1.4. 系统使用情况查看
 
 > free 查看瞬间运行存储空间
 
@@ -178,6 +178,7 @@ q 离开 top 软件的按键。
 s 更改top刷新时间，默认3s
 i 隐藏idle状态的进程，只显示当前活跃的进程
 1 查看各个cpu使用情况
+H 线程查看
 
 ================================  图形化展示： ================================
 m 查看图形化内存百分比
@@ -188,6 +189,8 @@ P 根据cpu占用排序
 N 根据pid来排序
 T 由该Process使用的cpu时间累计（TIME+）排序
 ```
+
+* top -Hp pid 查看进程的线程信息
 
 * [关于top的load average](http://www.ruanyifeng.com/blog/2011/07/linux_load_average_explained.html)
 
@@ -209,11 +212,11 @@ T 由该Process使用的cpu时间累计（TIME+）排序
 > htop
 
 
-## 5. 系统进程查看
+### 1.5. 系统进程查看
 
 > ps
 
-## 6. 网络状况查看
+### 1.6. 网络状况查看
 
 * 网络联通性查看
   > ping hostname/ip
@@ -245,19 +248,21 @@ T 由该Process使用的cpu时间累计（TIME+）排序
   > dig
 
   示例：dig www.baidu.com
+* 查看占用端口的应用
+  > lsof -i
+  示例： lsof -i tcp:8080 
   
-  
-# 二、字符处理
+## 2. 字符处理
 
-## 1. [awk文本分析工具](http://www.ruanyifeng.com/blog/2018/11/awk.html)
+### 2.1. [awk文本分析工具](http://www.ruanyifeng.com/blog///awk.html)
 
 1.1  基本语法
 
 ```
-# 格式
+## 格式
 $ awk 动作 文件名
 
-# 示例
+## 示例
 $ awk '{print $0}' demo.txt
 
 ```
@@ -336,11 +341,11 @@ awk允许指定输出条件，格式：
 示例
 
 ```
-# 输出奇数行
+## 输出奇数行
 $ awk -F ':' 'NR % 2 == 1 {print $1}' demo.txt
 
 
-# 输出第三行以后的行
+## 输出第三行以后的行
 $ awk -F ':' 'NR >3 {print $1}' demo.txt
 
 ```
@@ -363,16 +368,16 @@ $ awk -F ':' '{if ($1 > "m") print $1; else print "---"}' demo.txt
 
  1.5 for及while循环语句  
 
- ## 2.[grep文本搜索工具]()
+ ## 3. [grep文本搜索工具]()
 
- ## 3.[sed文本编辑工具]()
+ ## 4. [sed文本编辑工具]()
 
-# 三、文件操作
+## 5. 文件操作
 
-## 1. [find查找文件]()
+### 5.1. [find查找文件]()
 
 
-# 四、软件安装
+## 6. 软件安装
 
 > brew
 
@@ -380,6 +385,6 @@ $ awk -F ':' '{if ($1 > "m") print $1; else print "---"}' demo.txt
 
 > yum
 
-# 五、 命令技巧
+## 7. 五、 命令技巧
 * ctrl+r  历史命令搜索
 * history 历史命令
