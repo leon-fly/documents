@@ -385,6 +385,6 @@ $ awk -F ':' '{if ($1 > "m") print $1; else print "---"}' demo.txt
 
 > yum
 
-## 7. 五、 命令技巧
+## 7. 命令技巧
 * ctrl+r  历史命令搜索
 * history 历史命令
