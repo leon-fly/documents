@@ -18,7 +18,7 @@ title: HAProxy
 
 ## 2. 解压
 
-> haproxy-2.1.0.tar.gz
+> tar -zxvf haproxy-2.1.0.tar.gz
 
 ## 3. 编译可执行文件
 
