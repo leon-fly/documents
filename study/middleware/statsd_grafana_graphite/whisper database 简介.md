@@ -7,7 +7,7 @@ tags:
 - middleware
 - monitor
 - statsd_grafana_graphite
-title: whisper数据库
+title: whisper数据库简介
 ---
 
 # [whisper database](https://graphite.readthedocs.io/en/latest/whisper.html)
