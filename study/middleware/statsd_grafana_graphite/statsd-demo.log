@@ -1,0 +1,158 @@
+21 Feb 17:13:40 - DEBUG: service.order.visitor:U20|s
+21 Feb 17:13:40 - DEBUG: service.payment.visitor:U0|s
+21 Feb 17:13:40 - DEBUG: service.order.visitor:U7|s
+21 Feb 17:13:40 - DEBUG: service.payment.visitor:U7|s
+21 Feb 17:13:41 - DEBUG: service.order:647|c
+21 Feb 17:13:41 - DEBUG: service.payment:1423|c
+21 Feb 17:13:41 - DEBUG: service.order.visitor:U34|s
+21 Feb 17:13:41 - DEBUG: service.payment.visitor:U4|s
+21 Feb 17:13:41 - DEBUG: timing.service.order:942|ms
+21 Feb 17:13:41 - DEBUG: timing.service.payment:942|ms
+21 Feb 17:13:41 - DEBUG: user.state.login:+44|g
+21 Feb 17:13:41 - DEBUG: service.order:884|c
+21 Feb 17:13:41 - DEBUG: service.payment:1001|c
+21 Feb 17:13:41 - DEBUG: timing.service.order:570|ms
+21 Feb 17:13:41 - DEBUG: timing.service.payment:570|ms
+21 Feb 17:13:42 - DEBUG: service.order.visitor:U38|s
+21 Feb 17:13:42 - DEBUG: service.payment.visitor:U8|s
+21 Feb 17:13:42 - DEBUG: service.order.visitor:U43|s
+21 Feb 17:13:42 - DEBUG: service.payment.visitor:U3|s
+21 Feb 17:13:42 - DEBUG: service.order:740|c
+21 Feb 17:13:42 - DEBUG: service.payment:1098|c
+21 Feb 17:13:42 - DEBUG: service.order:116|c
+21 Feb 17:13:42 - DEBUG: service.payment:558|c
+Flushing stats at  Thu Feb 21 2019 17:13:43 GMT+0800 (DST)
+{ counters:
+   { 'statsd.bad_lines_seen': 0,
+     'statsd.packets_received': 23,
+     'statsd.metrics_received': 23,
+     'service.order': 2387,
+     'service.payment': 4080 },
+  timers:
+   { 'timing.service.order': [ 570, 942 ],
+     'timing.service.payment': [ 570, 942 ] },
+  gauges: { 'user.state.login': 44, 'statsd.timestamp_lag': 0 },
+  timer_data:
+   { 'timing.service.order':
+      { count_90: 2,
+        mean_90: 756,
+        upper_90: 942,
+        sum_90: 1512,
+        sum_squares_90: 1212264,
+        std: 186,
+        upper: 942,
+        lower: 570,
+        count: 2,
+        count_ps: 0.4,
+        sum: 1512,
+        sum_squares: 1212264,
+        mean: 756,
+        median: 756,
+        histogram: [Object] },
+     'timing.service.payment':
+      { count_90: 2,
+        mean_90: 756,
+        upper_90: 942,
+        sum_90: 1512,
+        sum_squares_90: 1212264,
+        std: 186,
+        upper: 942,
+        lower: 570,
+        count: 2,
+        count_ps: 0.4,
+        sum: 1512,
+        sum_squares: 1212264,
+        mean: 756,
+        median: 756,
+        histogram: [Object] } },
+  counter_rates:
+   { 'statsd.bad_lines_seen': 0,
+     'statsd.packets_received': 4.6,
+     'statsd.metrics_received': 4.6,
+     'service.order': 477.4,
+     'service.payment': 816 },
+  sets:
+   { 'service.order.visitor': [ 'U20', 'U7', 'U34', 'U38', 'U43' ],
+     'service.payment.visitor': [ 'U0', 'U7', 'U4', 'U8', 'U3' ] },
+  pctThreshold: [ 90 ] }
+21 Feb 17:13:43 - DEBUG: user.state.login:+65|g
+21 Feb 17:13:43 - DEBUG: timing.service.order:1674|ms
+21 Feb 17:13:43 - DEBUG: timing.service.payment:1674|ms
+21 Feb 17:13:43 - DEBUG: service.order.visitor:U59|s
+21 Feb 17:13:43 - DEBUG: service.payment.visitor:U9|s
+21 Feb 17:13:43 - DEBUG: timing.service.order:266|ms
+21 Feb 17:13:43 - DEBUG: timing.service.payment:266|ms
+21 Feb 17:13:44 - DEBUG: service.order:1970|c
+21 Feb 17:13:44 - DEBUG: service.payment:1116|c
+21 Feb 17:13:45 - DEBUG: user.state.login:+95|g
+21 Feb 17:13:45 - DEBUG: timing.service.order:1483|ms
+21 Feb 17:13:45 - DEBUG: timing.service.payment:1483|ms
+21 Feb 17:13:45 - DEBUG: service.order.visitor:U94|s
+21 Feb 17:13:45 - DEBUG: service.payment.visitor:U4|s
+21 Feb 17:13:45 - DEBUG: service.order:810|c
+21 Feb 17:13:45 - DEBUG: service.payment:444|c
+21 Feb 17:13:46 - DEBUG: service.order.visitor:U39|s
+21 Feb 17:13:46 - DEBUG: service.payment.visitor:U9|s
+21 Feb 17:13:46 - DEBUG: service.order.visitor:U5|s
+21 Feb 17:13:46 - DEBUG: service.payment.visitor:U5|s
+21 Feb 17:13:46 - DEBUG: service.order:948|c
+21 Feb 17:13:46 - DEBUG: service.payment:844|c
+21 Feb 17:13:46 - DEBUG: user.state.login:+49|g
+21 Feb 17:13:46 - DEBUG: timing.service.order:1453|ms
+21 Feb 17:13:46 - DEBUG: timing.service.payment:1453|ms
+21 Feb 17:13:47 - DEBUG: user.state.login:+74|g
+21 Feb 17:13:47 - DEBUG: user.state.login:+30|g
+Flushing stats at  Thu Feb 21 2019 17:13:48 GMT+0800 (DST)
+{ counters:
+   { 'statsd.bad_lines_seen': 0,
+     'statsd.packets_received': 27,
+     'statsd.metrics_received': 27,
+     'service.order': 3728,
+     'service.payment': 2404 },
+  timers:
+   { 'timing.service.order': [ 266, 1453, 1483, 1674 ],
+     'timing.service.payment': [ 266, 1453, 1483, 1674 ] },
+  gauges: { 'user.state.login': 357, 'statsd.timestamp_lag': 0 },
+  timer_data:
+   { 'timing.service.order':
+      { count_90: 4,
+        mean_90: 1219,
+        upper_90: 1674,
+        sum_90: 4876,
+        sum_squares_90: 7183530,
+        std: 556.7059367385981,
+        upper: 1674,
+        lower: 266,
+        count: 4,
+        count_ps: 0.8,
+        sum: 4876,
+        sum_squares: 7183530,
+        mean: 1219,
+        median: 1468,
+        histogram: [Object] },
+     'timing.service.payment':
+      { count_90: 4,
+        mean_90: 1219,
+        upper_90: 1674,
+        sum_90: 4876,
+        sum_squares_90: 7183530,
+        std: 556.7059367385981,
+        upper: 1674,
+        lower: 266,
+        count: 4,
+        count_ps: 0.8,
+        sum: 4876,
+        sum_squares: 7183530,
+        mean: 1219,
+        median: 1468,
+        histogram: [Object] } },
+  counter_rates:
+   { 'statsd.bad_lines_seen': 0,
+     'statsd.packets_received': 5.4,
+     'statsd.metrics_received': 5.4,
+     'service.order': 745.6,
+     'service.payment': 480.8 },
+  sets:
+   { 'service.order.visitor': [ 'U59', 'U94', 'U39', 'U5' ],
+     'service.payment.visitor': [ 'U9', 'U4', 'U5' ] },
+  pctThreshold: [ 90 ] }
