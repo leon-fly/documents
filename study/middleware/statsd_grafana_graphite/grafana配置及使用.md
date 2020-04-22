@@ -23,8 +23,8 @@ grafana安装比较简单,按照官网操作即可。
 > grafana配置
 
 ```text
-    [server]
-    domain = foo.bar
+[server]
+domain = foo.bar
  ```
 
 > nginx配置
@@ -46,9 +46,9 @@ server {
 > grafana配置
 
 ```text
-    [server]
-    domain = foo.bar
-    root_url = %(protocol)s://%(domain)s:%(http_port)s/grafana/
+[server]
+domain = foo.bar
+root_url = %(protocol)s://%(domain)s:%(http_port)s/grafana/
  ```
 
 > nginx配置
