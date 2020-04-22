@@ -8,10 +8,11 @@ tags:
 - concurrent
 title: java-thread-local
 ---
-# 1. ThreadLocal简介
+
+## 1. ThreadLocal简介
 官方说：ThreadLocal提供线程级别的变量，这些变量与普通变量不同，每个线程都有独立的初始化的变量副本。简单理解，ThreadLocal提供了一个线程执行中的上下文环境，各自线程拥有与其他线程互不干扰的变量环境。
 
-# 2. 使用说明
+## 2. 使用说明
 * 初始化 ThreadLocal<T>() threadLocal = new ThreadLocal<>().
 * 设置值 threadLocal.set(value)
 * 获取值 threadLocal.get(value)
@@ -58,12 +59,12 @@ public class ThreadLocalDemo {
 }
 ```
 
-# 3. 类图
+## 3. 类图
 ![ThreadLocal类图](../../../picture/ThreadLocal.png)
 
 **分析：**
 ThreadLocal内部定义了一个静态内部类ThreadLocalMap,ThreadLocalMap（并没有实现map接口，内部使用了一个Entry数组来存储Thread各自线程变量）。每个Thread有一个自己的ThreadLocalMap，当设置值时，key为ThreadLocal。
 
 
-# 4. 相关技术文档
+## 4. 相关技术文档
 [Oracle ThreadLocal说明](https://docs.oracle.com/javase/8/docs/api/java/lang/ThreadLocal.html)

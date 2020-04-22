@@ -8,32 +8,18 @@ tags:
 - concurrent
 title: java-executors
 ---
-<!-- TOC -->
 
-- [1. Executor框架简介](#1-executor框架简介)
-- [2. ExecutorService接口](#2-executorservice接口)
-- [3. ThreadPoolExecutor类](#3-threadpoolexecutor类)
-    - [3.1. 构造函数分析](#31-构造函数分析)
-- [4. ScheduledThreadPoolExecutor类](#4-scheduledthreadpoolexecutor类)
-- [5. Executors类](#5-executors类)
-    - [5.1. 常用的几个方法](#51-常用的几个方法)
-        - [5.1.1. newCachedThreadPool](#511-newcachedthreadpool)
-        - [5.1.2. newFixedThreadPool](#512-newfixedthreadpool)
-        - [5.1.3. newScheduledThreadPool](#513-newscheduledthreadpool)
-        - [5.1.4. newSingleThreadExecutor](#514-newsinglethreadexecutor)
-
-<!-- /TOC -->
-# 1. Executor框架简介
+## 1. Executor框架简介
 自jdk1.5之后引入Executor框架对多线程执行提供了较强大的支持，包括线程池、定时等支持。其核心接口及类主要包括ExecutorService、ThreadPoolExecutor和Executors，见下图：
 ![Executor](../../../picture/ExecutorService.png)
 ![Executors](../../../picture/Executors.png)
 
-# 2. ExecutorService接口
+## 2. ExecutorService接口
 ExecutorService接口继承Executor，该接口的主要作用是对线程任务的观察和控制，如启动，关闭，判断是否关闭，是否结束，提交线程任务等。
 
-# 3. ThreadPoolExecutor类
+## 3. ThreadPoolExecutor类
 这是Executor框架中基于线程池的核心实现类，功能强大，对执行线程进行细粒度等操控。
-## 3.1. 构造函数分析
+### 3.1. 构造函数分析
 以下为最多参数的构造函数，另外还有其他几个参数个数不通的构造函数，参数字段基本在以下几个之中。
 ```
 public ThreadPoolExecutor(int corePoolSize,
@@ -52,12 +38,12 @@ public ThreadPoolExecutor(int corePoolSize,
 * threadFactory 线程工厂
 * handler 用于处理因当线程不够用且任务队列满了时处理被拒绝的线程
 
-# 4. ScheduledThreadPoolExecutor类
+## 4. ScheduledThreadPoolExecutor类
 该类集成了ThreadPoolExecutor类并实现了ScheduledExecutorService接口，也就具备了线程池和定时执行的特性。
 
-# 5. Executors类
+## 5. Executors类
 该类可以理解为Executor的一个工厂或者工具类，用于提供常用的ExecutorService。
-## 5.1. 常用的几个方法
+### 5.1. 常用的几个方法
 ### 5.1.1. newCachedThreadPool
 ```
 public static ExecutorService newCachedThreadPool() {

@@ -8,15 +8,15 @@ tags:
 - concurrent
 title: java-reentrantlock
 ---
-# 1. 经典的锁：ReentrantLock可重入锁
+## 1. 经典的锁：ReentrantLock可重入锁
 什么是可重入锁？
 一个线程不能获取被其他线程拥有的锁，但是线程可以获取一个它已经拥有的锁，这种能力即可重入的，能达到这种效果的锁即可重入锁。
 当一个线程执行的方法中触发一个同步代码，同步代码中包含同步代码，且这两个同步代码同步的是同一个资源，那么如果没有可重入锁，线程可能需要注意避免将自己阻塞。
 
-## 1.1. ReentrantLock类图
+### 1.1. ReentrantLock类图
 ![ReentrantLock类图](../../../picture/ReentrantLock.png)
 
-## 1.2. ReentrantLock特点
+### 1.2. ReentrantLock特点
 * ReentrantLock基于同步容器AQS（AbstractQueuedSynchronizer）实现Lock接口
 * **ReentrantLock支持公平锁和非公平锁**
     * 非公平锁，通过CAS方式获取锁
@@ -25,7 +25,7 @@ title: java-reentrantlock
 * **ReentrantLock支持中断锁**
 * **支持Condition**
 
-## 1.3. ReentrantLock的lock及unlock过程
+### 1.3. ReentrantLock的lock及unlock过程
 
 **lock方法调用链：**
 
@@ -44,7 +44,7 @@ ReentrantLock.lock() -> Syn.lock() -> AbstractQueuedSynchronizer.acquire(int arg
 * 非公平锁的实现主要体现在第一次获取锁时不考虑等待队列，直接插队获取。但是获取失败后会插入到等待队列队尾自旋式获取（此时有排队）
 
 
-## 1.4. ReentrantLock的unlock过程
+### 1.4. ReentrantLock的unlock过程
 
 ReentrantLock的解锁过程对于公平锁和非公平锁都一样，解锁过程比较简单，主要操作有：
 * setState
@@ -53,7 +53,7 @@ ReentrantLock的解锁过程对于公平锁和非公平锁都一样，解锁过�
 ![ReentrancLock-sequence-unlock](../../../picture/ReentrancLock-sequence-unlock.png)
 
 
-## 1.5. 基本使用示例代码
+### 1.5. 基本使用示例代码
 ```
 public class ReentrantLockDemo {
     private String sharedResource;
@@ -71,7 +71,7 @@ public class ReentrantLockDemo {
 }
 ```
 
-# 2. 关于Condiction
+## 2. 关于Condiction
 * Condiction是Lock接口提供的一个绑定对象，通过newCondition方法进行绑定，用于条件等待和唤醒，调用await当前线程将阻塞，调用线程signal/signalAll将唤醒所有Condiction等待线程。
 * ReentrantLock实现中有两个队列，本类中有一个锁等待队列，用于锁竞争，内部类Condiction有一个条件等待队列，用于存储等待条件的线程。在调用await时线程节点在条件等待队列入队并释放锁，接下来使用LockSuppor的park阻塞线程，在被其他线程调用了该条件对象的signal/signalAll后，阻塞解除重新获取锁执行await后逻辑。
 
@@ -79,7 +79,7 @@ public class ReentrantLockDemo {
 
 
 
-# 3. 相关技术文档
+## 3. 相关技术文档
 [官方ReentrantLock说明](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/ReentrantLock.html)
 [官方ReentrantLock.Condiction说明](https://docs.oracle.com/cd/E17802_01/j2se/j2se/1.5.0/jcp/beta1/apidiffs/java/util/concurrent/locks/ReentrantLock.ConditionObject.html)
 [ReentrantLock可中断锁示例代码参考](https://blog.csdn.net/dongyuxu342719/article/details/94395877)

@@ -8,10 +8,11 @@ tags:
 - concurrent
 title: java-cyclic-barrier
 ---
-# 1. CyclicBarrier循环屏障简介
+
+## 1. CyclicBarrier循环屏障简介
 CyclicBarrier基于ReentrancLock实现，这个同步器是允许一系列线程在同一个屏障点等待，直到所有的线程都到达屏障点后唤醒，每一次突破屏障点可以执行一个Runable任务，这个屏障可以重复使用。
 
-# 2. 使用示例
+## 2. 使用示例
 
 ```
 public class CyclicBarrierDemo {
@@ -89,16 +90,16 @@ barrier冲破--------------
 barrier冲破--------------
 ```
 
-# 3. 核心方法实现说明
+## 3. 核心方法实现说明
 
-## 3.1. await
+### 3.1. await
 * 不带参的方法
  该方法的主要逻辑为获取lock，将计数减1并判断当前计数是0，如果计数为0表示所有线程都到达指定的屏障点，便唤醒所有线程，并执行指定的冲破屏障后的方法。
 
 * 带超时时间参数
   带该参数时表示在该时长内没有冲破屏障线程将出现BrokenBarrierException，屏障前的代码可以将执行完，屏障后的代码将无法执行。
 
-## 3.2. 构造方法
+### 3.2. 构造方法
 * CyclicBarrier(int parties)
 仅仅指定需要达到屏障点的线程个数
 * CyclicBarrier(int parties, Runnable barrierAction)

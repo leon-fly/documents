@@ -7,18 +7,11 @@ tags:
 - corejava
 title: java-annotation
 ---
-<!-- TOC -->
 
-- [1. annotation简介](#1-annotation简介)
-- [2. annotation定义](#2-annotation定义)
-- [3. annotation 使用场景](#3-annotation-使用场景)
-- [4.其他参考资料](#4其他参考资料)
-
-<!-- /TOC -->
-# 1. annotation简介
+## 1. annotation简介
 annotation为java的注解，可以理解为java中的某种标识机制。
 
-# 2. annotation定义
+## 2. annotation定义
 annotation的定义同普通java类文件类似。示例如下：
 ```
 @Retention(RetentionPolicy.RUNTIME)
@@ -45,7 +38,7 @@ public enum PhoneType {
         * RUNTIME：编译器将Annotation存储于class文件中，并且可由JVM读入。
     * @Target 标识注解可以作用的目标对象，可选项为ElementType的各枚举值，主要包括任意类（类、接口、方法）、方法、属性、参数、本地变量、构造器等
 
-# 3. annotation 使用场景
+## 3. annotation 使用场景
 annotation一般会结合反射一起使用，常在一些技术框架中可以看到他们的身影，比如spring、hibernate等框架中就大量使用了注解，比如@RestController，另外开发插件lombok的注解，通过@Setter @Getter等注解在编译器动态的将属性等getter和setter方法加入到class类中，简化类开发和代码量。
 annotation的使用一般分为几个过程：
 1. 注解定义
@@ -54,5 +47,5 @@ annotation的使用一般分为几个过程：
 
 annotation的定义用于后续的使用，根据注解策略分别在各个期间对其进行使用。比如以上示例中phone注解可以在运行期通过反射对对类中属性上标识了该注解的属性数据进行脱敏。
 
-# 4.其他参考资料
+## 4.其他参考资料
 [CSDN博客](https://www.cnblogs.com/skywang12345/p/3344137.html)
