@@ -7,62 +7,6 @@ tags:
 - analysis
 title: analysis-jvm
 ---
-<!-- TOC -->
-
-- [1. 常用命令及参数](#1-常用命令及参数)
-    - [1.1. 查看当前java参数](#11-查看当前java参数)
-    - [1.2. 查看java配置属性](#12-查看java配置属性)
-    - [1.3. 打印GC相关日志](#13-打印gc相关日志)
-    - [1.4. 类加载及卸载跟踪](#14-类加载及卸载跟踪)
-    - [1.5. 打印系统运行相关参数](#15-打印系统运行相关参数)
-    - [1.6. 堆的设置](#16-堆的设置)
-    - [1.7. 方法区配置](#17-方法区配置)
-    - [1.8. 栈配置](#18-栈配置)
-    - [1.9. 直接内存配置](#19-直接内存配置)
-- [2. 垃圾回收算法](#2-垃圾回收算法)
-    - [2.1. 引用计数法](#21-引用计数法)
-    - [2.2. 标记清除法](#22-标记清除法)
-    - [2.3. 复制算法](#23-复制算法)
-    - [2.4. 标记压缩法（标记清除压缩算法）](#24-标记压缩法标记清除压缩算法)
-    - [2.5. 分代算法](#25-分代算法)
-    - [2.6. 分区算法](#26-分区算法)
-- [3. java引用及垃圾回收](#3-java引用及垃圾回收)
-- [4. 垃圾回收器](#4-垃圾回收器)
-    - [4.1. 串行回收器](#41-串行回收器)
-        - [4.1.1. 新生代串行回收器](#411-新生代串行回收器)
-        - [4.1.2. 老年代串行回收器](#412-老年代串行回收器)
-    - [4.2. 并行回收器（ParNew）](#42-并行回收器parnew)
-        - [4.2.1. 新生代ParNew回收器](#421-新生代parnew回收器)
-        - [4.2.2. 新生代ParallelGC回收器](#422-新生代parallelgc回收器)
-        - [4.2.3. 老年代ParallelOldGC回收器](#423-老年代paralleloldgc回收器)
-    - [4.3. CMS回收器（Concurrent Mark Sweep）](#43-cms回收器concurrent-mark-sweep)
-    - [4.4. G1（Garbage First Garbage Collector）回收器（自1.7）](#44-g1garbage-first-garbage-collector回收器自17)
-    - [4.5. 默认垃圾回收器](#45-默认垃圾回收器)
-- [5. 垃圾回收过程及调优](#5-垃圾回收过程及调优)
-    - [5.1. 垃圾回收过程](#51-垃圾回收过程)
-    - [5.2. 调优](#52-调优)
-        - [5.2.1. 确定调优目标](#521-确定调优目标)
-        - [5.2.2. 调优参数](#522-调优参数)
-        - [5.2.3. 应用异常现象及问题原因](#523-应用异常现象及问题原因)
-- [6. 分析java堆及性能监控](#6-分析java堆及性能监控)
-    - [6.1. 内存溢出 OOM](#61-内存溢出-oom)
-    - [6.2. 监控命令](#62-监控命令)
-    - [6.3. jdk性能监控工具](#63-jdk性能监控工具)
-    - [6.4. 图形化监控工具](#64-图形化监控工具)
-    - [6.5. 大杀器arthas](#65-大杀器arthas)
-- [7. 锁](#7-锁)
-    - [7.1. 锁的基本概念和实现](#71-锁的基本概念和实现)
-    - [7.2. java虚拟机中锁实现及优化](#72-java虚拟机中锁实现及优化)
-        - [7.2.1. 偏向锁](#721-偏向锁)
-        - [7.2.2. 轻量级锁](#722-轻量级锁)
-        - [7.2.3. 锁膨胀](#723-锁膨胀)
-        - [7.2.4. 自旋锁](#724-自旋锁)
-        - [7.2.5. 锁消除](#725-锁消除)
-        - [7.2.6. 应用级别锁优化](#726-应用级别锁优化)
-        - [7.2.7. java内存模型（JMM）](#727-java内存模型jmm)
-- [8. 参考资料](#8-参考资料)
-
-<!-- /TOC -->
 
 
 # 1. 常用命令及参数
@@ -89,121 +33,127 @@ Property settings:
 
 ## 1.3. 打印GC相关日志
 * 打印GC普通信息
-> -XX:+PrintGC
+    > -XX:+PrintGC
 
-GC示例
-```
-[GC (Allocation Failure)  311109K->311878K(454144K), 0.1617940 secs]
-[Full GC (Ergonomics)  311878K->310823K(622592K), 0.0647834 secs]
-```
+    GC示例
+    ```
+    [GC (Allocation Failure)  311109K->311878K(454144K), 0.1617940 secs]
+    [Full GC (Ergonomics)  311878K->310823K(622592K), 0.0647834 secs]
+    ```
 
-第一行为普通GC第一个数据[311109k]为回收前堆空间使用量，第二个数据[311878K]为回收后堆内存使用量，第三个数据[454144K]为当前申请的总堆空间大小（注意并非未使用的空间），当堆内存大小未达到最大时可以持续申请。第四个数据[0.1617940 secs]为当前GC耗时。
-第二行为FullGC,并非每次GC都会伴随FullGC
+    第一行为普通GC第一个数据[311109k]为回收前堆空间使用量，第二个数据[311878K]为回收后堆内存使用量，第三个数据[454144K]为当前申请的总堆空间大小（注意并非未使用的空间），当堆内存大小未达到最大时可以持续申请。第四个数据[0.1617940 secs]为当前GC耗时。
+    第二行为FullGC,并非每次GC都会伴随FullGC
 
 
 * 打印GC详细信息
-> -XX:+PrintGCDetails
+    > -XX:+PrintGCDetails
 
-示例
-```
-[GC (Allocation Failure) [PSYoungGen: 37134K->4752K(71680K)] 61719K->61080K(159232K), 0.0220931 secs] [Times: user=0.02 sys=0.04, real=0.02 secs] 
-[Full GC (Ergonomics) [PSYoungGen: 4752K->0K(71680K)] [ParOldGen: 56328K->60962K(133120K)] 61080K->60962K(204800K), [Metaspace: 3203K->3203K(1056768K)], 0.0123164 secs] [Times: user=0.02 sys=0.00, real=0.01 secs] 
-```
-说明：
+    示例
+    ```
+    [GC (Allocation Failure) [PSYoungGen: 37134K->4752K(71680K)] 61719K->61080K(159232K), 0.0220931 secs] [Times: user=0.02 sys=0.04, real=0.02 secs] 
+    [Full GC (Ergonomics) [PSYoungGen: 4752K->0K(71680K)] [ParOldGen: 56328K->60962K(133120K)] 61080K->60962K(204800K), [Metaspace: 3203K->3203K(1056768K)], 0.0123164 secs] [Times: user=0.02 sys=0.00, real=0.01 secs] 
+    ```
+    说明：
 **PSYoungGen** 年轻代，同DefNew
 **ParOldGen** 年老代，同Tenured
 **Metaspace** 永久代（类方法存储区）,同Perm
 
 * 在GC时打印堆信息
-> -XX:+PrintHeapAtGC
-加入该参数后，jvm会在每次GC前后分别打印堆信息
-堆信息示例：
-```
- PSYoungGen      total 208384K, used 4128K [0x0000000795580000, 0x00000007ab980000, 0x00000007c0000000)
-  eden space 203264K, 0% used [0x0000000795580000,0x0000000795580000,0x00000007a1c00000)
-  from space 5120K, 80% used [0x00000007a1c00000,0x00000007a2008040,0x00000007a2100000)
-  to   space 5120K, 0% used [0x00000007ab480000,0x00000007ab480000,0x00000007ab980000)
- ParOldGen       total 652800K, used 646703K [0x0000000740000000, 0x0000000767d80000, 0x0000000795580000)
-  object space 652800K, 99% used [0x0000000740000000,0x000000076778bca0,0x0000000767d80000)
- Metaspace       used 3238K, capacity 4496K, committed 4864K, reserved 1056768K
-  class space    used 350K, capacity 388K, committed 512K, reserved 1048576K
-```
+    > -XX:+PrintHeapAtGC
+    加入该参数后，jvm会在每次GC前后分别打印堆信息
+    堆信息示例：
+    ```
+    PSYoungGen      total 208384K, used 4128K [0x0000000795580000, 0x00000007ab980000, 0x00000007c0000000)
+    eden space 203264K, 0% used [0x0000000795580000,0x0000000795580000,0x00000007a1c00000)
+    from space 5120K, 80% used [0x00000007a1c00000,0x00000007a2008040,0x00000007a2100000)
+    to   space 5120K, 0% used [0x00000007ab480000,0x00000007ab480000,0x00000007ab980000)
+    ParOldGen       total 652800K, used 646703K [0x0000000740000000, 0x0000000767d80000, 0x0000000795580000)
+    object space 652800K, 99% used [0x0000000740000000,0x000000076778bca0,0x0000000767d80000)
+    Metaspace       used 3238K, capacity 4496K, committed 4864K, reserved 1056768K
+    class space    used 350K, capacity 388K, committed 512K, reserved 1048576K
+    ```
 
-说明：
-**used数据**[0x0000000795580000,0x0000000795580000,0x00000007a1c00000)分别表示下界、当前上界、上界，可以通过这三个数据计算出当前已使用和当前可使用空间以及当前总申请空间。
+    说明：
+
+    **used数据**[0x0000000795580000,0x0000000795580000,0x00000007a1c00000)分别表示下界、当前上界、上界，可以通过这三个数据计算出当前已使用和当前可使用空间以及当前总申请空间。
 
 * 额外打印GC发生的时间，以JVM启动偏移时间
-> -XX:+PrintGCTimeStamps
+    > -XX:+PrintGCTimeStamps
 
 * 打印应用时间执行时间和停顿时间
-> -XX:+PrintGCApplicationConcurrentTime
+    > -XX:+PrintGCApplicationConcurrentTime
 
-> -XX:+PrintGCApplicationStoppedTime
+    > -XX:+PrintGCApplicationStoppedTime
 
 * 跟踪系统内软引用、弱引用、虚幻引用和finallize队列
-> -XX:+PrintReferenceGC
+    > -XX:+PrintReferenceGC
 
 * GC日志输出指定
-> -Xloggc:path
+    > -Xloggc:path
 
 ## 1.4. 类加载及卸载跟踪
 
 * 跟踪加载及卸载
-> -verbose:class
+    > -verbose:class
 
 * 跟踪加载
-> -XX:+TraceClassLoading
+    > -XX:+TraceClassLoading
 
 * 跟踪卸载
-> -XX:+TraceClassUnloading
+    > -XX:+TraceClassUnloading
 
 ## 1.5. 打印系统运行相关参数
 * 打印系统运行的参数
-> -XX:+PrintVMOptions
+    > -XX:+PrintVMOptions
 
 * 打印传递给虚拟机的显式或饮式参数
 > -XX:+PrintCommandLineFlags
 
 * 打印所有系统参数
-> -XX:+PrintFlagsFinal
+    > -XX:+PrintFlagsFinal
 
 ## 1.6. 堆的设置
 
 * 初始堆空间
-> -Xms 
+    > -Xms 
 
 * 最大堆空间
-> -Xmx
+    > -Xmx
 
 * 新生代空间
-> -Xmn
+    > -Xmn
 
-说明:
-新生代增大会减小老年代的大小，堆GC影响较大，新生代大小一半设置整个堆空间的1/3到1/4。
+    说明:
+    新生代增大会减小老年代的大小，对GC影响较大，新生代大小一半设置整个堆空间的1/3到1/4。
 
 * 设置新生代eden与from/to到空间比例
-> -XX:SurvivorRatio=
+    > -XX:SurvivorRatio=
 
-说明:
-正常设置2，即eden:from:to = 2:1:1。特殊情况需要特别考虑。
+    说明:
+    
+    正常设置2，即eden:from:to = 2:1:1。特殊情况需要特别考虑。
 
 * 设置新生代和老年代的比例,改比例=老年代/新生代
-> -XX:NewRatio=
+    > -XX:NewRatio=
 
 * **堆溢出处理**
 
-堆溢出导出整个堆信息
-> -XX:+HeapDumpOnOutOfMemoryError
+    堆溢出导出整个堆信息
+    
+    > -XX:+HeapDumpOnOutOfMemoryError
 
-指定到处路径
-> -XX:HeapDumpPath=
+    指定到处路径
+    > -XX:HeapDumpPath=
 
-堆溢出时执行一个脚本文件
-> -XX:OnOutOfMemoryError=
+    堆溢出时执行一个脚本文件
+    > -XX:OnOutOfMemoryError=
 
 ## 1.7. 方法区配置
+
 jdk 1.6/1.7 
+
 > -XX:PermSize
+    
 > -XX:MaxPermSize
 
 jdk 1.8
@@ -213,7 +163,7 @@ jdk 1.8
 
 ## 1.8. 栈配置
 
-栈空间是每个线程到私有空间，参数配置：
+栈空间是每个线程的私有空间，参数配置：
 > -Xss
 
 ## 1.9. 直接内存配置
