@@ -408,13 +408,13 @@ Hotspot VM将内存划分为不同的物理区，就是“分代”思想的体�
 
 ## 6.3. jdk性能监控工具
 * jps 显示当前所有java进程的相关信息
-> jps -q  只显示进程id
+    > jps -q  只显示进程id
 
-> jps -m 输入传递给java进程（主函数）的参数
+    > jps -m 输入传递给java进程（主函数）的参数
 
-> jps -l 输出主函数的完整路径
+    > jps -l 输出主函数的完整路径
 
-> jps -v 显示传递给java虚拟机的参数
+    > jps -v 显示传递给java虚拟机的参数
 
 * jstat 用于观察java应用程序运行时相关信息的工具，极其强大。
 
@@ -422,61 +422,61 @@ Hotspot VM将内存划分为不同的物理区，就是“分代”思想的体�
 
 * **jmap** 导出堆信息到文件
 
-> jmap -histo 2792 > ./map.txt  生成进程号2972的java程序的对象统计信息并输出到map.txt
+    > jmap -histo 2792 > ./map.txt  生成进程号2972的java程序的对象统计信息并输出到map.txt
 
-> jmap -dump:format=b,file=./heap.hprof 2792 导出进程为2972的堆快照到heap.hprof,可用于进行分析
+    > jmap -dump:format=b,file=./heap.hprof 2792 导出进程为2972的堆快照到heap.hprof,可用于进行分析
 
-> jmap -permstat 2792  查看系统的ClassLoader信息
+    > jmap -permstat 2792  查看系统的ClassLoader信息
 
-> jmap -finalizerinfo 2792   查看系统finalizer队列中的对象
+    > jmap -finalizerinfo 2792   查看系统finalizer队列中的对象
 
 * jhat 分析java应用程序堆快照内容
-> jhat ./heap.hprof 分析完成后访问 http://127.0.0.1:7000 可以查看相关分析结果信息
+    > jhat ./heap.hprof 分析完成后访问 http://127.0.0.1:7000 可以查看相关分析结果信息
 
 * jstack查看线程堆栈
-> jstack -l pid  参数l用于输出锁相关信息
+    > jstack -l pid  参数l用于输出锁相关信息
 
 * jstatd 远程主机信息收集。可以理解为一个代理服务，服务启动后一些本地命令可以收集远程主机的信息
 
 * jcmd (from 1.7) 多功能工具，可以用它来导出堆、查看java进程、导出线程信息、执行GC
 
-> jcmd -l 列出当前系统中的所有java虚拟机
+    > jcmd -l 列出当前系统中的所有java虚拟机
 
-> jcmd pid help 列出指定虚拟机所支持的命令
+    > jcmd pid help 列出指定虚拟机所支持的命令
 
-```
-~$ jcmd 4835 help
-e
-4835:
-The following commands are available:
-JFR.stop
-JFR.start
-JFR.dump
-JFR.check
-VM.native_memory
-VM.check_commercial_features
-VM.unlock_commercial_features
-ManagementAgent.stop
-ManagementAgent.start_local
-ManagementAgent.start
-GC.rotate_log
-Thread.print
-GC.class_stats
-GC.class_histogram
-GC.heap_dump
-GC.run_finalization
-GC.run
-VM.uptime
-VM.flags
-VM.system_properties
-VM.command_line
-VM.version
-help
-```
+    ```
+    ~$ jcmd 4835 help
+    e
+    4835:
+    The following commands are available:
+    JFR.stop
+    JFR.start
+    JFR.dump
+    JFR.check
+    VM.native_memory
+    VM.check_commercial_features
+    VM.unlock_commercial_features
+    ManagementAgent.stop
+    ManagementAgent.start_local
+    ManagementAgent.start
+    GC.rotate_log
+    Thread.print
+    GC.class_stats
+    GC.class_histogram
+    GC.heap_dump
+    GC.run_finalization
+    GC.run
+    VM.uptime
+    VM.flags
+    VM.system_properties
+    VM.command_line
+    VM.version
+    help
+    ```
 
 * hprof 性能统计工具，非独立监控工具，只是一个java agent工具。使用该工具可以查看各个函数的CPU占用时间
 
-> java -agentlib:hprof=help 查看hprof的帮助文档
+    > java -agentlib:hprof=help 查看hprof的帮助文档
 
 ## 6.4. 图形化监控工具
 
@@ -530,7 +530,7 @@ help
 ### 7.2.5. 锁消除
 * 锁消除是java虚拟机在JIT编译时通过对运行上下文扫描，去除不可能存在共享资源竞争的锁。通过锁消除节省毫无意义的请求锁时间。比如方法中使用了线程安全的工具类，如Vector
 * 逃逸分析和锁消除可以使用参数 **+XX:DoEscapeAnalysis** 和 **-XX:+EliminateLocks**开启，但是必须工作在server模式下。参考参数:
-> -server -XX:+XX:DoEscapeAnalysis -XX:+EliminateLocks -Xcomp -XX:-BackgroundCompilation -XX:BiasedLockingStartupDelay=0
+    > -server -XX:+XX:DoEscapeAnalysis -XX:+EliminateLocks -Xcomp -XX:-BackgroundCompilation -XX:BiasedLockingStartupDelay=0
 
 ### 7.2.6. 应用级别锁优化
 
@@ -541,7 +541,7 @@ help
     依据应用程序的功能特点将一个独占锁分成多个锁。参考LinkedBlockingQueue的实现，由于take和put操作分别作用于队列的前端和后端，两者并不冲突，所以分别加锁。
 * 锁粗化
     同一个锁不停的请求、同步和释放本身会消耗系统资源，所以在一个整块逻辑中穿插不是太耗时的代码块也是合理的，不必为了减少锁持有时间分为多次锁。
-* 无锁
+* 无锁
     * CAS(compare and swap)
     * 原子操作
     * LongAddr
