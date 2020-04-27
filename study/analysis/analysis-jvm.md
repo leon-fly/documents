@@ -107,7 +107,7 @@ Property settings:
     > -XX:+PrintVMOptions
 
 * 打印传递给虚拟机的显式或饮式参数
-> -XX:+PrintCommandLineFlags
+    > -XX:+PrintCommandLineFlags
 
 * 打印所有系统参数
     > -XX:+PrintFlagsFinal
