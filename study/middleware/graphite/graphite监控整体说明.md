@@ -25,16 +25,16 @@ graphite监控方案的监控方向是实时性能，如：
 该监控方案主要包含三个部分：
 
 * graphite主要用于接收数据、查询及对数据对二次处理等
-* statsd 一个用于收集客户端元数据对组件，可以从客户端收集数据并汇总再发送给graphite，这是一个独立与graphite对项目。
-* grafana 一个用于对graphite数据进行查询展示对工具，功能较丰富，弥补了graphite自身展示对不足。
+* statsd 一个用于收集客户端元数据对组件，可以从客户端收集数据并汇总再发送给graphite，这是一个独立于graphite的项目。
+* grafana 一个用于对graphite数据进行查询展示对工具，功能较丰富，弥补了graphite自身展示的不足。
 
 ## 3. 各组件详细介绍及安装使用
 后续将通过以下几个文档进行更多对了解及初步使用
 
-[graphite简介](graphite简介)
+[graphite简介](./graphite简介)
 
-[statsd简介](statsd简介)
+[statsd简介](./statsd简介)
 
-[graphite监控相关组件安装](graphite安装)
+[graphite监控相关组件安装](./graphite安装)
 
-[grafana配置及使用](grafana配置及使用)
+[grafana配置及使用](./grafana配置及使用)
