@@ -6,14 +6,15 @@ publishdate: "2019-01-01"
 tags:
 - middleware
 - monitor
-- statsd_grafana_graphite
+- graphite
 title: graphite简介
 ---
 
 # graphite简介
 
 ## 1. graphite是什么？
-
+graphite是一个企业应用监控工具，可以在廉价的硬件或者云设施上运行良好。可以使用它跟踪网站、应用及业务服务、网络服务性能。其包含了一套存储、取回、共享和可视化时序数据的组件。
+graphite主要做以下两件事：
 * 存储时序化的数字数据
 * 按需渲染数据的图形
 

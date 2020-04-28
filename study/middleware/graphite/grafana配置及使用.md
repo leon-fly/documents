@@ -6,17 +6,14 @@ publishdate: "2019-01-01"
 tags:
 - middleware
 - monitor
-- statsd_grafana_graphite
+- graphite
 title: grafana配置及使用
 ---
 
-# [grafana安装配置](http://docs.grafana.org/)
+# grafana安装配置
 
-grafana安装比较简单,按照官网操作即可。
-关键问题在通过nginx进行反向代理时若代理中有子目录，grafana.int配置文件需要调整（此处有坑），设置其root_url.具体操作方法如下：
-
-* **假设grafana服务器域名为test.service.com**
-默认配置启动后访问 <http://test.service.com:3000/> 即可进行访问.
+grafana安装比较简单,按照[官网](http://docs.grafana.org/)操作即可。关键注意点在通过nginx进行反向代理时若代理中有子目录，grafana.int配置文件需要调整（此处有坑），设置其root_url.具体操作方法如下：
+假设grafana服务器域名为"test.service.com",默认配置启动后访问 <http://test.service.com:3000/> 即可进行访问.
 
 ## 1. 通过nginx进行反向代理访问<http://test.service.com/>进行如下设置：
 

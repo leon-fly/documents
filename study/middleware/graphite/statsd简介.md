@@ -6,15 +6,15 @@ publishdate: "2019-01-01"
 tags:
 - middleware
 - monitor
-- statsd_grafana_graphite
-title: stastd简介
+- graphite
+title: statsd简介
 ---
 
 # stastd简介
 
 [StatsD Metric转译](https://www.jianshu.com/p/2b0aa5898dd7)
 
-## 1. stastd是什么？有什么作用？
+## 1. statsD是什么？有什么作用？
 
    运行在node.js平台的网络守护程序，监听统计信息，比如计数，时间等，采用UDP或TCP协议将聚合数据发送到一个或多个可插拔的后端服务，比如graphite.
 

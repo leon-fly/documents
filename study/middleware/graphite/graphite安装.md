@@ -6,11 +6,11 @@ publishdate: "2019-01-01"
 tags:
 - middleware
 - monitor
-- statsd_grafana_graphite
-title: statsd_grafana_graphite监控相关组件安装
+- graphite
+title: graphite监控相关组件安装
 ---
 
-# statsd_grafana_graphite监控相关组件安装
+# graphite监控相关组件安装
 
 ## 1. [statsd](https://github.com/etsy/statsd)服务端安装
 
@@ -171,6 +171,4 @@ title: statsd_grafana_graphite监控相关组件安装
 * 访问验证
 
 浏览器访问<http://nginx-host/render>,出现一张330x250的"No Data"的图片
-
-## 4. Grafana安装
   
