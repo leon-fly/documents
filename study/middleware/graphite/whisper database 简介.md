@@ -6,7 +6,7 @@ publishdate: "2019-01-01"
 tags:
 - middleware
 - monitor
-- statsd_grafana_graphite
+- graphite
 title: whisper数据库简介
 ---
 
