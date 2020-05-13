@@ -9,7 +9,10 @@ tags:
 title: redis高可用及可扩展方案
 ---
 
-## 1. [redis复制集模式](https://redis.io/topics/replication)(主从节点,可以一主多从)
+## 1. redis复制集模式(主从节点,可以一主多从)
+
+[官方文档](https://redis.io/topics/replication)
+
 * redis主从节点设置方式
     * 配置文件 slaveof host port 
     * 执行命令 SLAVEOF host port
@@ -27,10 +30,9 @@ title: redis高可用及可扩展方案
     * 主服务器的内存使用设置50%～65%，其他用于执行BGSAVE和创建记录写命令的缓冲区
     * 当主节点故障后，需要手动将从节点晋升为主节点，无法自动故障转移，其故障转移需依赖于哨兵机制（redis2.8之后支持）来解决⚠️⚠️⚠️
 
+## 2. 哨兵模式
 
-## 2. [哨兵模式](https://redis.io/topics/sentinel)
-
-哨兵模式是基于复制集进行故障转移，将从节点升级为主节点，正常对外提供服务，从节点可以有一个或多个，而要做好一个强壮的哨兵部署哨兵节点最少有三个。
+哨兵模式是基于复制集进行故障转移，将从节点升级为主节点，正常对外提供服务，从节点可以有一个或多个，而要做好一个强壮的哨兵部署哨兵节点最少有三个。[官方文档](https://redis.io/topics/sentinel)
 
 ### 2.1. 部署图示
 ![redis-replication.png](../../../picture/redis-replication.png)
