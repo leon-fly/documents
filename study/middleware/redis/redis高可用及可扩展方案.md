@@ -1,12 +1,13 @@
+---
 date: "2018-01-01"
 draft: false
 lastmod: "2018-01-01"
 publishdate: "2018-01-01"
 tags:
-
 - middleware
 - redis
 title: redis高可用及可扩展方案
+---
 
 ## 1. [redis复制集模式](https://redis.io/topics/replication)(主从节点,可以一主多从)
 * redis主从节点设置方式

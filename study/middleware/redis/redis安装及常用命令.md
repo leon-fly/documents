@@ -19,12 +19,18 @@ title: redis安装及常用命令
     $ cd redis-5.0.7
     $ make
     ```
+    
 * 服务启动
 
     ```
     $ src/redis-server
     ```
+    
 * 客户端连接
+
+    > redis-cli -h host -p port -a password  
+
+    默认端口6379
 
     ```
     $ src/redis-cli
@@ -33,6 +39,7 @@ title: redis安装及常用命令
     redis> get foo
     "bar"
     ```
+
 * 关闭服务
     通过redis-cli连接到服务之后执行shutdown
 
@@ -40,6 +47,11 @@ title: redis安装及常用命令
 ## 2. 数据类型及常用命令
 [官方命令清单](https://redis.io/commands#)
 [中文版命令参考](http://redisdoc.com/)
+
+redis默认内部16个子库，通过select命令进行库的切换。默认是用0号索引库如：
+
+> select 5
+
 ### 2.1. String
 * 可以存储字符串和数字类型（整型和浮点型，整形支持长度相当于long，浮点型相当于double）。
 * 字符串支持追加，长度，指定截取等操作。
@@ -323,3 +335,5 @@ HSCAN | SSCAN | ZSCAN使用方式类似SCAN，只是需要指定key
 
 排序
 > SORT key [BY pattern] [LIMIT offset count] [GET pattern [GET pattern …]] [ASC | DESC] [ALPHA] [STORE destination]
+
+[参考 - redis配置](https://zhuanlan.zhihu.com/p/50101602)
