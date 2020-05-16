@@ -14,8 +14,19 @@ title: redis高可用及可扩展方案
 [官方文档](https://redis.io/topics/replication)
 
 * redis主从节点设置方式
-    * 配置文件 slaveof host port 
-    * 执行命令 SLAVEOF host port
+    * 配置文件方式
+
+      ```
+      slaveof host port 
+      masterauth <password>   --主节点密码
+      ```
+
+    * 命令方式 
+
+      ```
+      SLAVEOF host port
+      config set masterauth <password>  --主节点密码
+      ```
 * 节点数据复制方式
     * 同步信号由从节点发出，发出后从节点根据配置选择使用旧数据或者拒绝客户端请求
     * 主节点接收到请求后开始执行BGSAVE，并使用缓冲区记录BGSAVE之后执行的所有写命令
@@ -78,33 +89,38 @@ title: redis高可用及可扩展方案
     * 基本配置示例
     ```
     sentinel monitor mymaster 127.0.0.1 6379 2
+    sentinel auth-pass mymaster password
     sentinel down-after-milliseconds mymaster 60000
     sentinel failover-timeout mymaster 180000
-    sentinel parallel-syncs mymaster 1
-
-    sentinel monitor resque 192.168.1.3 6380 4
-    sentinel down-after-milliseconds resque 10000
-    sentinel failover-timeout resque 180000
-    sentinel parallel-syncs resque 5
+sentinel parallel-syncs mymaster 1
     ```
     * 关于配置关键说明
         * 配置仅需要配置监控的主节点，服务会在启动或在故障转移时在主节点获取从节点信息并更新到配置中。
         * 配置包括两部分，一部分为主节点实例，另一组为未定义数量的从节点。
+        
     * 配置说明
     
         * 配置监控节点
             > sentinel monitor \<master-group-name> \<ip> \<port> \<quorum>
-
+    
             quorum 表示发生故障转移需要几个sentinel节点确认主节点不可达，这个配置主要用来标记确认失败的sentinel节点个数，正真的故障转移处理需要检测到失败的一个sentinel节点发起故障转移投票从各个sentinel节点选举出执行故障转移的sentinel节点，如果大多数sentinel进程无法通讯，故障转移也得不到执行。
-        * 监控节点其他参数配置
-
+            
+* 监控节点其他参数配置
+        
             * 格式：
-                > sentinel <option_name> <master_name> <option_value>
-
+        > sentinel <option_name> <master_name> <option_value>
+        
                 down-after-milliseconds 多少毫秒连接不到标记为down掉
-                
+            
                 parallel-syncs 指定当故障转移时允许有几个从节点从新主节点复制数据。数字越小故障转移需要掉时间越长；另外虽然从节点复制数据是非阻塞的，但是在从主库批量同步数据时也有那么一瞬间停止提供服务，也就是数字越大不能持续对外提供服务的从节点数越大。
+            
         * 可以通过 SENTINEL SET 命令事实调整sentinel的配置。
+        
+    * 验证
+    
+        * 启动哨兵模式后使用info或roles命令查看复制集信息是否正确，哨兵监控节点是否正常在线，哨兵节点数是否与启动一致。
+        * 故障恢复验证，停止主节点查看是否将从节点升级为主节点并能继续进行数据操作。
+        * 查看日志告警项
 
 ## 3. 集群模式
 当数据量较少时，使用一个redis主从+sentinel可以满足其基本高可用需求，当redis数据量比较大时需要考虑使用redis集群模式满足redis的扩展性，同时redis集群本身支持主从高可用模式，在集群主节点故障时可以实现故障转移。
@@ -159,9 +175,44 @@ title: redis高可用及可扩展方案
    
 3. 集群信息查看
 
-   > cluster info 集群信息查看
+   > cluster info 集群信息查看,以下为三主三从某个节点执行后的信息
 
-   > cluster nodes 集群节点信息查看
+   ```
+   cluster_state:ok
+   cluster_slots_assigned:16384
+   cluster_slots_ok:16384
+   cluster_slots_pfail:0
+   cluster_slots_fail:0
+   cluster_known_nodes:6
+   cluster_size:3
+   cluster_current_epoch:6
+   cluster_my_epoch:6
+   cluster_stats_messages_ping_sent:331413
+   cluster_stats_messages_pong_sent:348114
+   cluster_stats_messages_sent:679527
+   cluster_stats_messages_ping_received:348114
+   cluster_stats_messages_pong_received:331413
+   cluster_stats_messages_received:679527
+   ```
+   
+   
+   
+   > cluster nodes 集群节点信息查看,以下为三主三从某个节点执行后的信息
+   
+   ```
+   c7f03feee36c8ec84c4dd8362e1cdc007570d192 127.0.0.1:6679@16679 master - 0 1589631677000 2 connected 10001-16383
+   40ad23edd2fab9f2a403a49f4885521b8da7a106 127.0.0.1:6689@16689 slave c7f03feee36c8ec84c4dd8362e1cdc007570d192 0 1589631679013 5 connected
+   0c4d00b291fdee8feaafa7b5e3e85278ce9616fc 127.0.0.1:6479@16479 master - 0 1589631680015 1 connected 0-5000
+   abbdd2c08a0c935f857d37ba33df11d44631ef08 127.0.0.1:6489@16489 slave 0c4d00b291fdee8feaafa7b5e3e85278ce9616fc 0 1589631678011 3 connected
+   ec3b07129d4e748a8ea84d4831dbbe7b85c0e7c9 127.0.0.1:6589@16589 slave e1335e18a50777ec671326377ec837a01ed3a863 0 1589631677000 6 connected
+   e1335e18a50777ec671326377ec837a01ed3a863 127.0.0.1:6579@16579 myself,master - 0 1589631678000 6 connected 5001-10000
+   ```
+   
+4. 验证
+
+   * 验证各从节点是否正常，cluster nodes 显示各节点都是connected则正常
+   * 验证故障转移
+   * 查看日志告警项
 
 [参考 redis集群命令](./redis集群命令)
 
@@ -204,9 +255,7 @@ title: redis高可用及可扩展方案
    * MOVED错误表示该key不是本节点负责，并告知负责的节点
    * ASK错误表示该key对应的槽数据由本节点负责正在迁移，该数据不在本节点。
 
-### 复制与故障转移
-
-
+### 5.4 复制与故障转移
 
 #### 从节点的添加
 
@@ -221,3 +270,10 @@ title: redis高可用及可扩展方案
    > CLUSTER REPLICATE <master-nodeid>
 
    将当前节点作为master-nodeid的从节点
+
+
+
+## 6. 避坑
+
+1. 当主从节点无法或者哨兵节点之间无法打通时要注意是否有密码要求（日志不会提示密码问题）
+
