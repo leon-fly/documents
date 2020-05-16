@@ -61,7 +61,7 @@ Swap:             0           0           0
 ```
 
 > iostat 
- 
+
 用于监控统计系统输入输出设备和 CPU 的使用情况,格式：iostat [参数] [间隔时间] [报告次数]
 
 iostat英文 I/O statistics 的缩写。它的特点是汇报磁盘活动统计情况，同时也会汇报出 CPU 使用情况
@@ -171,7 +171,7 @@ st：这个虚拟机被hypervisor偷去的CPU时间（译注：如果当前处�
 h 查看帮助
 f 查看列全称,进入之后可以对列进行设置显示或不显示
 u 查看指定用户的进程
-c 查看完整的进程命令
+c 查看完整的进程命令
 k 给予某个 PID 一个讯号 (signal),杀掉进程
 r 给予某个 PID 重新制订一个 nice 值。
 q 离开 top 软件的按键。
@@ -244,13 +244,14 @@ T 由该Process使用的cpu时间累计（TIME+）排序
   netstat -an
   netstat -tnlp
   ```
+  > lsof -i
+  示例： lsof -i tcp:8080 
 * 查看域名映射信息（比如该域名有几台服务器负载）
   > dig
 
   示例：dig www.baidu.com
-* 查看占用端口的应用
-  > lsof -i
-  示例： lsof -i tcp:8080 
+
+  > netstat -antlp
   
 ## 2. 字符处理
 
@@ -315,7 +316,7 @@ root /root
 可以通过函数对字符串进行处理，常用函数如下：
 
 ```
-toupper():字符转大写
+toupper()：字符转大写
 tolower()：字符转为小写。
 length()：返回字符串长度。
 substr()：返回子字符串。
@@ -358,7 +359,7 @@ awk提供了if结构，用于编写复杂的条件。
 
 ```
  $ awk -F ':' '{if ($1 > "m") print $1}' demo.txt
- ```
+```
 
  if及else结构示例
 
@@ -387,4 +388,17 @@ $ awk -F ':' '{if ($1 > "m") print $1; else print "---"}' demo.txt
 
 ## 7. 命令技巧
 * ctrl+r  历史命令搜索
+
 * history 历史命令
+
+* 命令行快速操作
+
+  > ctrl+a  跳行首
+
+  > ctrl+e 跳行尾
+
+  > ctrl+k 删除至行尾
+
+  > esc+b 左移一个单词
+
+  > esc+f 右移一个单词
