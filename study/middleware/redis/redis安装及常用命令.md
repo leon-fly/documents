@@ -337,3 +337,16 @@ HSCAN | SSCAN | ZSCAN使用方式类似SCAN，只是需要指定key
 > SORT key [BY pattern] [LIMIT offset count] [GET pattern [GET pattern …]] [ASC | DESC] [ALPHA] [STORE destination]
 
 [参考 - redis配置](https://zhuanlan.zhihu.com/p/50101602)
+
+
+
+## 3. 复制集命令
+
+
+
+## 4. sentinel 常用命令
+
+[官网完整](https://redis.io/topics/sentinel)
+
+## 5. 集群命令
+
