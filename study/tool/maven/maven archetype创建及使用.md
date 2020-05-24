@@ -187,7 +187,8 @@ mvn archetype:generate -X -DarchetypeGroupId=com.dawn \
 * -DarchetypeArtifactId 使用的archetype的artifactId
 * -DarchetypeVersion 使用的archetype的版本号
 * -DgroupId 生成项目的groupId
-* -DartifactId生成项目的artifactId
+* -DartifactId 生成项目的artifactId
+* -Dversion 生成项目的版本号
 * -DarchetypeCatalog=internal 使用本地仓库的archetype，该参数不指定的情况下会使用从远程仓库拉取，如果自定义的archetype没有推送到远程会失败。 ⚠️⚠️
 
 
