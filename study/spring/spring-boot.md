@@ -30,7 +30,7 @@ SpringApplication的应用上下文接口，继承了众多应用重量级接口
 
 * AnnotationConfigEmbeddedWebApplicationContext
     
-    SpringApplication默认的web环境等context类
+    SpringApplication默认的web环境的context类
 
     ![AnnotationConfigEmbeddedWebApplicationContext.png](../../picture/AnnotationConfigEmbeddedWebApplicationContext.png)
 
