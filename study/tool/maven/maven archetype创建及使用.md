@@ -173,9 +173,10 @@ archetype安装本地仓库与安装普通项目没什么区别。
 ```
 mvn archetype:generate -X -DarchetypeGroupId=com.dawn \
     -DarchetypeArtifactId=dawn-spring-boot-archetype \
-    -DarchetypeVersion=1.0-SNAPSHOT \
+    -DarchetypeVersion=1.0.0-SNAPSHOT \
     -DgroupId=com.dawn \
     -DartifactId=test-archetype \
+    -Dversion=1.0.0-SNAPSHOT \
     -DarchetypeCatalog=internal
 ```
 
