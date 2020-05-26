@@ -18,7 +18,7 @@ title: java-executors
 ExecutorService接口继承Executor，该接口的主要作用是对线程任务的观察和控制，如启动，关闭，判断是否关闭，是否结束，提交线程任务等。
 
 ## 3. ThreadPoolExecutor类
-[ThreadPoolExecutor](./java-thread-pool-executor.md)
+[ThreadPoolExecutor](./java-thread-pool-executor)
 
 ## 4. ScheduledThreadPoolExecutor类
 该类集成了ThreadPoolExecutor类并实现了ScheduledExecutorService接口，也就具备了线程池和定时执行的特性。
