@@ -62,9 +62,59 @@ public class ThreadLocalDemo {
 ## 3. 类图
 ![ThreadLocal类图](../../../picture/ThreadLocal.png)
 
-**分析：**
-ThreadLocal内部定义了一个静态内部类ThreadLocalMap,ThreadLocalMap（并没有实现map接口，内部使用了一个Entry数组来存储Thread各自线程变量）。每个Thread有一个自己的ThreadLocalMap，当设置值时，key为ThreadLocal。
+## 4. 源码分析
+
+![](../../../picture/ThreadLocalView.png)
+
+1. 每个Thread内部持有一个ThreadLocalMap,ThreadLocalMap是ThreadLocal内部定义了一个静态内部类（并没有实现map接口，内部使用了一个Entry数组来存储Thread各自线程变量）。每个Thread有一个自己的ThreadLocalMap，当设置/获取值时，都先会获取当前线程，通过当前线程获取到ThreadLocalMap, key为ThreadLocal, 通过该key获取到对应的值。
+
+   设置值：
+
+   ```
+   public void set(T value) {
+           Thread t = Thread.currentThread();
+           ThreadLocalMap map = getMap(t);
+           if (map != null)
+               map.set(this, value);
+           else
+               createMap(t, value);
+       }
+   ```
+
+   获取值
+
+   ```
+   public T get() {
+       Thread t = Thread.currentThread();
+       ThreadLocalMap map = getMap(t);
+       if (map != null) {
+           ThreadLocalMap.Entry e = map.getEntry(this);
+           if (e != null) {
+               @SuppressWarnings("unchecked")
+               T result = (T)e.value;
+               return result;
+           }
+       }
+       return setInitialValue();
+   }
+   ```
+
+2. ThreadMapLocal实现
+
+   ThreadMap并无实现map接口，其内部通过一个Entry数组来实现，Entry继承了弱引用。
+
+   ```
+   static class Entry extends WeakReference<ThreadLocal<?>> {
+       /** The value associated with this ThreadLocal. */
+       Object value;
+   
+       Entry(ThreadLocal<?> k, Object v) {
+           super(k);
+           value = v;
+       }
+   }
+   ```
 
 
-## 4. 相关技术文档
+## 5. 相关技术文档
 [Oracle ThreadLocal说明](https://docs.oracle.com/javase/8/docs/api/java/lang/ThreadLocal.html)
