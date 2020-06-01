@@ -79,17 +79,15 @@ Property settings:
 
 * 额外打印GC发生的时间，以JVM启动偏移时间
   
-> -XX:+PrintGCTimeStamps
-
+  > -XX:+PrintGCTimeStamps
 * 打印应用时间执行时间和停顿时间
     > -XX:+PrintGCApplicationConcurrentTime
 
     > -XX:+PrintGCApplicationStoppedTime
 
 * 跟踪系统内软引用、弱引用、虚幻引用和finallize队列
-  
-> -XX:+PrintReferenceGC
 
+    > -XX:+PrintReferenceGC
 * GC日志输出指定
   
     > -Xloggc:path
@@ -98,12 +96,10 @@ Property settings:
 
 * 跟踪加载及卸载
   
-> -verbose:class
-
+  > -verbose:class
 * 跟踪加载
   
-> -XX:+TraceClassLoading
-
+  > -XX:+TraceClassLoading
 * 跟踪卸载
   
     > -XX:+TraceClassUnloading
@@ -111,12 +107,10 @@ Property settings:
 ## 1.5. 打印系统运行相关参数
 * 打印系统运行的参数
   
-> -XX:+PrintVMOptions
+  > -XX:+PrintVMOptions
+* 打印传递给虚拟机的显式或隐式参数
 
-* 打印传递给虚拟机的显式或饮式参数
-  
-> -XX:+PrintCommandLineFlags
-
+  > -XX:+PrintCommandLineFlags
 * 打印所有系统参数
   
     > -XX:+PrintFlagsFinal
@@ -124,13 +118,11 @@ Property settings:
 ## 1.6. 堆的设置
 
 * 初始堆空间
-  
-> -Xms 
 
+  > -Xms 
 * 最大堆空间
-  
-> -Xmx
 
+  > -Xmx
 * 新生代空间
     > -Xmn
 
@@ -266,7 +258,7 @@ jdk 1.8
 
     线程数一般与CPU数量相当，避免过多的线程数，影响垃圾收集性能。默认情况下，当CPU数量小于8时，ParallelGCThreads的值等于CPU数量，当CPU数量大于8个时，ParallelGCThreads的值等于3+((5*CPU_COUNT)/8)
 
-### 4.2.2. 新生代ParallelGC回收器
+### 4.2.2. 新生代ParallelGC（ParallelScavenge）回收器
 * 与ParNew相同点：多线程，独占式。
 * 重要特性：非常关注系统吞吐量。
 * 启用参数：
@@ -301,10 +293,11 @@ jdk 1.8
     * **-XX:+UseConcMarkSweepGC**
 * 其他参数
     * **-XX:ConGCThreads**或者 **-XX:ParallelCMSThreads** 并发线程数设置。默认启动的并发线程数为（ParallelGCThreads+3）/4，ParallelGCThreads表示GC并行（非并发）时使用的线程数。
-    * **-XX:CMSInitiatingOccupancyFraction** 指定老年代执行CMS回收触发值，该值为老年代空间使用率。如果内存增长缓慢可以设置稍大点，减少cms回收的次数，可以明显改善应用程序性能，反之则应该降低这个阀值，避免频繁出发老年代串行收集器。
+    * **-XX:CMSInitiatingOccupancyFraction** 指定老年代执行CMS回收触发值，该值为老年代空间使用率。如果内存增长缓慢可以设置稍大点，减少cms回收的次数，可以明显改善应用程序性能，反之则应该降低这个阀值，避免频繁触发老年代串行收集器。
     * **-XX:+UseCMSCompactAtFullCollection** 设置CMS在垃圾收集完成后进行一次内存碎片整理（由于CMS算法为标记清除，会产生内存碎片，导致虽然有内存空间，但可能碰到大内存空间分配时出现无法分配，然后再次出发垃圾回收）
-    * **-XX:CMSFullGCsBeforeCompaction** 设定进行多好次CMS回收后进行一次内存压缩。
+    * **-XX:CMSFullGCsBeforeCompaction** 设定进行多少次CMS回收后进行一次内存压缩。
     * **-XX:+CMSClassUnloadingEnabled** 使用CMS回收perm区。指定该参数后如果条件允许那么系统会使用CMS的机制回收Perm区Class数据
+* CMS垃圾回收是与应用程序一起工作的，即在进行GC时，应用程序仍然会产生新的垃圾，当新垃圾的产生速度过大，CMS收集还为结束内存出现不足，此时CMS将回收失败，**虚拟机将启用老年代串行收集器进行垃圾回收**。如果这样，应用程序将完全中断直至垃圾回收完成，应用程序停顿时间可能较长。⚠️⚠️
 
 ## 4.4. G1（Garbage First Garbage Collector）回收器（自1.7）
 
@@ -337,8 +330,8 @@ jdk 1.8
 
 * jdk9 默认垃圾回收器为G1
 * jdk7和jdk8
-    * 拥有至少两个处理器和至少2G内存并在服务模式下运行的默认GC为parallel collector
-    * client模式（单处理器或32位操作系统）使用serseial collector。
+    * 拥有至少两个处理器和至少2G内存并在服务模式下运行的默认GC为ParallelGC
+    * client模式（单处理器或32位操作系统）使用SerseialGC
 
 ## 4.6 汇总
 
@@ -347,22 +340,69 @@ jdk 1.8
 垃圾收集器 | 串行/并行 | 使用算法 | 其他 
 ---------|----------|---------|---------
  串行回收器Serial | 串行 | 新生代使用复制算法，老年代使用标记压缩 | 适用于单cpu环境或32位操作系统 
- 新生代并行回收器ParNew | 并行 | 复制算法 | 只是简单的将串行回收器多线程化 
- 新生代并行回收器ParallelParallel Scavenge | 并行 | 复制算法 | 吞吐量优先 
+ 新生代并行回收器ParNew | 并行 | 复制算法 | 简单的将串行回收器多线程化。为配合CMS基于ParallelScavenge改造? 
+ 新生代并行回收器ParallelScavenge | 并行 | 复制算法 | 吞吐量优先 
  老年代并行回收器ParallelOldGC | 并行 | 标记压缩算法 |  
  CMS回收器 | 并行 | 标记清除算法 | 关注系统停顿时间 
  G1回收器 | 并行 | 全新分区算法 | CMS回收器替代者（jdk1.9默认） 
 
 **常用垃圾回收器组合：**
 
-| JVM options                              | Young             | Tenured     |
-| ---------------------------------------- | ----------------- | ----------- |
-| -XX:+UseSerialGC                         | Serial            | Serial      |
-| -XX:+UseParallelGC -XX:+UseParallelOldGC | Parallel Scavenge | ParallelOld |
-| -XX:+UseParNewGC -XX:+UseConcMarkSweepGC | Parallel New      | CMS         |
-| -XX:+UseG1GC                             | G1                | G1          |
+| JVM options                 | Young             | Tenured     | 备注                |
+| --------------------------- | ----------------- | ----------- | ------------------- |
+| **-XX:+UseSerialGC**        | Serial            | Serial      |                     |
+| -XX:+UseParNewGC            | ParNew            | Serial      |                     |
+| -XX:+UseParallelGC          | Parallel Scavenge | ParallelOld | hotspot 1.8默认组合 |
+| **-XX:+UseParallelOldGC**   | Parallel Scavenge | ParallelOld |                     |
+| **-XX:+UseConcMarkSweepGC** | Parallel New      | CMS         |                     |
+| **-XX:+UseG1GC**            | G1                | G1          |                     |
+
+注意：由于jvm当升级，参数指定的收集器可能出现调整，比如jdk1.8 “-XX:+UseParallelGC” 参数指定后老年代实际使用的是ParallelOldGC 具体以通过命令本节最后命令小节打印出的参数值为准。
+
+**其他垃圾回收器组合：**
+
+![gc组合](../../picture/gc组合.png)
 
 
+
+## 4.7 命令
+
+查看当前jvm使用的gc
+
+**方式一：**
+
+> java -XX:+PrintCommandLineFlags -version
+
+示例：
+
+> java -XX:+PrintCommandLineFlags -version
+
+```
+-XX:InitialHeapSize=134217728 -XX:MaxHeapSize=2147483648 -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC
+java version "1.8.0_45"
+Java(TM) SE Runtime Environment (build 1.8.0_45-b14)
+Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
+```
+
+**方式二：**
+
+> java -XX:+PrintFlagsFinal -version
+
+示例：
+
+> java -XX:+PrintFlagsFinal -version|grep Use |grep GC|grep true
+
+```
+java -XX:+PrintFlagsFinal -version|grep Use |grep GC|grep true
+java version "1.8.0_45"
+Java(TM) SE Runtime Environment (build 1.8.0_45-b14)
+Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
+     bool UseAdaptiveSizeDecayMajorGCCost           = true                                {product}
+     bool UseGCOverheadLimit                        = true                                {product}
+     bool UseMaximumCompactionOnSystemGC            = true                                {product}
+     bool UseParallelGC                            := true                                {product}
+     bool UseParallelOldGC                          = true                                {product}
+```
 
 
 
@@ -376,7 +416,7 @@ Hotspot VM将内存划分为不同的物理区，就是“分代”思想的体�
 
 ① 新生代（Young Generation）：大多数对象在新生代中被创建，其中很多对象的生命周期很短。每次新生代的垃圾回收（又称Minor GC）后只有少量对象存活，所以选用复制算法，只需要少量的复制成本就可以完成回收。
 
-新生代内又分三个区：一个Eden区，两个Survivor区（一般而言），大部分对象在Eden区中生成。当Eden区满时，还存活的对象将被复制到两个Survivor区（中的一个）。当这个Survivor区满时，此区的存活且不满足“晋升”条件的对象将被复制到另外一个Survivor区。对象每经历一次 **Minor GC**，年龄加1，达到“晋升年龄阈值”后，被放到老年代，这个过程也称为“晋升”。（“晋升年龄阈值”的大小直接影响着对象在新生代中的停留时间，在Serial和ParNew GC两种回收器中，“晋升年龄阈值”通过参数 **MaxTenuringThreshold** 设定，默认值为15。**TargetSurvivorRatio**,对象晋升的另外一个重要参数，用于设置survivor区的使用率，默认为50，如果survivor区在gc后超过50%的使用率，那么就很有可能使用较小的age作为晋升年龄而非MaxTenuringThreshold指定的值。另外还需关注，大对象（eden区或者survivor区都无法容纳）可能直接被放入老年代。）
+新生代内又分三个区：一个Eden区，两个Survivor区（一般而言），大部分对象在Eden区中生成。当Eden区满时，还存活的对象将被复制到两个Survivor区（中的一个）。每进行一次GC此区的存活且不满足“晋升”条件的对象将被复制到另外一个Survivor区。对象每经历一次 **Minor GC**，年龄加1，达到“晋升年龄阈值”后，被放到老年代，这个过程也称为“晋升”。（“晋升年龄阈值”的大小直接影响着对象在新生代中的停留时间，在Serial和ParNew GC两种回收器中，“晋升年龄阈值”通过参数 **MaxTenuringThreshold** 设定，默认值为15。**TargetSurvivorRatio**,对象晋升的另外一个重要参数，用于设置survivor区的使用率，默认为50，如果survivor区在gc后超过50%的使用率，那么就很有可能使用较小的age作为晋升年龄而非MaxTenuringThreshold指定的值。另外还需关注，大对象（eden区或者survivor区都无法容纳）可能直接被放入老年代。）
 
 ② 老年代（Old Generation）：在新生代中经历了N次垃圾回收后仍然存活的对象，就会被放到年老代，该区域中对象存活率高。老年代的垃圾回收（又称 **Major GC**）通常使用“标记-清理”或“标记-整理”算法。整堆包括新生代和老年代的垃圾回收称为 **Full GC**（HotSpot VM里，除了CMS之外，其它能收集老年代的GC都会同时收集整个GC堆，包括新生代）。
 
