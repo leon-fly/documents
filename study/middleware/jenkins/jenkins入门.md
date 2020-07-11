@@ -69,7 +69,7 @@ sudo apt-get install jenkins
 
    全局安全配置->安全域-> jenkins专有用户数据库
    
-7. Jenkins test
+7. 
 
 
 
