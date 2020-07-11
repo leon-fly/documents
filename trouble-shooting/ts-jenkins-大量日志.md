@@ -9,7 +9,7 @@ title: ts-jenkins-大量日志
 ---
 # jenkins问题
 
-## 💣 大量日志 
+## 💣 大量日志 
 
 **Time : 2019/11/14**
 **Issue Description:**
