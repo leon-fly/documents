@@ -116,6 +116,8 @@ sudo apt-get install jenkins
 
       实际应用脚本中的操作步骤应该用具体的命令替换echo，如build阶段可能使用maven的命令进行编辑。
 
+      > sh 'mvn clean install'
+
 ## 2. 避坑
 
 ### 2.1  构建触发器相关问题
