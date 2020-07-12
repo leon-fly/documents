@@ -81,7 +81,7 @@ sudo apt-get install jenkins
 
    2. 配置构建触发器，选择触发远程构建，并设置令牌。
 
-   3. 配置流水线，流水线选择pipeline script from SCM，SCM选择git。 Repository URL选择本地仓库地址即可。
+   3. 配置流水线，流水线选择pipeline script from SCM，SCM选择git。 
 
    4. 脚本路径填写进行编译、测试、部署的一个pipeline脚本文件，这个文件需要在工作空间（jenkins会根据项目名称生成工作空间名）下，否则会有提示该文件找不到。编译、测试、部署三阶段pipeline脚本框架文件示例：
 
@@ -133,6 +133,10 @@ sudo apt-get install jenkins
 > userid:token@JENKINS_URL`/job/my%20git%20document/build?token=`TOKEN_NAME
 
 用户token可以在用户管理配置里面找到。
+
+### 2.2 凭据管理
+
+在配置任务的流水线定义使用pipeline script from SCM方式时，界面提供了凭据添加入口，添加完成后无变动，凭据选择列表不出现，可能是bug，需要在系统管理的 凭证管理进行配置。
 
 
 
