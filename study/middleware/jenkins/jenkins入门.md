@@ -17,6 +17,8 @@ title: jenkins入门
 
 [官方安装手册](https://www.jenkins.io/doc/book/installing/)
 
+当前jenkins版本2.235.1
+
 
 
 1. 安装
@@ -67,13 +69,70 @@ sudo apt-get install jenkins
    <useSecurity>false</useSecurity>
    ```
 
-   全局安全配置->安全域-> jenkins专有用户数据库
-   
-7. 
+   全局安全配置->安全域-> jenkins专有用户数据库。
 
+   （ps：授权策略设置为登录用户可以做任何事。默认为任务用户可以做任何事，存在安全风险）
 
+7. 配置一个任务
 
+   **普通的基于github进行代码管理的java cicd任务配置关键如下：**
 
+   1. 新建任务->输入任务名称->选择要创建的任务类型为流水线
+
+   2. 配置构建触发器，选择触发远程构建，并设置令牌。
+
+   3. 配置流水线，流水线选择pipeline script from SCM，SCM选择git。 Repository URL选择本地仓库地址即可。
+
+   4. 脚本路径填写进行编译、测试、部署的一个pipeline脚本文件，这个文件需要在工作空间（jenkins会根据项目名称生成工作空间名）下，否则会有提示该文件找不到。编译、测试、部署三阶段pipeline脚本框架文件示例：
+
+      ```
+      pipeline {
+      	agent any
+      		stages {
+      			stage('build'){
+      				steps {
+      					echo 'start build!'
+      					echo 'building...'
+      					echo 'build finished!'
+      				}
+      			}
+      			stage('test'){
+      				steps {
+      					echo 'start test!'
+      					echo 'test...'
+      					echo 'test finished!'
+      				}
+      			}
+      			stage('depoly'){
+      				steps {
+      					echo 'depoly test!'
+      					echo 'depoly...'
+      					echo 'depoly finished!'
+      				}
+      			}
+      		}
+      }
+      ```
+
+      实际应用脚本中的操作步骤应该用具体的命令替换echo，如build阶段可能使用maven的命令进行编辑。
+
+## 2. 避坑
+
+### 2.1  构建触发器相关问题
+
+按照平台指示生成的链接配置到github上时可能会出现http 403,提示No valid crumb was included in the request 
+
+配置界面指示webhook配置地址为:
+
+> JENKINS_URL`/job/my%20git%20document/build?token=`TOKEN_NAME` 或者 /buildWithParameters?token=`TOKEN_NAME
+
+如：jenkins地址为http://www.leonwang.tech:9000/jenkins，则webhook配置地址为http://www.leonwang.tech:9000/jenkins/job/my%20git%20document/build?token=xxx
+
+这种方式生成之后可能直接访问是可以触发的，当时配置到github会报错，需要在域名前加用户id值和token值：
+
+> userid:token@JENKINS_URL`/job/my%20git%20document/build?token=`TOKEN_NAME
+
+用户token可以在用户管理配置里面找到。
 
 
 
