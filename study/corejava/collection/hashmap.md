@@ -6,11 +6,11 @@ publishdate: "2018-01-01"
 tags:
 - corejava
 - collection
-title: hashmap
+title: Hashmap & ConcurrentHashMap
 ---
 
 ## 1. hashmap简介
-hashmap实现了map接口，存储了key-value的数据形式。内部使用的数据、链表、红黑树的数据结构。
+hashmap实现了map接口，存储了key-value的数据形式。内部使用的数组、链表、红黑树的数据结构。
 
 ![hashmap](../../../picture/hashmap.png)
 
@@ -24,6 +24,7 @@ hashmap实现了map接口，存储了key-value的数据形式。内部使用的�
 
 ## 3. 重要过程
 一切尽在put函数，以下为put的大致逻辑过程。
+
 ![hashap-put](../../../picture/hashmap-put.png)
 * resize（扩容）
 hashmap的扩容发生在容器第一次put值和容量使用比大于加载因子设定的阀值时。resize过程涉及了rehash的动作。扩容大小为原来的两倍，另外resize只能扩容，不能缩容。
@@ -52,6 +53,7 @@ hashmap提供了四个构造器：
 
     hashmap存取对象时都是通过对象的key对size取模，正常取模运算的代价较大，如果对key与2的幂次进行与运算操作可以达到同样的效果，运算效率较高。索引hashmap的取余算法就是这么做的。不过它不强制你传入的size是2的幂次，它会在内部进行转换。
 2. HashMap多线程下死循环？
+
     hashmap resize时使用新的数组对原数组的数据进行rehash并存入，hash冲突时同样使用链表法解决，当多个线程操作时可能形成循环链表。具体见推荐阅读。HashMap官方本身说明并非线程安全版本，需要在并发环境下操作的话使用ConcurrentHashMap,这是稳妥的办法。
 3. Fast-fail
 
