@@ -23,7 +23,7 @@ title: Punctuation
 
 > [?] question mark
 
-> [!] explamation mark
+> [!] exclamation mark
 
 > [" "] quotation marks
 
