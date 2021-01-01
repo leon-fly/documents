@@ -34,6 +34,8 @@ title: linux常用操作
 
 > du -sh [目录名] 返回该文件夹大小
 
+> du -sh --max-depth=1 查看1层子目录各自占用大小
+
 ### 1.3. 查看系统版本
 
 > uname -a
@@ -402,4 +404,4 @@ $ awk -F ':' '{if ($1 > "m") print $1; else print "---"}' demo.txt
 
   > esc+b 左移一个单词
 
-  > esc+f 右移一个单词
+  > esc+f 右移一个单词f

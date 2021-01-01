@@ -193,7 +193,7 @@ mysql估计为了找到所需的行而要读取对行数，估算不精确。
 * Using inxex
 此值表示mysql将使用覆盖索引
 * Using where
-此值表示mysql将在存储引擎检索行后再进行过滤
+此值表示mysql将在存储引擎检索行后再进行过滤(回表)
 
 * Using temporary
 此值表示对查询结果排序时会使用一个临时表。

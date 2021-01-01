@@ -37,7 +37,7 @@ public ThreadPoolExecutor(int corePoolSize,
 
 1. 线程池线程数增加机制是怎么样的？
 
-   当执行execute方法时，如果少于核心线程数的线程在运行将会创建新线程并以传入的Runnable作为它第一个任务。如果大于核心线程数则将任务入队，入队失败则继续增加线程知道最大线程数。
+   当执行execute方法时，如果少于核心线程数的线程在运行将会创建新线程并以传入的Runnable作为它第一个任务。如果大于核心线程数则将任务入队，入队失败则继续增加线程直到最大线程数。
 
 2. 什么情况下会触发RejectedExecutionHandler拒绝任务？
 
@@ -163,6 +163,6 @@ public ThreadPoolExecutor(int corePoolSize,
 
    * 当前线程数大于最大线程数，或者在设置了线程空闲时间keepAliveTime当情况下，当上次获取工作任务超时未获取到并且当前线程数大于核心线程数
 
-5. 核心线程数可以提出吗？如何保证核心线程数？
+5. 核心线程数可以剔除吗？如何保证核心线程数？
 
    当构建ThreadPoolExecutor指定keepAliveTime大于0时代表线程空闲超过该时间时将剔除，当等于0时代表不剔除。即当该值设置为0时可保证核心线程数。

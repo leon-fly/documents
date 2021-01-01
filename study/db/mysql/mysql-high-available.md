@@ -15,14 +15,25 @@ title: mysql高可用方案
 ## 2. mysql主从方案
 ### 2.1. master配置核心要点
 1. 创建一个用户’repl’,并且允许其他服务器可以通过该用户远程访问master，通过该用户去读取二进制数据，实现数据同步
-Create user repl identified by ‘repl； repl用户必须具有REPLICATION SLAVE权限，除此之外其他权限都不需要
-GRANT REPLICATION SLAVE ON *.* TO ‘repl’@’%’ IDENTIFIED BY ‘repl’ ; 
+
+  ```
+  Create user repl identified by ‘repl；
+  ```
+
+   repl用户必须具有REPLICATION SLAVE权限，除此之外其他权限都不需要
+
+  ```
+  GRANT REPLICATION SLAVE ON *.* TO ‘repl’@’%’ IDENTIFIED BY ‘repl’ ; 
+  ```
+
 2. 修改140 my.cnf配置文件，在[mysqld] 下添加如下配置
     ```
     log-bin=mysql-bin //启用二进制日志文件
     server-id=130 服务器唯一ID 
     ```
+
 3. 重启数据库 systemctl restart mysqld 
+
 4. 登录到数据库，通过show master status  查看master的状态信息
 
 ### 2.2. slave核心配置要点
@@ -90,3 +101,7 @@ HAProxy + keepalived
 [keepalived参考资料](https://www.jianshu.com/p/b050d8861fc1)
 
 
+
+## 4. 避坑
+
+单机配置伪集群时更改数据目录文件后出现权限问题，如果更改权限后还是不能创建可能是其他安全组件（SELINUX或apparmor等）的限制  [MySQL \[Warning] Can’t create test file xxx lower-test](https://www.cnblogs.com/ajianbeyourself/p/4158874.html)

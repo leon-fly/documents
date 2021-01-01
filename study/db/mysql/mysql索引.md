@@ -154,18 +154,81 @@ Percona Server或者MariaDB打开userSTATES服务器变量（默认关闭），�
 * 创建适合的索引
 * 延迟关联（先排序得到最终数据主键，再用主键获取需要的最终数据）
 
-## 6. 索引总结
+## 6.索引下推
+
+//TODO
+
+[参考](https://juejin.im/post/5deef343e51d455819022033)
+
+## 7. 索引总结
 
 * 索引的规划很重要，需要尽量多的考虑查询场景，来建立合理的索引。
 * 一条查询语句中mysql会选择一个最佳索引来查询(使用多个索引并不会有什么优化效果)，所以当查询条件涉及多个列时尽量考虑组合索引。
 * 组合索引条件语句中只能使用一个范围查询，范围查询后的列无法使用到索引来过滤数据
 * 索引查询优化核心点
+  * 只拉取需要的行数据
+  * 只拉取需要的列数据（可以为了开发扩展性在考虑到全部字段拉取后果的情况下使用）
   * 多条件考虑使用组合索引，通过最左前缀规则命中索引
   * 使用覆盖索引，少回表查询
   * 排序操作时使用最左前缀（where+order by字段满足最左前缀）使用索引排序
   * 延迟关联
 
+## 8. 扩展示例说明
 
+假设一个用户社交平台，以下为用户的相关信息，常用查询：性别、省、市、年龄（范围查询）联合查询
+
+```
+CREATE TABLE `user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `sex` char(1) NOT NULL,
+  `birthday` date DEFAULT NULL,
+  `province` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_name` (`name`) USING BTREE,
+  KEY `ind_sex_country_city_birthday` (`sex`,`province`,`city`,`birthday`,`name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=500000 DEFAULT CHARSET=utf8;
+
+SET FOREIGN_KEY_CHECKS = 1;
+```
+
+```
+
+--   ---------------------------------------------------
+-- 主键定值查询最快，查询类型const
+explain select * from user t where t.id = 10002;
+
+-- 主键范围查询，效率也比较高，查询类型为range
+explain select * from user t where t.id>1000;
+--   ---------------------------------------------------
+-- 使用索引匹配固定值与匹配in效果一致
+-- 使用索引匹配固定值
+explain select * from user t where t.sex='M';
+-- 使用索引匹配in
+explain select * from user t where t.sex in ('F');
+--   ---------------------------------------------------
+-- 覆盖索引
+-- 查询所有列需要回表
+explain select * from user t where t.name like 'Ann%';
+-- 查询的列索引可覆盖到，不需回表更高效
+explain select name from user t where t.name like 'Ann%';
+--   ---------------------------------------------------
+-- 排序，当排序的单列或多列满足最做前缀或者where条件与order列组合形成最左前缀排序将使用索引排序
+-- 不匹配最左前缀使用外部排序
+explain select * from user t where t.sex='F' order by t.birthday; -- 排序字段非最左前缀
+explain select * from user t where t.sex='F' order by t.birthday,t.province,t.city; -- 排序顺序与索引顺序不一致
+
+-- 使用索引排序
+explain select * from user t where t.sex='F' and t.province is null and t.city is null order by t.birthday;
+explain select * from user t where t.sex='F' order by t.province,t.city,t.birthday;
+explain select * from user t where t.sex='F' order by t.province desc,t.city desc,t.birthday desc; -- 整体降序
+
+-- 使用外部排序
+explain select * from user t where t.sex='F' order by t.province,t.city,t.birthday desc; -- 部分升序部分降序使用外部排序
+--   ---------------------------------------------------
+```
 
 [索引总结参考](https://www.cnblogs.com/l199616j/p/11232392.html)
 

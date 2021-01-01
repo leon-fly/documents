@@ -230,6 +230,7 @@ server {
 
 #### 7.3.3. upstream指令
 * 语法： 
+  
   > upsteam name {...}
 
 使用环境是http，默认负载均衡方式为轮询。
@@ -260,7 +261,12 @@ server {
     Server: nginx/1.14.0 (Ubuntu)
     ```
     对于此通过配置参数 **server_tokens off** 关闭
+    
 2. 另外一个就是就是nginx默认的index及错误页面中带有服务器信息，通过替换相关页面来隐藏版本信息。
+## 9. nginx 踩坑
+
+
+
 ## 9. 书单
 实战nginx - 张宴
 
