@@ -30,6 +30,8 @@ title: redis安装及常用命令
 
     > redis-cli -h host -p port -a password  
 
+    > 集群模式下需要加参数 -c 这样确保数据不在当前分片时可以自动切换。
+
     默认端口6379
 
     ```
@@ -328,7 +330,7 @@ HSCAN | SSCAN | ZSCAN使用方式类似SCAN，只是需要指定key
 
 获取键过期时间
 > PTTL key  (以微秒为单位)
-> TTL key （以秒为单位
+> TTL key （以秒为单位）
 
 更新一个或多个key的最后访问时间
 > TOUCH key...
