@@ -28,7 +28,7 @@ title: linux常用操作
 2.1 查看系统空间
 >  df -h 查看所有挂在点存储信息
 
-> Df -h /dir   查看dir所在的挂载分区信息
+> df -h /dir   查看dir所在的挂载分区信息
 
 2.2 查看文件夹文件
 
@@ -258,10 +258,7 @@ T 由该Process使用的cpu时间累计（TIME+）排序
 
   示例：dig www.baidu.com
 
-  > netstat -antlp
-  
-## 2. 字符处理
-
+  > 2. 字符处理
 ### 2.1. [awk文本分析工具](http://www.ruanyifeng.com/blog///awk.html)
 
 1.1  基本语法
@@ -409,3 +406,4 @@ $ awk -F ':' '{if ($1 > "m") print $1; else print "---"}' demo.txt
   > esc+b 左移一个单词
 
   > esc+f 右移一个单词f
+
