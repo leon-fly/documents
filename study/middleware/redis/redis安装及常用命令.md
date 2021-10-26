@@ -44,6 +44,10 @@ title: redis安装及常用命令
 
 * 关闭服务
     通过redis-cli连接到服务之后执行shutdown
+    
+* 客户端
+    
+    * 非官网免费好用redis 客户端: [AnotherRedisDesktopManager](https://github.com/qishibo/AnotherRedisDesktopManager) , 支持mac与pc
 
 
 ## 2. 数据类型及常用命令
@@ -260,9 +264,9 @@ redis默认内部16个子库，通过select命令进行库的切换。默认是�
 * PING
 * ECHO
 * OBJECT
-通过OBJECT命令可以从内部察看给定 key 的 Redis 对象，它通常用在除错(debugging)或者了解为了节省空间而对 key 使用特殊编码的情况。 当将Redis用作缓存程序时，你也可以通过 OBJECT 命令中的信息，决定 key 的驱逐策略(eviction policies)。
+  通过OBJECT命令可以从内部察看给定 key 的 Redis 对象，它通常用在除错(debugging)或者了解为了节省空间而对 key 使用特殊编码的情况。 当将Redis用作缓存程序时，你也可以通过 OBJECT 命令中的信息，决定 key 的驱逐策略(eviction policies)。
     > OBJECT  subcommand [arguments...]
-可选的subcommand为：
+  可选的subcommand为：
     * OBJECT REFCOUNT key
     * OBJECT ENCODING key  
     * OBJECT IDLETIME key 返回空闲时间,以秒为单位

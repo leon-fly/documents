@@ -259,6 +259,34 @@ T 由该Process使用的cpu时间累计（TIME+）排序
   示例：dig www.baidu.com
 
   > 2. 字符处理
+### 1.7 curl分析请求信息
+
+* 最简单实用方式：
+
+  > curl https://www.baidu.com     通过curl命令请求百度，返回网页代码
+
+* 常用响应时间分析命令：
+
+  > curl -o /dev/null -s -w %{time_namelookup}::%{time_connect}::%{time_starttransfer}::%{time_total}::%{speed_download}"\n" -L -X POST https://www.baidu.com
+
+  -o：把curl 返回的html、js 写到垃圾回收站[ /dev/null] 
+
+  -s：去掉所有状态
+
+  -w：按照后面的格式写出rt
+
+  time_namelookup：DNS 解析域名www.36nu.com的时间 
+
+  time_commect：client和server端建立TCP 连接的时间
+
+  time_starttransfer：从client发出请求；到web的server 响应第一个字节的时间
+
+  time_total：client发出请求；到web的server发送回所有的相应数据的时间
+
+  speed_download：下周速度  单位 byte/s
+
+
+
 ### 2.1. [awk文本分析工具](http://www.ruanyifeng.com/blog///awk.html)
 
 1.1  基本语法
