@@ -123,7 +123,7 @@ g表示全局
 
 > set nu 显示
 
-> Set nonu 隐藏
+> set nonu 隐藏
 
 ## 8.多个文件操作
 
