@@ -118,9 +118,14 @@ sudo apt-get install jenkins
 
       > sh 'mvn clean install'
 
-## 2. 避坑
+## 2. 构建包管理
 
-### 2.1  构建触发器相关问题
+1. 再jenkins配置中可以设置构建包的保留策略，可以按照天/个数。如果不设置可能大量占用存储空间
+2. 如果构建包过大，可以使用脚本进行包清理来释放空间，[参考文档](https://blog.csdn.net/liliwang90/article/details/104690491)
+
+## 3. 避坑
+
+### 3.1  构建触发器相关问题
 
 按照平台指示生成的链接配置到github上时可能会出现http 403,提示No valid crumb was included in the request 
 
@@ -136,10 +141,9 @@ sudo apt-get install jenkins
 
 用户token可以在用户管理配置里面找到。
 
-### 2.2 凭据管理
+### 3.2 凭据管理
 
 在配置任务的流水线定义使用pipeline script from SCM方式时，界面提供了凭据添加入口，添加完成后无变动，凭据选择列表不出现，可能是bug，需要在系统管理的 凭证管理进行配置。
-
 
 
 
