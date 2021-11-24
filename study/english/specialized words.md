@@ -5,8 +5,7 @@ lastmod: "2020-08-30"
 publishdate: "2020-08-30"
 tags: 
 - English
-- Specialized Word
-title: online meeting
+title: specialized words
 ---
 
 * MFA - multi-factor authentication

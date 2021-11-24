@@ -5,8 +5,7 @@ lastmod: "2020-08-30"
 publishdate: "2020-08-30"
 tags: 
 - English
-- Specialized Word
-title: Specialized Word - databasedatabase
+title: specialized words - database
 ---
 
 * Access method 访问方法
