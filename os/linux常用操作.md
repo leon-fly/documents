@@ -252,7 +252,9 @@ T 由该Process使用的cpu时间累计（TIME+）排序
   netstat -tnlp
   ```
   > lsof -i
-  示例： lsof -i tcp:8080 
+  > 示例： lsof -i tcp:8080 
+  >
+  > [lsof命令参考](https://linux.cn/article-4099-1.html)
 * 查看域名映射信息（比如该域名有几台服务器负载）
   > dig
 
