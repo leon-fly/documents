@@ -173,21 +173,43 @@ git remote show origin  #origin为仓库名
 本地贮藏 git stash --help
 
 1. 保存save
+    
     > git stash save 'this is stash message'
 2. 使用贮藏pop或apply + index
+    
     > git stash pop|apply 0
 3. 查看贮藏列表list
+    
     > git stash list
 4. 查看某一贮藏中的更改内容 show + index
+    
     > git show 0
 5. 删除贮藏 drop + index
+    
     > git drop 0
 
 # 应用
 
 1. 本地删除了文件需要恢复
+    
     > git checkout -- filename
-
+    
 2. 远程出现错误的提交需要回滚
     > git revert 此回滚操作将留下操作记录，推荐做法。
     > git reset 此方式处理比较生硬，git push 使用force参数可提交到远程。此方式处理后原提交记录删除，谨慎使用。
+    
+3. 代码统计
+
+    最近一周内代码统计
+
+    ```
+    git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --since=1.weeks --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done;
+    ```
+
+    时间段内的代码统计
+
+    ```
+    git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --since ==2019-10-01 --until=2019-12-31 --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done;
+    ```
+
+    
