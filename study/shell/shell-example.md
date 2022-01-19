@@ -8,8 +8,6 @@ tags:
 - linux
 title: shell example
 ---
-**Spring version : V4.2** 
-
 ## 1. Shell example
 
 定期压缩并删除前N天的日志文件脚本
