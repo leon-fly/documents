@@ -22,7 +22,7 @@ title: git常用操作
 克隆远程仓库
 
 ```txt
-git clone 仓库地址
+git clone 仓库地址
 ```
 
 # branch
@@ -42,9 +42,9 @@ git push origin :branchName 删除远程分支
 检出分支
 
 ```txt
-git checkout branchNmae #切换到分支branchName
+git checkout branchNmae #切换到分支branchName
 git checkout -b branchName #创建branch并切换到该分支
-git checkout branchName^ #HEAD指向branch的父节点。
+git checkout branchName^ #HEAD指向branch的父节点。
 ```
 
 # merge
@@ -61,7 +61,7 @@ git merge branchName #将branch合并到当前分支
 
 ```txt
 git rebase branchName  #设置父节点为新指定的分支。
-git rebase -i commitNode #交互式调整提交内容,不要随意删除某个提交，删除后不可恢复
+git rebase -i commitNode #交互式调整提交内容,不要随意删除某个提交，删除后不可恢复
 ```
 
 场景：
@@ -71,7 +71,7 @@ git rebase -i commitNode #交互式调整提交内容,不要随意删除某个�
 1. git rebase -i HEAD~indexNum
 2. 找到要修改的某次提交移动到最底部，保存进行rebase。
 3. 修改
-4. git commit --amend
+4. git commit --amend
 5. git rebase -i HEAD~indexNum
 6. 恢复原提交顺序，保存进行rebase
 ```
@@ -173,25 +173,37 @@ git remote show origin  #origin为仓库名
 本地贮藏 git stash --help
 
 1. 保存save
-    
+   
     > git stash save 'this is stash message'
+    
 2. 使用贮藏pop或apply + index
-    
+   
     > git stash pop|apply 0
+    
 3. 查看贮藏列表list
-    
+   
     > git stash list
+    
 4. 查看某一贮藏中的更改内容 show + index
-    
+   
     > git show 0
-5. 删除贮藏 drop + index
     
+5. 删除贮藏 drop + index
+   
     > git drop 0
+
+# log
+
+用来显示提交日志
+
+[log参数传送门](https://git-scm.com/docs/git-log)
+
+> git log
 
 # 应用
 
 1. 本地删除了文件需要恢复
-    
+   
     > git checkout -- filename
     
 2. 远程出现错误的提交需要回滚
@@ -212,4 +224,33 @@ git remote show origin  #origin为仓库名
     git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --since ==2019-10-01 --until=2019-12-31 --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done;
     ```
 
-    
+
+# Large File
+
+1. 忽略单次拉取操作
+
+```
+GIT_LFS_SKIP_SMUDGE=1 git clone SERVER-REPOSITORY
+```
+
+Windows 需要使用两条命令
+
+```
+set GIT_LFS_SKIP_SMUDGE=1  
+git clone SERVER-REPOSITORY
+```
+
+2. 全局配置忽略拉取大文件操作
+
+```
+git config --global filter.lfs.smudge "git-lfs smudge --skip -- %f"
+git config --global filter.lfs.process "git-lfs filter-process --skip"
+git clone SERVER-REPOSITORY
+```
+
+恢复配置
+
+```
+git config --global filter.lfs.smudge "git-lfs smudge -- %f"
+git config --global filter.lfs.process "git-lfs filter-process"
+```
