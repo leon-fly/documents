@@ -20,6 +20,33 @@ title: docker入门
 # 1. docker安装
 使用apt-get可以很快完成相关安装，[官网](https://docs.docker.com/install/linux/docker-ce/ubuntu/)操作步骤已很清晰，可参考。
 
+**<font color='red'>注意：</font>**
+
+当安装好后直接运行docker会提示：
+
+```
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.24/images/json: dial unix /var/run/docker.sock: connect: permission denied
+```
+
+**原因：**
+
+docker进程使用Unix Socket而不是TCP端口。而默认情况下，Unix socket属于root用户，需要root权限才能访问。
+
+**解决方案：**
+
+* 方式一：用sudo权限执行docker
+
+* 方式二：docker守护进程启动的时候，会默认赋予名字为docker的用户组读写Unix socket的权限，因此只要创建docker用户组，
+
+  并将当前用户加入到docker用户组中，那么当前用户就有权限访问Unix socket了，进而也就可以执行docker相关命令。
+
+  ```
+  sudo groupadd docker     # 添加docker用户组 （如果该组已经存在直接忽略）
+  sudo gpasswd -a $USER docker     # 将登陆用户加入到docker用户组中
+  newgrp docker     # 更新用户组
+  docker ps    # 测试docker命令是否可以直接使用(不用sudo)
+  ```
+
 # 2. image文件
 docker把应用程序打包到image中，通过该文件生成docker容器。image 是二进制文件。实际开发中，一个 image 文件往往通过继承另一个 image 文件，加上一些个性化设置而生成。
 
@@ -72,6 +99,12 @@ docker file分为四部分：
 
 移除容器文件
 > $ docker container rm [containerID]
+
+进入容器(有多种方式，以下为简洁方式)
+
+> sudo docker exec -it [containerID] /bin/bash   
+
+[参考命令大全](https://www.runoob.com/docker/docker-command-manual.html)
 
 
 
