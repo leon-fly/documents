@@ -5,7 +5,7 @@ lastmod: "2018-01-04"
 publishdate: "2018-01-04"
 tags: 
 - docker
-title: docker compose
+title: 使用命令和docker-compose方式部署mongobd与mongo-express
 ---
 # 1. 命令方式使用docker启动mongoDB 和mongo-express
 
