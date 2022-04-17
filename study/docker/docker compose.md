@@ -1,8 +1,8 @@
 ---
-date: "2018-01-01"
+date: "2018-01-04"
 draft: false
-lastmod: "2018-01-01"
-publishdate: "2018-01-01"
+lastmod: "2018-01-04"
+publishdate: "2018-01-04"
 tags: 
 - docker
 title: docker compose
