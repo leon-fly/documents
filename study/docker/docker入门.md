@@ -74,8 +74,10 @@ docker file分为四部分：
 
 [dockerfile 官方完整内容](https://docs.docker.com/engine/reference/builder/)
 
-
 # 5. docker常用命令
+
+## 5.1 镜像管理
+
 获取镜像列表
 > $ docker image ls
 
@@ -91,11 +93,17 @@ docker file分为四部分：
 镜像运行停止
 > $ docker container kill [containID]
 
+## 5.2 容器管理
+
 列出本机正在运行的容器
 > $ docker container ls
 
+> $ docker ps
+
 列出本机所有容器，包括终止运行的容器
 > $ docker container ls --all
+
+> $ docker ps -a
 
 移除容器文件
 > $ docker container rm [containerID]
