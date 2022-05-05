@@ -49,7 +49,19 @@ title: mac系统初始化相关
   fi
   ```
   
-  如果不喜欢每次输入sudo密码可以通过修改sudoer配置取消（这种方式不太安全，需谨慎使用）或者其他方式
+  **如果不喜欢每次输入sudo密码可以通过修改sudoer配置取消（操作如下，这种方式不太安全，需谨慎使用）或者其他方式**
+  
+  ```
+  # 1
+  sudo visudo 或者 sudo vi /etc/sudoers
+  
+  # 2
+  将%admin ALL=(ALL) ALL
+  替换为 %admin ALL=(ALL) NOPASSWD: ALL
+  
+  ```
+  
+  
   
   [参考:如何优雅地一键实现macOS网络代理切换](https://zhuanlan.zhihu.com/p/23910924)
   
