@@ -6,7 +6,7 @@ publishdate: "2022-05-13"
 tags:
 - architecture
 - junit
-title: junit 5
+title: junit5 & Mockito
 ---
 
 ## 1. Architect view
@@ -95,10 +95,22 @@ title: junit 5
 * **@RunWith(MockitoJUnitRunner.class)**
   * use **@org.junit.Test** to dedicate a test method instead of  **@org.junit.jupiter.api.Test**
   * support mock for static method with **@BeforeAll**，if the method is non-static then you need add  **@TestInstance(TestInstance.Lifecycle.PER_CLASS)** on the test class
+  
+* **@Mock**
+
+* **@Spy**
+
+* **@Captor**
+
+* **@InjectMocks**
 
 ## 4. Demo
 
 click [Junit 5 Demo](https://github.com/leon-fly/junit5-demo) to watch the demo
+
+## 5. Reference
+
+[mockito官方文档](https://github.com/mockito/mockito/wiki)
 
 
 
