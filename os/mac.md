@@ -22,3 +22,14 @@ title: mac系统初始化相关
 * [autojump快速根据关键字进入目录](https://github.com/wting/autojump)
 
 * [shuttle - 定义你的mac快捷菜单/操作](https://github.com/fitztrev/shuttle)
+
+* [多设备键鼠共享软件barrier](https://oreo.life/share-mouse-and-keyboard-with-barrier/)
+
+  * 该软件是基于设备使用统一网络进行通讯，所以如果网络不太好就不用考虑了。
+  * 安装之后可能因为各种原因无法使用
+    * 设备名称各设备之间不一致，在菜单栏barrier->change settings->screen name设置一致即可
+    * SSL加载失败，只需要在setting中将Enable SSL取消勾选即可。
+
+* [alfred - 一个关键字打开你的应用/文件/书签 ...](https://www.alfredapp.com/)
+
+* [utools - 与alfred同类工具，支持插件](https://u.tools/)
