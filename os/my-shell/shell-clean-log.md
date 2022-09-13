@@ -8,7 +8,7 @@ tags:
 - linux
 title: shell example
 ---
-## 1. Shell example
+## 1. Shell clean log
 
 定期压缩并删除前N天的日志文件脚本
 
