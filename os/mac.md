@@ -30,6 +30,8 @@ title: mac系统初始化相关
     * 设备名称各设备之间不一致，在菜单栏barrier->change settings->screen name设置一致即可
     * SSL加载失败，只需要在setting中将Enable SSL取消勾选即可。
 
+  [barrier 软件库](https://github.com/debauchee/barrier/releases)
+
 * [alfred - 一个关键字打开你的应用/文件/书签 ...](https://www.alfredapp.com/)
 
 * [utools - 与alfred同类工具，支持插件](https://u.tools/)
