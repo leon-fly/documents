@@ -172,60 +172,32 @@ git remote show origin  #origin为仓库名
 
 本地贮藏 git stash --help
 
-1. 保存save
-   
+1. 选择要stash的文件.一般在版本控制中的文件进行stash不需要这个步骤，如果要把新增的文件放入stash需要用改命令先加入版本控制中
+
+    > git add 文件列表       或者    git  add .  
+
+2. 保存save
+
     > git stash save 'this is stash message'
-    
-2. 使用贮藏pop或apply + index
-   
-    > git stash pop|apply 0
-    
-3. 查看贮藏列表list
-   
+
+3. 使用贮藏pop或apply + index
+
+    > git stash pop|apply  stash@{0}
+
+4. 查看贮藏列表list
+
     > git stash list
-    
-4. 查看某一贮藏中的更改内容 show + index
-   
-    > git show 0
-    
-5. 删除贮藏 drop + index
-   
-    > git drop 0
 
-# log
+5. 查看某一贮藏中的更改内容 show + index
 
-用来显示提交日志
+    > git show stash@{0}
 
-[log参数传送门](https://git-scm.com/docs/git-log)
+6. 删除贮藏 drop + index
 
-> git log
-
-# 应用
-
-1. 本地删除了文件需要恢复
-   
-    > git checkout -- filename
-    
-2. 远程出现错误的提交需要回滚
-    > git revert 此回滚操作将留下操作记录，推荐做法。
-    > git reset 此方式处理比较生硬，git push 使用force参数可提交到远程。此方式处理后原提交记录删除，谨慎使用。
-    
-3. 代码统计
-
-    最近一周内代码统计
-
-    ```
-    git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --since=1.weeks --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done;
-    ```
-
-    时间段内的代码统计
-
-    ```
-    git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --since ==2019-10-01 --until=2019-12-31 --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done;
-    ```
+    > git drop stash@{0}
 
 
-# Large File
+# Large File 处理
 
 1. 忽略单次拉取操作
 
@@ -233,7 +205,7 @@ git remote show origin  #origin为仓库名
 GIT_LFS_SKIP_SMUDGE=1 git clone SERVER-REPOSITORY
 ```
 
-Windows 需要使用两条命令
+​		Windows 需要使用两条命令
 
 ```
 set GIT_LFS_SKIP_SMUDGE=1  
@@ -248,9 +220,42 @@ git config --global filter.lfs.process "git-lfs filter-process --skip"
 git clone SERVER-REPOSITORY
 ```
 
-恢复配置
+3. 恢复拉取大文件配置
 
 ```
 git config --global filter.lfs.smudge "git-lfs smudge -- %f"
 git config --global filter.lfs.process "git-lfs filter-process"
 ```
+
+# log
+
+## 用来显示提交日志
+
+[log参数传送门](https://git-scm.com/docs/git-log)
+
+> git log
+
+## 场景应用 - 代码统计
+
+最近一周内代码统计
+
+```
+git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --since=1.weeks --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done;
+```
+
+时间段内的代码统计
+
+```
+git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --since ==2019-10-01 --until=2019-12-31 --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done;
+```
+
+# 应用
+
+1. 本地删除了文件需要恢复
+
+   > git checkout -- filename
+
+2. 远程出现错误的提交需要回滚
+
+   > git revert 此回滚操作将留下操作记录，推荐做法。
+   > git reset 此方式处理比较生硬，git push 使用force参数可提交到远程。此方式处理后原提交记录删除，谨慎使用。
