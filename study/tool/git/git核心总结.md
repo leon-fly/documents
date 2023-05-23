@@ -17,7 +17,8 @@ title: git核心总结
 1. 三个概念：
     * Head 这是当前分支版本顶端的别名，也就是在当前分支你最近的一个提交。
     * Index 也被称为staging area，是指一整套即将被下一个提交的文件集合。他也是将成为HEAD的父亲的那个commit
-    * Working treew代表你正在工作的那个文件集
+    * Working tree代表你正在工作的那个文件集
 
     说明：
+    
     > 当从远程clone一个库后，本地的Head、Index、Working tree三者一致，当本地修改了文件后 Working >tree 与其他两者出现不一致，当将改动内容add到暂存文件时，working tree与 index一致，head与此两者不一致，当commit之后三者重新变一致。这就是git能判断哪些是本地变动，哪些是在暂存中，哪些是未提交的一个原理。

@@ -11,7 +11,9 @@ title: 定制你的浏览器代理开关
 
 ## 定制你的Mac 浏览器代理开关
 
-通过【启停代理脚本+shuttle】定制你的we b代理快捷启停用
+通过【启停代理脚本+shuttle】定制你的web代理快捷启停用.
+
+![](../picture/proxy-switch.png)
 
 * 安装shuttle [[shuttle 工具下载及配置说明](https://github.com/fitztrev/shuttle)]
 

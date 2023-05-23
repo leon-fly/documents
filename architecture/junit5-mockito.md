@@ -67,10 +67,11 @@ title: junit5 & Mockito
 ## 3. Annotation of Mockitio 4.2.0
 
 * **@ExtendWith(MockitoExtension.class)**
+  
   * use **@org.junit.jupiter.api.Test** to dedicate a test method instead of  **@org.junit.Test**
   * mock is not support under **@BeforeAll** method. **Reason for this** :`MockitoExtension` class implements the `BeforeEachCallback` but not the `BeforeAllCallback` from JUnit-Jupiter-API. It does therefore not provide any additional behaviour for `@BeforeAll` annotated methods. So  you can use **@BeforeEach** as a replacement.
-
-* **@MockitoSettings** 
+  
+* **@MockitoSettings**
 
   * this annotation is used for set some strictness strategy for Mockito. Supported strategy :
 
@@ -93,6 +94,7 @@ title: junit5 & Mockito
     because it has extended the capability from MockitoExtension (Class MockitoSettings has the annotation @ExtendWith(MockitoExtension.class) on it's class.
 
 * **@RunWith(MockitoJUnitRunner.class)**
+  
   * use **@org.junit.Test** to dedicate a test method instead of  **@org.junit.jupiter.api.Test**
   * support mock for static method with **@BeforeAll**，if the method is non-static then you need add  **@TestInstance(TestInstance.Lifecycle.PER_CLASS)** on the test class
   
