@@ -249,6 +249,20 @@ git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git l
 git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --since ==2019-10-01 --until=2019-12-31 --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done;
 ```
 
+# 配置
+
+配置用户名
+
+> git config user.name LeonWang   配置当前提交用户名为LeonWang
+
+配置邮箱
+
+> git config user.email leonwang@email.com. 配置当前用户的邮箱为leonwang@email.com.
+
+以上配置均针对当前repository生效，如果想全局生效，需要增加global参数。示例：
+
+> git config --global user.name LeonWang
+
 # 应用
 
 1. 本地删除了文件需要恢复
