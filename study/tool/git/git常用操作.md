@@ -15,7 +15,7 @@ title: git常用操作
 # init
 
 初始化一个仓库。
-当从远程创建一个仓库后，可以通过git clone克隆下来并通过git init初始化该仓库，提交并push上去
+当从远程创建一个仓库后，可以通过git clone克隆下来并通过git init初始化该仓库，提交并push上去
 
 # clone  
 
@@ -65,7 +65,7 @@ git rebase -i commitNode #交互式调整提交内容,不要随意删除某个�
 ```
 
 场景：
-发现某个提交需要小的修改（内容或者commit的message）如何做？
+发现某个提交需要小的修改（内容或者commit的message）如何做？
 
 ```txt
 1. git rebase -i HEAD~indexNum
@@ -110,15 +110,15 @@ git push origin :<target> #删除远程target分支
 
 说明：
 
-参考fetch,数据反向操作
+参考fetch,数据反向操作
 
 # HEAD
 
-HEAD总是指向当前分支上的最近一次提交记录，运行git命令，HEAD会调整指向。可以在分支上使用引用符号^和~手动设置HEAD的指向。
+HEAD总是指向当前分支上的最近一次提交记录，运行git命令，HEAD会调整指向。可以在分支上使用引用符号^和~手动设置HEAD的指向。
 
 ```txt
 git checkout master^ #head指向master的父节点（master的上一次提交）,每加一个^往上一层。
-git checkout HEAD^ #以当前HEAD指向向父节点移动
+git checkout HEAD^ #以当前HEAD指向向父节点移动
 
 git checkout master~3 #head指向master的上三级父节点
 ```
@@ -180,7 +180,7 @@ git remote show origin  #origin为仓库名
 
     > git stash save 'this is stash message'
 
-3. 使用贮藏pop或apply + index
+3. 使用贮藏pop或apply + index
 
     > git stash pop|apply  stash@{0}
 
