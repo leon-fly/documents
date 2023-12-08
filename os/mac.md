@@ -17,7 +17,7 @@ title: mac系统初始化相关
 
   避坑：安装时可能一直链接不到服务器问题，有的需要vpn，有的需要配置host（dns污染问题，可以使用switchhosts工具）
 
-* [autossh让你快速登录远程服务](https://xiezuan.github.io/2017/03/22/mac%20%E4%B8%8Bssh%20%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E4%B8%8E%E8%BF%9E%E6%8E%A5%E4%BF%9D%E6%8C%81%E5%B7%A5%E5%85%B7%20autossh/)
+* [autossh让你快速登录远程服务](https://github.com/FeeiCN/autossh)
 
 * [autojump快速根据关键字进入目录](https://github.com/wting/autojump)
 
@@ -35,3 +35,12 @@ title: mac系统初始化相关
 * [alfred - 一个关键字打开你的应用/文件/书签 ...](https://www.alfredapp.com/)
 
 * [utools - 与alfred同类工具，支持插件](https://u.tools/)
+
+* Iterm终端网络请求使用代理设置，在～/.zshrc文件中增加如下配置(具体ip端口视个人使用的VPN代理短裤而定)
+
+  ```
+  alias setproxy='export http_proxy=http://127.0.0.1:33210 https_proxy=http://127.0.0.1:33210'
+  alias disproxy='unset http_proxy https_proxy'
+  ```
+
+  之后需要在iterm中使用代理时执行命令setproxy设置启用代理（VPN需要在打开启用状态），不需要使用时执行disproxy关闭代理。
