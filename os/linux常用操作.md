@@ -42,7 +42,7 @@ title: linux常用操作
 
 > uname -a
 
-> Cat /proc/version
+> cat /proc/version
 
 ### 1.4. 系统使用情况查看
 
