@@ -8,12 +8,37 @@ tags:
 - mysql
 title: mysql安装及运行
 ---
-#一、安装
+# 一、安装
 
-##1.在线安装
+## 1.在线安装
 在线安装安装和启动方式较简单，可以使用yum/homebrew/apt 等方式进行安装。
 
-##2.离线安装(解压版)
+### mac安装示例：
+
+> brew install mysql@5.7
+
+启动
+
+> brew services start mysql@5.7
+
+查看启动情况
+
+> brew services list --json
+
+###  mac M1 基于docker安装mysql 5.7:
+
+拉取镜像（不可以使用mysql@5.7，存在内核不匹配问题）：
+
+> git pull ibex/debian-mysql-server-5.7
+
+启动容器
+
+> docker run --name mysql -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_ROOT_HOST=% ibex/debian-mysql-server-5.7
+
+[详细参考这里](https://juejin.cn/post/7039024521159901197)
+
+## 2.离线安装(解压版)
+
 1. 官方下载安装包mysql-5.7.23-el7-x86_64.tar.gz
 2. 创建mysql管理用户及组，使用该用户组进行操作。
 3. 解压到软件目录，当前为/usr/local,将根目录修改为mysql(原命名太长繁琐)
@@ -33,8 +58,7 @@ title: mysql安装及运行
 	
 	```
 
-
-#二、配置
+# 二、配置
 
 1. 编辑配置文件/etc/my.cnf
 
@@ -66,7 +90,7 @@ title: mysql安装及运行
 3. 启动服务
 	```
 	使用startmysql.sh
-
+	
 	```
-说明：mysql centos（mysql-5.7.23）安装及运行
+	说明：mysql centos（mysql-5.7.23）安装及运行
 
