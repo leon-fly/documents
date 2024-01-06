@@ -10,7 +10,7 @@ title: java-abstract-queued-synchronized
 ---
 
 ## 1. AbstractQueuedSynchronizer简介
-* AQS是jdk提供的一个用于实现阻塞锁和相关同步的框架，其基于先进先出的等待队列。这个类提供了大部分的同步器（依靠一个原子int值来呈现状态）的基础。
+* AQS是jdk提供的一个用于实现阻塞锁和相关同步的框架，其基于先进先出的等待队列。这个类提供了大部分的同步器（依靠一个原子int值来呈现状态）的基础。
 
 ## 2. AQS实现
 ![AQS类图](../../../picture/AbstractQueuedSynchronizer.png)
@@ -36,7 +36,7 @@ AQS底层使用了模板方法模式， 自定义同步器在实现时只需要�
     * signalAll() 调用该方法后，会从等待队列中唤醒所有等待线程
 * 线程中断支持
     
-* 线程获取锁超时支持
+* 线程获取锁超时支持
 
 
 
@@ -52,6 +52,6 @@ isHeldExclusively()
 
 
 ## 4. 相关技术文档
-[官方AbstractQueuedSynchronizer说明文档](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/AbstractQueuedSynchronizer.html)
+[官方AbstractQueuedSynchronizer说明文档](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/AbstractQueuedSynchronizer.html)
 [AQS原理及基于AQS实现的锁](https://github.com/Snailclimb/JavaGuide/blob/master/docs/java/Multithread/AQS.md)
 [AQS原理分析](https://www.cnblogs.com/NathanYang/p/9944632.html)
