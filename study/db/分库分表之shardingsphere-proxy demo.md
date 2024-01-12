@@ -5,7 +5,7 @@ lastmod: "2023-12-25"
 publishdate: "2023-12-25"
 tags:
 - db
-title: Demo-分库分表之shardingsphere-proxy
+title: 分库分表之shardingsphere-proxy demo
 ---
 
 当前示例场景：某订单系统基于用户纬度分库，并对订单表和订单字表同时进行分表。
@@ -191,9 +191,9 @@ CREATE TABLE `t_order_item_1` (
    * conf ｜配置文件包，shardingsphere相关的配置均在这里，如服务器链接配置，分片配置，加密配置等
    * bin | 服务启停脚本
 
-2. 修改配置文件(这仅仅是一个测试demo配置，生产环境需要更严谨，比如安全连接以及分片策略是否使用一致性hash确保未来扩展等)
+2. 修改配置文件(这仅仅是一个测试demo配置，生产环境需要更严谨，比如安全连接以及分片策略是否使用一致性hash确保未来扩展等。[👉详细配置说明官方参考文档](https://shardingsphere.apache.org/document/current/cn/user-manual/shardingsphere-proxy/yaml-config/))
 
-   * server.yaml
+   * 数据库服务器连接配置 server.yaml
 
      ```yaml
      mode:
@@ -215,7 +215,7 @@ CREATE TABLE `t_order_item_1` (
        proxy-hint-enabled: true
      ```
 
-   * config-sharding.yaml
+   * 分片配置 config-sharding.yaml
 
      ```yaml
      databaseName: sharding_db_demo
