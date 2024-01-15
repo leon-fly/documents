@@ -205,7 +205,7 @@ kubernetes-dashboard   kubernetes-dashboard-654cf69797-2vqjs        1/1     Runn
 🎉  Opening http://127.0.0.1:57073/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/ in your default browser...
 ```
 
-![kubernates dashboard](/Users/leonwang/workspace/git-doc/picture/kubernetes-dashboard.jpg)
+![kubernates dashboard](../../picture/kubernetes-dashboard.jpg)
 
 ## 部署
 
@@ -480,23 +480,23 @@ X-Scheme: http
 
 * Deployments视图
 
-![kubernetes-dash-deployments](/Users/leonwang/workspace/git-doc/picture/kubernetes-dash-deployments.jpg)
+![kubernetes-dash-deployments](../../picture/kubernetes-dash-deployments.jpg)
 
 * Pods视图
 
-![kubernetes-dash-pods](/Users/leonwang/workspace/git-doc/picture/kubernetes-dash-pods.jpg)
+![kubernetes-dash-pods](../../picture/kubernetes-dash-pods.jpg)
 
 * replica sets视图
 
-![kubernetes-dash-replica-sets](/Users/leonwang/workspace/git-doc/picture/kubernetes-dash-replica-sets.jpg)
+![kubernetes-dash-replica-sets](../../picture/kubernetes-dash-replica-sets.jpg)
 
 * ingresses视图
 
-![kubernetes-dash-deployments](/Users/leonwang/workspace/git-doc/picture/kubernetes-dash-ingresses.jpg)
+![kubernetes-dash-deployments](../../picture/kubernetes-dash-ingresses.jpg)
 
 * services视图
 
-![kubernetes-dash-services](/Users/leonwang/workspace/git-doc/picture/kubernetes-dash-services.jpg)
+![kubernetes-dash-services](../../picture/kubernetes-dash-services.jpg)
 
 ## 常用命令
 
