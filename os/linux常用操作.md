@@ -241,20 +241,25 @@ T 由该Process使用的cpu时间累计（TIME+）排序
   ```
   telnet wwww.baidu.com 22
   ```
+  
+  
+  * 本地网络端口启用情况
+    > netstat 
+  
+    示例:
+    ```shell
+    netstat -an
+    netstat -tnlp | grep 端口号 根据（Listening状态）端口号查进程
+    ```
+    > lsof -i
+    
+    示例：
+    
+    ``` lsof -i tcp:8080``` 
+    
+    [lsof命令参考](https://linux.cn/article-4099-1.html)
 
 
-* 本地网络端口启用情况
-  > netstat 
-
-  示例:
-  ```
-  netstat -an
-  netstat -tnlp
-  ```
-  > lsof -i
-  > 示例： lsof -i tcp:8080 
-  >
-  > [lsof命令参考](https://linux.cn/article-4099-1.html)
 * 查看域名映射信息（比如该域名有几台服务器负载）
   > dig
 
