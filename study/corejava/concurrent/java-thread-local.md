@@ -66,7 +66,7 @@ public class ThreadLocalDemo {
 
 ![](../../../picture/ThreadLocalView.png)
 
-1. 每个Thread内部持有一个ThreadLocalMap,ThreadLocalMap是ThreadLocal内部定义了一个静态内部类（并没有实现map接口，内部使用了一个Entry数组来存储Thread各自线程变量）。每个Thread有一个自己的ThreadLocalMap，当设置/获取值时，都先会获取当前线程，通过当前线程获取到ThreadLocalMap, key为ThreadLocal, 通过该key获取到对应的值。
+1. 每个Thread内部持有一个ThreadLocalMap,ThreadLocalMap是ThreadLocal内部定义了一个静态内部类（并没有实现map接口，内部使用了一个Entry数组来存储Thread各自线程变量）。每个Thread有一个自己的ThreadLocalMap，当设置/获取值时，都先会获取当前线程，通过当前线程获取到ThreadLocalMap, key为ThreadLocal, 通过该key获取到对应的值。
 
    设置值：
 

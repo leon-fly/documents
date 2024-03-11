@@ -226,7 +226,7 @@ Feb 03 22:07:02 VM-4-11-ubuntu kubelet[1275240]: E0203 22:07:02.115716 1275240 k
 ......
 ```
 
-#### 👉 初始化网路插件
+#### 👉 初始化网络插件
 
  [官方列出的网络插件清单](https://kubernetes.io/docs/concepts/cluster-administration/addons/)这里我们使用常用的其中一个[网络插件flannel](https://github.com/flannel-io/flannel#deploying-flannel-manually), 按照说明readme进行插件安装
 

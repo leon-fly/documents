@@ -8,7 +8,7 @@ tags:
 title: 分库分表之shardingsphere-proxy demo
 ---
 
-当前示例场景：某订单系统基于用户纬度分库，并对订单表和订单字表同时进行分表。
+当前示例场景：某订单系统基于用户纬度分库，并对订单表和订单字表同时进行分表。此处仅为测试demo，相关配置不可用于生产，数据表也粗糙，仅供测试。
 
 ## Step 1 ：安装启动mysql
 
@@ -191,7 +191,9 @@ CREATE TABLE `t_order_item_1` (
    * conf ｜配置文件包，shardingsphere相关的配置均在这里，如服务器链接配置，分片配置，加密配置等
    * bin | 服务启停脚本
 
-2. 修改配置文件(这仅仅是一个测试demo配置，生产环境需要更严谨，比如安全连接以及分片策略是否使用一致性hash确保未来扩展等。[👉详细配置说明官方参考文档](https://shardingsphere.apache.org/document/current/cn/user-manual/shardingsphere-proxy/yaml-config/))
+2. 修改配置文件(这仅仅是一个测试demo配置，生产环境需要更严谨，比如安全连接以及分片策略是否使用一致性hash确保未来扩展等。
+
+   👉 [详细配置说明官方参考文档](https://shardingsphere.apache.org/document/current/cn/user-manual/shardingsphere-proxy/yaml-config/)
 
    * 数据库服务器连接配置 server.yaml
 
@@ -327,7 +329,7 @@ CREATE TABLE `t_order_item_1` (
       > /* SHARDINGSPHERE_HINT: disableAuditNames=sharding_key_required_auditor */ 
 
 
-### Docker方式启动参考 [官方文档](https://shardingsphere.apache.org/document/current/cn/quick-start/shardingsphere-proxy-quick-start/)
+### Docker方式启动参考 [官方docker启动文档](https://shardingsphere.apache.org/document/current/cn/quick-start/shardingsphere-proxy-quick-start/)
 
 
 
