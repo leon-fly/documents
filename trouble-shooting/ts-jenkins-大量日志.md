@@ -32,6 +32,6 @@ jenkins运行过程中短时间产生几十GB的日志
 方案一、临时方案
 配置日志相关参数，[关掉不必要的日志](https://my.oschina.net/mrpei123/blog/1810647);
 
-方案二、 终极方案[参考资料一](https://my.oschina.net/redhat1520/blog/616827) [参考资料二](https://issues.jenkins-ci.org/browse/JENKINS-10160)
+方案二、 终极方案 [官方参考资料](https://issues.jenkins-ci.org/browse/JENKINS-10160)
 
 注意清理空间删除日志文件时，如果你的jenkins是运行的需要先停掉再重新启动，不然没法释放空间。
