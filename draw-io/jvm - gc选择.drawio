@@ -1,0 +1,71 @@
+<mxfile host="Electron" modified="2024-03-11T09:24:10.556Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.4 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="5YHl7fh0caTEbd4uUyB8" version="24.0.4" type="device">
+  <diagram name="第 1 页" id="1eUdM5bFICKvkfwG9Ovn">
+    <mxGraphModel dx="888" dy="666" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-15" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="190" y="90" width="680" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-2" value="G1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="462" y="270" width="96" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-6" value="&lt;span style=&quot;text-align: justify; background-color: initial;&quot;&gt;适用于大内存+多核处理器，通常至少16GB内存和4核处理器是一个不错的选择&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;text-align: justify; background-color: initial;&quot;&gt;具有较低的暂停时间和高吞吐量&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;dashPattern=1 2;strokeColor=default;" vertex="1" parent="1">
+          <mxGeometry x="252" y="250" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-7" value="CMS" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="570" y="130" width="96" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-8" value="Parallel" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="350" y="130" width="96" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-10" value="ZGC&lt;div&gt;(Oracle)&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="350" y="380" width="96" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-11" value="Shenandoah&lt;div&gt;（RedHat&lt;span style=&quot;background-color: initial;&quot;&gt;）&lt;/span&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="570" y="380" width="96" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-12" value="&lt;span style=&quot;background-color: initial;&quot;&gt;目前只有openJDK （since 12）才会包含&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(234, 107, 102); background-color: initial;&quot;&gt;目标是能在任何堆内存大小下都可以把垃圾收集停顿时间限制在10毫米以下&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;用G1相似度很高，甚至共用了一部分实现代码&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=default;dashed=1;dashPattern=1 1;" vertex="1" parent="1">
+          <mxGeometry x="666" y="350" width="174" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-13" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="w47FLWzK4ZhJEcjKreHd-10" target="w47FLWzK4ZhJEcjKreHd-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="330" as="sourcePoint" />
+            <mxPoint x="490" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-14" value="目标相似" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="w47FLWzK4ZhJEcjKreHd-13">
+          <mxGeometry x="-0.1852" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-16" value="关注吞吐量" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=default;dashed=1;dashPattern=1 1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="150" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-17" value="关注停顿时间" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=default;dashed=1;dashPattern=1 1;" vertex="1" parent="1">
+          <mxGeometry x="666" y="150" width="95" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-18" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;dashPattern=1 1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0.098;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="w47FLWzK4ZhJEcjKreHd-2" target="w47FLWzK4ZhJEcjKreHd-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="390" as="sourcePoint" />
+            <mxPoint x="476" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-20" value="G1继承者" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="w47FLWzK4ZhJEcjKreHd-18">
+          <mxGeometry x="-0.1267" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-19" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=0;exitX=0.794;exitY=0.867;exitDx=0;exitDy=0;dashed=1;dashPattern=1 1;exitPerimeter=0;" edge="1" parent="1" source="w47FLWzK4ZhJEcjKreHd-2" target="w47FLWzK4ZhJEcjKreHd-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="450" y="400" as="sourcePoint" />
+            <mxPoint x="500" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w47FLWzK4ZhJEcjKreHd-21" value="G1继承者" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="550.0007564814879" y="349.9954665606913" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -358,11 +358,11 @@ jdk 1.8
 
 | JVM options                 | Young             | Tenured     | 备注                                             |
 | --------------------------- | ----------------- | ----------- | ------------------------------------------------ |
-| **-XX:+UseSerialGC**        | Serial            | Serial      |                                                  |
+| -XX:+UseSerialGC            | Serial            | Serial      | 适合单核，小型机                                 |
 | -XX:+UseParNewGC            | ParNew            | Serial      | jdk1.9开始取消支持                               |
-| -XX:+UseParallelGC          | Parallel Scavenge | ParallelOld | hotspot 1.8默认组合                              |
-| **-XX:+UseParallelOldGC**   | Parallel Scavenge | ParallelOld | 该组合在jdk1.9之后被G1取代，G1成为默认垃圾收集器 |
-| **-XX:+UseConcMarkSweepGC** | Parallel New      | CMS         | jdk1.7之前常用的GC组合                           |
+| **-XX:+UseParallelGC**      | Parallel Scavenge | ParallelOld | **hotspot 1.8默认组合**                          |
+| -XX:+UseParallelOldGC       | Parallel Scavenge | ParallelOld | 该组合在jdk1.9之后被G1取代，G1成为默认垃圾收集器 |
+| **-XX:+UseConcMarkSweepGC** | Parallel New      | CMS         | **jdk1.7之前常用的GC组合**                       |
 | **-XX:+UseG1GC**            | G1                | G1          |                                                  |
 
 注意：由于jvm的升级，参数指定的收集器可能出现调整，比如jdk1.8 “-XX:+UseParallelGC” 参数指定后老年代实际使用的是ParallelOldGC 具体以通过命令本节最后命令小节打印出的参数值为准。
@@ -371,7 +371,9 @@ jdk 1.8
 
 ![gc组合](../../picture/gc组合.png)
 
+**各垃圾回收器特点：**
 
+![](../../picture/jvm - gc选择.png)
 
 ## 4.7 命令
 
