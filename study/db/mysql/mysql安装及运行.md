@@ -27,15 +27,35 @@ title: mysql安装及运行
 
 ###  mac M1 基于docker安装mysql 5.7:
 
-拉取镜像（不可以使用mysql@5.7，存在内核不匹配问题）：
+拉取镜像（不可以使用mysql:5.7，存在内核不匹配问题）：
 
-> git pull ibex/debian-mysql-server-5.7
+> docker pull ibex/debian-mysql-server-5.7
 
 启动容器
 
-> docker run --name mysql -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_ROOT_HOST=% ibex/debian-mysql-server-5.7
+> docker run --name mysql-test -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=1qaz2wsx -e MYSQL_ROOT_HOST=% ibex/debian-mysql-server-5.7
 
 [详细参考这里](https://juejin.cn/post/7039024521159901197)
+
+
+
+**考虑到该数据库会被多次使用，可以为其建立本地存储卷，后续即使容器删除，仍然可以通过关联使用原有数据。**
+
+创建本地存储卷
+
+> docker volume create mysql-docker-volume
+
+查看创建结果
+
+> docker volume ls
+
+将mysql数据库数据关联到本地卷
+
+> docker run --name mysql-test -p 3306:3306 -v mysql-docker-volume:/var/lib/mysql -d -e MYSQL_ROOT_PASSWORD=1qaz2wsx MYSQL_ROOT_HOST=% ibex/debian-mysql-server-5.7
+
+
+
+
 
 ## 2.离线安装(解压版)
 
