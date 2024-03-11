@@ -127,16 +127,16 @@ Property settings:
     > -Xmn
 
     说明:
-    新生代增大会减小老年代的大小，对GC影响较大，新生代大小一半设置整个堆空间的1/3到1/4。
+    新生代增大会减小老年代的大小，对GC影响较大，新生代大小一般设置整个堆空间的1/3到1/4。
 
-* 设置新生代eden与from/to到空间比例
+* 设置新生代eden与from/to的空间比例
     > -XX:SurvivorRatio=
 
     说明:
     
     正常设置2，即eden:from:to = 2:1:1。特殊情况需要特别考虑。
 
-* 设置新生代和老年代的比例,改比例=老年代/新生代
+* 设置新生代和老年代的比例,该比例=老年代/新生代
   
 > -XX:NewRatio=
 
@@ -197,7 +197,7 @@ jdk 1.8
 * 缺点：空间使用率折半，当存活对象较多时，需要复制的对象也多。
 * 复制算法比较适合新生代，新生代垃圾对象通常多余存活对象。
 
-## 2.4. 标记压缩法（标记清除压缩算法）
+## 2.4. 标记压缩法（标记清除压缩/标记整理）
 * 原理：优化标记清除，清除阶段将所有存活对象压缩到内存另一端，之后清理边界外的所有空间。相当于在标记清除的基础上加了内存整理。
 
 大致执行过程如下：
@@ -236,11 +236,11 @@ jdk 1.8
 ### 4.1.1. 新生代串行回收器
 
 * 启用新生代串行收集器和老年代串行收集器，指定参数 **-XX:+UseSerialGC**，jvm client运行模式下的默认垃圾回收器。
-* 新生代串行回收器使用复制算法，简单高效。
+* 新生代串行回收器使用**复制算法**，简单高效。
 
 ### 4.1.2. 老年代串行回收器
 
-* 老年代串行收集器使用标记压缩算法。
+* 老年代串行收集器使用**标记压缩算法**。
 * 在堆空间较大的应用程序，一旦老年代串行收集器启动，应用程序可能会因此停顿较长的时间。
 * 老年代串行回收器可以和多种新生代垃圾回收器配合使用，同时也可以作为CMS回收器的备用回收器。
 * 启用老年代串行回收器
@@ -251,7 +251,7 @@ jdk 1.8
 
 
 
-## 4.2. 并行回收器（ParNew）
+## 4.2. 并行回收器
 
 ### 4.2.1. 新生代ParNew回收器
 * ParNew回收器是工作在新生代的并行回收器，只是简单的将串行回收器多线程化，其回收策略、算法以及参数和新生代串行回收器一样。
@@ -265,8 +265,9 @@ jdk 1.8
     线程数一般与CPU数量相当，避免过多的线程数，影响垃圾收集性能。默认情况下，当CPU数量小于8时，ParallelGCThreads的值等于CPU数量，当CPU数量大于8个时，ParallelGCThreads的值等于3+((5*CPU_COUNT)/8)
 
 ### 4.2.2. 新生代ParallelGC（ParallelScavenge）回收器
+* 基于标记-复制算法实现
 * 与ParNew相同点：多线程，独占式。
-* 重要特性：非常关注系统吞吐量。
+* 重要特性：**<u>非常关注系统吞吐量（吞吐量优先</u>）。**
 * 启用参数：
     * **-XX:+UseParalleGC** 新生代使用ParallelGC回收器，老年代使用串行回收器
     * **-XX:+UseParallelOldGC** 新生代使用ParallelGC回收器，老年代使用ParallelOldGC回收器
@@ -280,8 +281,7 @@ jdk 1.8
 
 
 ### 4.2.3. 老年代ParallelOldGC回收器
-* 和ParallelGC新生代回收器搭配使用
-* 使用标记压缩算法
+* 使用**标记压缩算法**，和ParallelGC新生代回收器搭配使用
 * 启用参数
     * **-XX:+UseParallelOldGC** 新生代使用ParallelGC回收器，老年代使用ParallelOldGC回收器。
 * 回收线程数设置
@@ -289,21 +289,23 @@ jdk 1.8
 
 ## 4.3. CMS回收器（Concurrent Mark Sweep）
 
-* 该回收器关注系统停顿时间
-* 使用标记清除算法。
-* 非独占式，仅初始标记和重新标记时独占。
+* 使用**标记清除算法**
+* 特点：
+    * 该回收器关注系统停顿时间
+    * 非独占式，仅初始标记和重新标记时独占（stop the world）。
+
 * 工作流程
-![工作流程](../../picture/CMS回收器工作流程.png)
-在并发标记之后会有一个预清理操作，该操作是并发的，出了为正式清理做准备和检查意外，预清理还会尝试控制一次停顿时间。这个过程可以通过参数 **-XX:-CMSPrecleaningEnabled** 关闭
+  ![工作流程](../../picture/CMS回收器工作流程.png)
+  在并发标记之后会有一个预清理操作，该操作是并发的，出了为正式清理做准备和检查意外，预清理还会尝试控制一次停顿时间。这个过程可以通过参数 **-XX:-CMSPrecleaningEnabled** 关闭
 * 启用参数
     * **-XX:+UseConcMarkSweepGC**
 * 其他参数
     * **-XX:ConGCThreads**或者 **-XX:ParallelCMSThreads** 并发线程数设置。默认启动的并发线程数为（ParallelGCThreads+3）/4，ParallelGCThreads表示GC并行（非并发）时使用的线程数。
     * **-XX:CMSInitiatingOccupancyFraction** 指定老年代执行CMS回收触发值，该值为老年代空间使用率。如果内存增长缓慢可以设置稍大点，减少cms回收的次数，可以明显改善应用程序性能，反之则应该降低这个阀值，避免频繁触发老年代串行收集器。
-    * **-XX:+UseCMSCompactAtFullCollection** 设置CMS在垃圾收集完成后进行一次内存碎片整理（由于CMS算法为标记清除，会产生内存碎片，导致虽然有内存空间，但可能碰到大内存空间分配时出现无法分配，然后再次出发垃圾回收）
+    * **-XX:+UseCMSCompactAtFullCollection** 设置CMS在FullGC完成后进行一次内存碎片整理（由于CMS算法为标记清除，会产生内存碎片，导致虽然有内存空间，但可能碰到大内存空间分配时出现无法分配，然后再次出发垃圾回收），**<u>JDK9开始废弃</u>**。
     * **-XX:CMSFullGCsBeforeCompaction** 设定进行多少次CMS回收后进行一次内存压缩。
     * **-XX:+CMSClassUnloadingEnabled** 使用CMS回收perm区。指定该参数后如果条件允许那么系统会使用CMS的机制回收Perm区Class数据
-* CMS垃圾回收是与应用程序一起工作的，即在进行GC时，应用程序仍然会产生新的垃圾，当新垃圾的产生速度过大，CMS收集还为结束内存出现不足，此时CMS将回收失败，**虚拟机将启用老年代串行收集器进行垃圾回收**。如果这样，应用程序将完全中断直至垃圾回收完成，应用程序停顿时间可能较长。⚠️⚠️
+* CMS垃圾回收是与应用程序一起工作的，即在进行GC时，应用程序仍然会产生新的垃圾，当新垃圾的产生速度过大，CMS收集还未结束内存出现不足，此时CMS将回收失败，**虚拟机将启用老年代串行收集器进行垃圾回收**。如果这样，应用程序将完全中断直至垃圾回收完成，应用程序停顿时间可能较长。⚠️⚠️
 
 ## 4.4. G1（Garbage First Garbage Collector）回收器（自1.7）
 
@@ -354,16 +356,16 @@ jdk 1.8
 
 **常用垃圾回收器组合：**
 
-| JVM options                 | Young             | Tenured     | 备注                |
-| --------------------------- | ----------------- | ----------- | ------------------- |
-| **-XX:+UseSerialGC**        | Serial            | Serial      |                     |
-| -XX:+UseParNewGC            | ParNew            | Serial      |                     |
-| -XX:+UseParallelGC          | Parallel Scavenge | ParallelOld | hotspot 1.8默认组合 |
-| **-XX:+UseParallelOldGC**   | Parallel Scavenge | ParallelOld |                     |
-| **-XX:+UseConcMarkSweepGC** | Parallel New      | CMS         |                     |
-| **-XX:+UseG1GC**            | G1                | G1          |                     |
+| JVM options                 | Young             | Tenured     | 备注                                             |
+| --------------------------- | ----------------- | ----------- | ------------------------------------------------ |
+| **-XX:+UseSerialGC**        | Serial            | Serial      |                                                  |
+| -XX:+UseParNewGC            | ParNew            | Serial      | jdk1.9开始取消支持                               |
+| -XX:+UseParallelGC          | Parallel Scavenge | ParallelOld | hotspot 1.8默认组合                              |
+| **-XX:+UseParallelOldGC**   | Parallel Scavenge | ParallelOld | 该组合在jdk1.9之后被G1取代，G1成为默认垃圾收集器 |
+| **-XX:+UseConcMarkSweepGC** | Parallel New      | CMS         | jdk1.7之前常用的GC组合                           |
+| **-XX:+UseG1GC**            | G1                | G1          |                                                  |
 
-注意：由于jvm当升级，参数指定的收集器可能出现调整，比如jdk1.8 “-XX:+UseParallelGC” 参数指定后老年代实际使用的是ParallelOldGC 具体以通过命令本节最后命令小节打印出的参数值为准。
+注意：由于jvm的升级，参数指定的收集器可能出现调整，比如jdk1.8 “-XX:+UseParallelGC” 参数指定后老年代实际使用的是ParallelOldGC 具体以通过命令本节最后命令小节打印出的参数值为准。
 
 **其他垃圾回收器组合：**
 
@@ -465,6 +467,10 @@ Hotspot VM将内存划分为不同的物理区，就是“分代”思想的体�
 
 * **Stop-The-World 垃圾回收时的停顿现象**
 垃圾回收器的任务是识别和回收垃圾对象进行内存清理，为了让垃圾回收器可以正常且高效的执行，大部分情况下会要求系统进入一个停顿的状态，终止所有应用程序线程的执行，使系统不会有新的垃圾产生，同时保证系统在某一个瞬间的一致性，也有益于垃圾回收器更好的标记垃圾对象，因此垃圾回收时都会产生应用程序的停顿，停顿产生时整个应用被卡死没有任何响应，这个停顿也叫做Stop-The-World
+
+## 5.3 调优常识
+
+* 32位操作系统最大内存为4G（寻址空间为2^32）, 不同系统可以被jvm使用的堆内存可能不同，有些甚至不能到2G（即使设置2G也用不到）。
 
 # 6. 分析java堆及性能监控
 
@@ -574,10 +580,20 @@ Hotspot VM将内存划分为不同的物理区，就是“分代”思想的体�
 
 * JConsole 查看应用程序情况，包括堆内存使用情况、系统线程数量、加载类的数量及CPU使用率,虚拟机参数，检测死锁等。
     * 该工具在javahome的bin目录下
-
 * Visual VM 功能强大等多合一故障诊断和性能监控的可视化工具，可以替代jstat、jmap、jhat、jstack甚至JConsole，支持各类插件扩展
-
 * MAT 简单易用，针对性强。
+
+可视化工具一般可以检测到本地的java进程，所以在监控本地java进程直接选择即可。如果需要查看远程java进程需要增加启动参数启动远程连接服务，参数如下：
+
+```
+-Dcom.sun.management.jmxremote 
+-Djava.rmi.server.hostname=192.168.0.100 
+-Dcom.sun.management.jmxremote.port=9999
+-Dcom.sun.management.jmxremote.ssl=false 
+-Dcom.sun.management.jmxremote.authenticate=false 
+```
+
+
 
 ## 6.5. 大杀器arthas
 **arthas的功能**
