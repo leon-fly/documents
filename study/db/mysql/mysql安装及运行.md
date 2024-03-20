@@ -114,3 +114,13 @@ title: mysql安装及运行
 	```
 	说明：mysql centos（mysql-5.7.23）安装及运行
 
+# 三、避坑
+
+1. mysql 版本8.0+ 服务连接时客户端报错 **Public Key Retrieval is not allowed**
+
+   原因：mysql 8.0添加了**caching_sha2_password**作为默认认证插件，这个插件使用RSA公钥加密来保护用户密码传输, 在连接时没有使用ssl时 
+
+   1. 客户端连接url增加sslMode=required （优先方案）
+   2. 客户端连接时增加参数serverRSAPublicKeyFile=path/to/file.pem, 路径需求修改为密钥实际存放的文件位置，密钥通过如下sql查询`SHOW STATUS LIKE 'Caching_sha2_password_rsa_public_key';`（ 客户端连接失败时在服务器端通过mysql客户端连接 `mysql -uroot -p密码`）
+   3. 客户端连接url增加参数allowPublicKeyRetrieval=true， 该方案存在一定的安全隐患,可能允许恶意代理执行 MITM 攻击以获取明文密码，不推荐。
+
