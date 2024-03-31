@@ -342,12 +342,18 @@ Property settings:
 ## 4.4. G1（Garbage First Garbage Collector）回收器（自1.7）
 
 * 作为CMS回收器的替代者
+
+* 遵循分代回收设计，但其堆内存布局与其他收集器有明显差异，其基于Region的堆内存布局，将整个堆内存空间分成多个大小相等的独立区域（Region），每一个region根据需要扮演新生代Eden空间、Survivor空间或者老年代空间。G1堆空间中还有另外一类特殊的区域Humongous区域，专门用来存储大对象。G1认为只要大小超过了Region区域容量的一半的对象可以判定为大对象。而超过了整个Region容量的大对象将会被存储在多个连续的Humongous Region之中。
+
+* G1的堆空间
+
 * 使用了全新的分区算法：
     * 并行性。多个GC线程同时工作，有效利用多核计算能力
     * 并发行。拥有与应用程序交替执行的能力
     * 分代GC。同时兼顾年轻代和老年代垃圾回收。
     * 空间整理。每次回收都会有效的复制对象，减少空间碎片。
     * 可预见性。G1可以只选取部分区域进行内存回收，缩小了回收的范围，因此对于全局停顿能得到较好的控制。
+
 * 收集过程
     * 新生代GC
     * 并发标记周期。并发阶段与CMS类似，都为了降低一次停顿时间将可以和应用程序并发的部分单独提取出来执行。
@@ -359,12 +365,23 @@ Property settings:
         * 并发清理阶段
     * 混合回收。这个阶段既会执行正常的年轻代GC，又会选取一些被标记的老年代区域进行回收，它同时处理了新生代和老年代。
     * 如果需要进行FullGC。
+
 * 启用参数
     * **-XX:+UseG1GC** 打开G1收集器开关
-* 其他参数
+
+* [其他参数](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc_tuning.html#sthref51)
+
     * **-XX:MaxGCPauseMills**指定目标最大垃圾回收时间。如果任何一次停顿超过这个设置值时，G1就会尝试调整新生代和老年代的比例、调整堆大小、调整晋升年龄等手段试图达到预设目标
     * **-XX:ParallelGCThreads** 并行回收时gc的工作线程数量。
     * **-XX:InitiatingHeapOccupancyPercent** 指定当整个堆使用率达到多少时触发并发标记周期的执行，默认45。一旦该值设定，那么G1不会试图改变这个值来满足最大停顿时间的目标。谨慎设置，过大会引起fullGC的可能行，过小会使得并发周期频繁，大量GC线程抢占cpu，导致应用程序线程下降。
+
+* [官方:需要考虑切换到G1垃圾回收器的](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/G1.html#use_cases)
+
+    1、超过50%的Java堆内存被实时数据占用
+
+    2、对象分配或晋升的速度差异显著
+
+    3、长时间垃圾收集或压缩暂停（超过0.5到1秒）
 
 ## 4.5. 默认垃圾回收器
 
@@ -709,8 +726,9 @@ Hotspot VM将内存划分为不同的物理区，就是“分代”思想的体�
   ​      
 # 8. 参考资料
 * 👉 【实战java虚拟机 jvm故障诊断及性能调优】  葛一鸣
+* 👉 【深入理解java虚拟机】 周志明
 * 👉 【并发编程的艺术 】 方腾飞 魏鹏 程晓明著
-* 👉 [垃圾回收器使用参考资料](https://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html#available_collectors.selecting)
+* 👉  [垃圾回收器使用参考资料](https://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html#available_collectors.selecting)
 * 👉  [oracle官方完整配置参数](https://www.oracle.com/technetwork/articles/java/vmoptions-jsp-140102.html)
 * 👉  [美团垃圾回收及优化参考资料](https://tech.meituan.com/2017/12/29/jvm-optimize.html)
-* 👉 [默认垃圾回收器](https://www.javamadesoeasy.com/2016/12/what-is-default-garbage-collector-for.html)
+* 👉  [默认垃圾回收器](https://www.javamadesoeasy.com/2016/12/what-is-default-garbage-collector-for.html)
