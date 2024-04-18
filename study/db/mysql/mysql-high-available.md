@@ -3,9 +3,12 @@ date: "2020-03-25"
 draft: false
 lastmod: "2020-03-25"
 publishdate: "2020-03-25"
+categorys:
+- 中间键
 tags:
 - db
 - mysql
+- 高可用
 title: mysql高可用方案
 ---
 

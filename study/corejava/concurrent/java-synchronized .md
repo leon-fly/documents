@@ -3,6 +3,8 @@ date: "2018-01-01"
 draft: false
 lastmod: "2018-01-01"
 publishdate: "2018-01-01"
+categorys:
+- Core Java
 tags:
 - corejava
 - concurrent
@@ -27,7 +29,7 @@ title: java-synchronized
     3. 轻量级锁
     4. 重量级锁
 
-**synchronized操作的锁定jvm在加锁时按照以上顺序来升级，可以根据实际情况对锁升级进行控制。**
+**synchronized操作的锁定jvm在加锁时按照以上顺序来升级，可以根据实际情况对锁升级进行控制。**
 [更多信息](../../analysis/analysis-jvm.md)
 
 

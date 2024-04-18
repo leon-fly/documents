@@ -3,14 +3,15 @@ date: "2022-07-10"
 draft: false
 lastmod: "2022-07-10"
 publishdate: "2022-07-10"
+categorys:
+- 中间键
 tags:
 - db
+- hands-on
 title: mariadb安装-Mac
 ---
 
-
-
-### 安装
+## 安装
 
 OS 版本 ：macOS Monterey 10.8.3_1
 

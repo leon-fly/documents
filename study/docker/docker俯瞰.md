@@ -8,7 +8,7 @@ tags:
 title: docker俯瞰
 ---
 
-## 1. docker是什么
+## 1. [docker](https://docs.docker.com/engine/docker-overview/)是什么
 docker是一个用于开发、交付、运行应用的开放平台。docker允许用户将基础设施中的应用单独分割开来，形成更小的颗粒（容器），从而提高交付软件地速度。
 
 ## 2. docker有什么能力
@@ -93,12 +93,7 @@ services允许通过多个docker daemon来扩展容器，这些docker进程通�
 * [Control groups](https://docs.docker.com/engine/docker-overview/#control-groups)
 * [Union file systems](https://docs.docker.com/engine/docker-overview/#union-file-systems)
 
-## 8. 参考
-[Docker维基百科](https://zh.wikipedia.org/wiki/Docker)
-
-[Docker官网](https://docs.docker.com/engine/docker-overview/)
-
-## 9. 关联穿插 - 公司内部cicd事件流程示例（开发者角度）
+## 8. 关联穿插 - 公司内部cicd事件流程示例（开发者角度）
 ![cicd](../../picture/cicd-example.png)
 
 公司内部使用cicd进行开发全流程管理，以上为某次构建的流程。相关大致说明：

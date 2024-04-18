@@ -8,9 +8,8 @@ tags:
 title: docker小练
 ---
 
-## 创建一个小java项目docker-demo
-[demo地址](https://github.com/leon-fly/demo/tree/master/docker-demo)
-### demo项目说明：
+## demo项目说明
+此代码用于演示如何创建一个docker项目, 项目情况如下
 * 由maven构建
 * 测试主java类一个,类中启动了一个HttpServer监听请求
 
@@ -29,7 +28,7 @@ title: docker小练
 
 ```
 
-### Dockerfile说明
+Dockerfile说明
 
 ```
 # 基于openjdk7创建image
@@ -120,9 +119,8 @@ ops@leon-aliyun:~/workspace/docker-demo$ sudo docker attach c8d1c39376c2eb
 root@c8d1c39376c2:/home/ops/workspace/docker-demo# 
 ```
 
-### 避坑及其他说明
+## 避坑及其他说明
 * maven编译的插件jdk版本要与docker创建image使用基础镜像一致
 * 本次docker镜像创建过程张总并未在docker生成步骤中进行jar的生成，而是提前生成好的，实际可以根据需要去调整。
 
-
-
+## 👉🏻 demo源码地址  [demo地址](https://github.com/leon-fly/demo/tree/master/docker-demo)

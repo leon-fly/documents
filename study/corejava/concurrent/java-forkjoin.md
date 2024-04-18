@@ -3,6 +3,8 @@ date: "2018-01-01"
 draft: false
 lastmod: "2018-01-01"
 publishdate: "2018-01-01"
+categorys:
+- Core Java
 tags:
 - corejava
 - concurrent
@@ -16,7 +18,7 @@ fork/join框架是jdk1.7之后提供的并发处理工具，是ExecutorService�
 
 * **ForkJoinPool** 这是fork/join框架最核心的的类，AbstractExecutorService的子类。它实现类核心的工作窃取算法，可以执行**ForkJoinTask**.
 
-* **ForkJoinTask** 这是fork/join框架具体工作类，经常用到的两个子类是 **RecursiveAction**（无返回值）和**RecursiveTask**（有返回值）。只要实现方法中的execute()方法即可。方法实现逻辑为：
+* **ForkJoinTask** 这是fork/join框架具体工作类，经常用到的两个子类是 **RecursiveAction**（无返回值）和**RecursiveTask**（有返回值）。只要实现方法中的compute()方法即可。方法实现逻辑为：
 
     ```
     if (my portion of the work is small enough)
@@ -29,7 +31,7 @@ fork/join框架是jdk1.7之后提供的并发处理工具，是ExecutorService�
 
 ## 3. 使用示例
 * 工作任务：计算连续整数n-m的和。
-* 逻辑：为了快速计算将该任务拆分成多个子任务，每个子任务最多只能计算五个数，如果任务不够小，继续拆分。
+* 逻辑：为了快速计算将该任务拆分成多个子任务，每个子任务最多只能计算五个数，如果任务不够小，继续拆分。
 * 示例
 ```
 public class ForkJoinDemo {

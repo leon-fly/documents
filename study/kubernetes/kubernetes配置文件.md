@@ -1,3 +1,15 @@
+---
+date: "2024-01-01"
+draft: false
+publishdate: "2024-01-01"
+categorys:
+- 工程化
+tags:
+- kubernetes
+- 容器化
+title: kubernetes配置文件overview
+---
+
 # kubernetes配置文件overview
 
 ## 关于kubernetes配置文件

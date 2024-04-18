@@ -3,9 +3,12 @@ date: "2018-01-01"
 draft: false
 lastmod: "2018-01-01"
 publishdate: "2018-01-01"
+categorys:
+- 中间键
 tags:
 - db
 - mysql
+- handbook
 title: mysql 命令基础操作
 ---
 
@@ -39,7 +42,7 @@ title: mysql 命令基础操作
     ```mysql
     #当前所有数据库
     SHOW DATABASES;
-
+    
     #当前使用数据库
     SELECT database();
     ```
@@ -174,7 +177,7 @@ DROP DATABSE dbname;
     ROLLBACK TO SAVEPOINT a;
     #释放还原点
     RELEASE SAVEPOINT a;
-
+    
     ```
     **说明**
     在事务中可以创建多个还原点用用于回滚；

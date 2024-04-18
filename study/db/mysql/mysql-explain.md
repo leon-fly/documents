@@ -3,13 +3,14 @@ date: "2020-03-26"
 draft: false
 lastmod: "2020-03-26"
 publishdate: "2020-03-26"
+categorys:
+- 中间键
 tags:
 - db
 - mysql
+- optimize
 title: mysql explain
 ---
-**REF：高性能mysql**
-
 ## 1. 关于mysql explain
 * explain是mysql提供的用于查看对于一条sql语句mysql的执行计划，比如查询次数，查询是否使用索引，预期扫描行数等等，可以使用该工具进行mysql优化。
 
@@ -97,6 +98,8 @@ EXPLAIN SELECT t.`emp_no`, (SELECT it.`first_name` FROM employees it WHERE t.`em
 
 #### 2.2.4. partitions
 
+标识当前查询的表是否是分区表。
+
 #### 2.2.5. type
 该列显示访问类型，从最差到最优依次为：
 * ALL
@@ -106,7 +109,7 @@ EXPLAIN SELECT t.`emp_no`, (SELECT it.`first_name` FROM employees it WHERE t.`em
 * range
 有限制的索引扫描，优于全索引扫描。关键信息：索引+基于索引的范围查找
 * ref
-索引访问或者索引查找。返回所有匹配某个单个值的行，可能找到多个符合条件的行。关键信息：非唯一索引/唯一索引的非唯一性前缀 + 匹配当个值
+索引访问或者索引查找。返回所有匹配某个单个值的行，可能找到多个符合条件的行。关键信息：非唯一索引/唯一索引的非唯一性前缀 + 匹配单个值
 示例：
 ```
 -- birth_date建立了普通索引
@@ -160,10 +163,10 @@ EXPLAIN SELECT max(emp_no) FROM employees;
 ```
 
 #### 2.2.6. possible_keys
-可能使用到对索引，在优化早起创建，有些在后续优化过程可能用不到。
+可能使用到对索引，在优化早期创建，有些在后续优化过程可能用不到。
 
 #### 2.2.7. key
-mssql实际使用对索引，该值不一定是在possible_keys中。
+mysql实际使用对索引，该值不一定是在possible_keys中。
 
 示例：
 ```
@@ -190,7 +193,7 @@ mysql估计为了找到所需的行而要读取对行数，估算不精确。
 
 #### 2.2.12. Extra
 在其他列不适合展示的信息。常见信息如下：
-* Using inxex
+* Using index
 此值表示mysql将使用覆盖索引
 * Using where
 此值表示mysql将在存储引擎检索行后再进行过滤(回表)
@@ -202,3 +205,7 @@ mysql估计为了找到所需的行而要读取对行数，估算不精确。
 
 * Range checked for each record(index map:N)
 此值表示没有好用的索引，新的索引将在链接的每一行上重新估算。N是显示在possible_keys列中索引的位图，并且是冗余的。
+
+
+
+👉  **REF：高性能mysql**

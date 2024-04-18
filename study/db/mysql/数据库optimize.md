@@ -1,4 +1,17 @@
-# 数据库optimize
+---
+date: "2018-01-05"
+draft: false
+lastmod: "2018-01-05"
+publishdate: "2018-01-05"
+categorys:
+- 中间键
+tags: 
+- db
+- mysql
+title: mysql数据库optimize
+---
+
+# mysql数据库optimize
 
 查看当前表存储状态
 

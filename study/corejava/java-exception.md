@@ -3,6 +3,8 @@ date: "2018-01-01"
 draft: false
 lastmod: "2018-01-01"
 publishdate: "2018-01-01"
+categorys:
+- Core Java
 tags:
 - corejava
 title: java-exception
@@ -11,7 +13,7 @@ title: java-exception
 
 ## 一、异常通常处理原则（结合 极客时间 杨晓峰）
 
-1. 仅仅捕获特定异常,如下例中仅捕获Thread.sleep() 抛出的 InterruptedException
+1. 仅仅捕获特定异常,如下例中仅捕获Thread.sleep() 抛出的 InterruptedException
 
     ```java
     try {

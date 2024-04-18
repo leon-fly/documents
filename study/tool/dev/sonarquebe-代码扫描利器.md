@@ -8,9 +8,11 @@ tags:
 - tool
 title: sonarquebe-代码扫描利器
 ---
-## 关于sonarquebe
+## 关于[sonarquebe](https://www.sonarsource.com/)
 
 
+
+Sonarquebe，一款免费的代码扫描工具，无侵入，可以对代码中的低效，潜在bug等进行检测，并生成相应问题报告，是代码质量保证的一款大杀器
 
 ## Quick start the server （示例6.7）
 
@@ -26,13 +28,7 @@ sonarquebe不需要安装，解压压缩包进入bin目录下，找到当前系�
 
 > ./sonar.sh start
 
-访问：
-
-http://localhost:9000/
-
-登录
-
-
+登录：http://localhost:9000/
 
 ## Scan the project
 
@@ -40,15 +36,9 @@ http://localhost:9000/
 
 > mvn clean package -Dmaven.test.skip=true sonar:sonar  -Dsonar.host.url=http://localhost:9000 -Dsonar.login=ef558e59e27597c88eb34ab5acb8a254c3c63d7c 
 
-login值为一个token，登录管理平台获取：
+login值为一个token，登录管理平台获取`Administration -> Security -> Users `, 如果缺少package参数可能报错 ：`Please provide compiled classes of your project with sonar.java.binaries`,对于依赖包的问题扫描可以通过安装dependency-checker插件来支持，这个插件需要高版本的sonar支持，6.x.x下不支持。
 
-> Administration -> Security -> Users 
+扫描完成后即可登录管理平台查看报告
 
-如果缺少package参数可能报错 ：
 
-```
-Please provide compiled classes of your project with sonar.java.binaries
-```
-
-对于依赖包的问题扫描可以通过安装dependency-checker插件来支持，这个插件需要高版本的sonar支持，6.x.x下不支持。
 

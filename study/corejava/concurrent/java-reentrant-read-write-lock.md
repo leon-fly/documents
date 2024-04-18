@@ -3,6 +3,8 @@ date: "2018-01-01"
 draft: false
 lastmod: "2018-01-01"
 publishdate: "2018-01-01"
+categorys:
+- Core Java
 tags:
 - corejava
 - concurrent
@@ -14,7 +16,7 @@ ReentrantReadWriteLock可重入式读写锁，同样基于AQS框架实现。**Re
 * 可重入锁
 * 共享读锁
 * 排他写锁
-* 排他锁和共享锁互斥，有线程获得写锁，那么除了拥有写锁的其他线程不能获得读锁。
+* 排他锁和共享锁互斥，有线程获得写锁，那么除了拥有写锁的其他线程不能获得读锁。
 
 ## 2. ReentrantReadWriteLock类图
 ![ReentrantReadWriteLock类图](../../../picture/ReentrantReadWriteLock.png)
@@ -23,8 +25,8 @@ ReentrantReadWriteLock可重入式读写锁，同样基于AQS框架实现。**Re
 ### 3.1. 读写锁的状态实现
 读写锁的状态使用AQS的state来控制，高16位代表读锁的数量，低16位代表写锁的数量（只有0或1）。所以读/写锁最大的锁数量为2<<<16=65535个。
 
-### 3.2. 写锁的实现
-写锁的实现与ReentrantLock相似，都是独占锁，实现区别在于写锁增加了当前读锁判断，如果当前有读锁或者写锁，获取失败，源代码文档已清晰说明其逻辑。
+### 3.2. 写锁的实现
+写锁的实现与ReentrantLock相似，都是独占锁，实现区别在于写锁增加了当前读锁判断，如果当前有读锁或者写锁，获取失败，源代码文档已清晰说明其逻辑。
 
 **源码**
 ```
@@ -62,7 +64,7 @@ protected final boolean tryAcquire(int acquires) {
 ```
 
 ### 3.3. 读锁实现
-读锁与Semaphore的实现相似，都是使用共享锁。读锁与写锁也类似，不同在于读锁只要没有写锁占用并且不超过最大获取数量都可以尝试获取读锁。
+读锁与Semaphore的实现相似，都是使用共享锁。读锁与写锁也类似，不同在于读锁只要没有写锁占用并且不超过最大获取数量都可以尝试获取读锁。
 
 **源码**
 ```

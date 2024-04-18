@@ -3,6 +3,8 @@ date: "2018-01-01"
 draft: false
 lastmod: "2018-01-01"
 publishdate: "2018-01-01"
+categorys:
+- Core Java
 tags:
 - corejava
 - concurrent
@@ -35,7 +37,7 @@ title: java-concurrent
 8. resume 方法将通过suspend方法掉用进入阻塞态的线程恢复进入就绪态,已弃用⚠⚠。
 
 ## 3. 相关类Object方法(锁范畴)
-1. wait 调用该方法后，获取到该对象锁的线程将放弃对象锁进入此对象的等待锁定池，同时执行线程进入阻塞态。
+1. wait 调用该方法后，获取到该对象锁的线程将放弃对象锁进入此对象的等待锁定池，同时执行线程进入阻塞态。
 2. notify 调用该方法后，原来等待该对象锁的某个线程将获得对象锁，具体哪个线程获取到由jvm决定
 3. notifyAll 调用该方法后，原来等待对象锁的1个或多个线程将竞争该锁。
 

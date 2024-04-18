@@ -8,7 +8,7 @@ tags:
 - spring-cloud
 title: spring-cloud总结
 ---
-## 1. spring boot - Spring Cloud的基础（Edgware.SR）
+## 1. spring boot - Spring Cloud的基础（Edgware.SR）
 
 ### 1.1. spring boot项目初始化
 * [Spring Initializr.](https://start.spring.io/)快速生成项目框架
@@ -39,7 +39,7 @@ title: spring-cloud总结
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
     </dependency>
-    ```
+   ```
 * 在启动类增加Eureka服务注解 **@EnableEurekaServer**
 * 配置服务,核心配置参考如下：
     ```
@@ -101,7 +101,7 @@ eureka:
     服务提供者配置所有的服务注册中心，并从中选1个节点对该服务提供者节点进行维护及同步，该节点处理完成之后对配置的其他节点进行广播达到集群注册进行同步。当有新的注册中心节点加入时，会首先尝试从临近节点进行同步数据。
 
 * 注册中心对失效服务剔除
-    
+  
     注册中心每隔一段时间（默认60s）将当前清单中超时（默认90s）没有进行续约的服务进行剔除。考虑可能因为网络问题等非服务下线或故障原因而导致续约失败，注册中心有一个自我保护机制，如果在运行期间，统计心跳失败的比例在15分钟之内低于85%，将不会对相关服务进行剔除。
 
 * 注册中心节点与其他节点中断内部如何处理？

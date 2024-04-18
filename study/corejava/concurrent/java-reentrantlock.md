@@ -3,6 +3,8 @@ date: "2018-01-01"
 draft: false
 lastmod: "2018-01-01"
 publishdate: "2018-01-01"
+categorys:
+- Core Java
 tags:
 - corejava
 - concurrent
@@ -27,7 +29,7 @@ title: java-reentrantlock
 
 ### 1.3. ReentrantLock的lock及unlock过程
 
-**lock方法调用链：**
+**lock方法调用链：**
 
 ReentrantLock.lock() -> Syn.lock() -> AbstractQueuedSynchronizer.acquire(int arg) -> ReentrantLock.tryAcquire(int acquires)
 
@@ -39,9 +41,9 @@ ReentrantLock.lock() -> Syn.lock() -> AbstractQueuedSynchronizer.acquire(int arg
 ![ReentrancLock-NonfairLock-sequence-lock](../../../picture/ReentrancLock-NonfairLock-sequence-lock.png)
 
 
-### 1.3.3. 总结
+### 1.3.3. 总结
 * 公平锁的实现完全依赖于CHL双端等待队列
-* 非公平锁的实现主要体现在第一次获取锁时不考虑等待队列，直接插队获取。但是获取失败后会插入到等待队列队尾自旋式获取（此时有排队）
+* 非公平锁的实现主要体现在第一次获取锁时不考虑等待队列，直接插队获取。但是获取失败后会插入到等待队列队尾自旋式获取（此时有排队）
 
 
 ### 1.4. ReentrantLock的unlock过程
@@ -72,8 +74,8 @@ public class ReentrantLockDemo {
 ```
 
 ## 2. 关于Condiction
-* Condiction是Lock接口提供的一个绑定对象，通过newCondition方法进行绑定，用于条件等待和唤醒，调用await当前线程将阻塞，调用线程signal/signalAll将唤醒所有Condiction等待线程。
-* ReentrantLock实现中有两个队列，本类中有一个锁等待队列，用于锁竞争，内部类Condiction有一个条件等待队列，用于存储等待条件的线程。在调用await时线程节点在条件等待队列入队并释放锁，接下来使用LockSuppor的park阻塞线程，在被其他线程调用了该条件对象的signal/signalAll后，阻塞解除重新获取锁执行await后逻辑。
+* Condiction是Lock接口提供的一个绑定对象，通过newCondition方法进行绑定，用于条件等待和唤醒，调用await当前线程将阻塞，调用线程signal/signalAll将唤醒所有Condiction等待线程。
+* ReentrantLock实现中有两个队列，本类中有一个锁等待队列，用于锁竞争，内部类Condiction有一个条件等待队列，用于存储等待条件的线程。在调用await时线程节点在条件等待队列入队并释放锁，接下来使用LockSuppor的park阻塞线程，在被其他线程调用了该条件对象的signal/signalAll后，阻塞解除重新获取锁执行await后逻辑。
 
 ![ReentrancLock-Condiction-Logic](../../../picture/ReentrancLock-Condiction-Logic.png)
 

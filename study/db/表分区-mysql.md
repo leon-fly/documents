@@ -3,9 +3,12 @@ date: "2024-03-24"
 draft: false
 lastmod: "2024-03-24"
 publishdate: "2024-03-24"
+categorys:
+- 中间键
 tags:
 - db
 - mysql
+- 高并发
 title: mysql表分区
 ---
 
@@ -32,9 +35,9 @@ title: mysql表分区
   );
   ```
 
-​	注意主键必须包含分区字段，否则可能出现如下类似的错误提示。
+	注意主键必须包含分区字段，否则可能出现如下类似的错误提示。
 
-​	`SQL 错误 [1503] [HY000]: A PRIMARY KEY must include all columns in the table's partitioning function (prefixed columns are not considered).`
+	`SQL 错误 [1503] [HY000]: A PRIMARY KEY must include all columns in the table's partitioning function (prefixed columns are not considered).`
 
 * 数据插入
 
@@ -96,7 +99,7 @@ title: mysql表分区
     DROP PARTITION p202312;
     ```
 
-​	  新增分区时对原有数据不影响，新数据会根据新的分区规则进行插入。删除分区会将当前分区数据删除掉，谨慎操作。
+	  新增分区时对原有数据不影响，新数据会根据新的分区规则进行插入。删除分区会将当前分区数据删除掉，谨慎操作。
 
 ## 分区表类型
 
@@ -164,6 +167,3 @@ title: mysql表分区
 ## 参考资料
 
 [官方资料 - 分区](https://dev.mysql.com/doc/refman/8.0/en/partitioning.html)
-
-
-

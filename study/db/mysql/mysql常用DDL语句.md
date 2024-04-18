@@ -3,9 +3,12 @@ date: "2018-01-01"
 draft: false
 lastmod: "2018-01-01"
 publishdate: "2018-01-01"
+categorys:
+- 中间键
 tags:
 - db
 - mysql
+- handbook
 title: mysql常用DDL语句
 ---
 # 一、创建数据库
@@ -36,7 +39,7 @@ title: mysql常用DDL语句
     `birthday` date DEFAULT NULL,
     PRIMARY KEY (`id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-    ```
+   ```
     * 说明
     建表时可以指定表默认使用的引擎，字符集和字符序，每个char/varcharß字段可以单独设置这些属性
 

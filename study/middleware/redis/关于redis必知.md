@@ -46,7 +46,7 @@ redis是基于内存的，也就是说一般存储的数据是有限的，为了
 * LRU 最近最少使用
   * volatile-lru 针对设置了过期时间的键
   * allkeys-lru 针对所有键
-* TTL 挑选将要过去的数据淘汰
+* TTL 挑选将要过期的数据淘汰
 * random 随机淘汰
   * volatile-random 针对设置了过期时间的键
   * allkeys-random 针对所有键

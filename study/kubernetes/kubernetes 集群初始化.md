@@ -1,4 +1,15 @@
-
+---
+date: "2024-01-01"
+draft: false
+publishdate: "2024-01-01"
+categorys:
+- 工程化
+tags:
+- kubernetes
+- 容器化
+- hands-on
+title: kubernetes基于ubuntu集群初始化
+---
 
 # kubernetes基于ubuntu集群初始化 
 

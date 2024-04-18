@@ -3,9 +3,12 @@ date: "2018-01-01"
 draft: false
 lastmod: "2018-01-01"
 publishdate: "2018-01-01"
+categorys:
+- 中间键
 tags:
 - db
 - mysql
+- 锁
 title: msql锁
 ---
 # 一、锁分类

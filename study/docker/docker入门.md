@@ -108,6 +108,12 @@ docker file分为四部分：
 移除容器文件
 > $ docker container rm [containerID]
 
+停止运行容器
+
+> $ docker stop [containID]
+
+> docker stop $(docker ps -aq)  停止所有容器，慎用
+
 进入容器(有多种方式，以下为简洁方式)
 
 > sudo docker exec -it [containerID] /bin/bash   

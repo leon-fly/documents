@@ -3,8 +3,12 @@ date: "2023-12-25"
 draft: false
 lastmod: "2023-12-25"
 publishdate: "2023-12-25"
+categorys:
+- 中间键
 tags:
 - db
+- 高并发
+- hands-on
 title: 分库分表之shardingsphere-proxy demo
 ---
 

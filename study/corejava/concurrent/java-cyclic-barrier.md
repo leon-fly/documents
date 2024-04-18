@@ -3,6 +3,8 @@ date: "2018-01-01"
 draft: false
 lastmod: "2018-01-01"
 publishdate: "2018-01-01"
+categorys:
+- Core Java
 tags:
 - corejava
 - concurrent
@@ -94,7 +96,7 @@ barrier冲破--------------
 
 ### 3.1. await
 * 不带参的方法
- 该方法的主要逻辑为获取lock，将计数减1并判断当前计数是0，如果计数为0表示所有线程都到达指定的屏障点，便唤醒所有线程，并执行指定的冲破屏障后的方法。
+ 该方法的主要逻辑为获取lock，将计数减1并判断当前计数是0，如果计数为0表示所有线程都到达指定的屏障点，便唤醒所有线程，并执行指定的冲破屏障后的方法。
 
 * 带超时时间参数
   带该参数时表示在该时长内没有冲破屏障线程将出现BrokenBarrierException，屏障前的代码可以将执行完，屏障后的代码将无法执行。
@@ -103,4 +105,4 @@ barrier冲破--------------
 * CyclicBarrier(int parties)
 仅仅指定需要达到屏障点的线程个数
 * CyclicBarrier(int parties, Runnable barrierAction)
-指定的到达屏障点的线程数达到，barrierAction将被执行。
+指定的到达屏障点的线程数达到，barrierAction将被执行。

@@ -3,8 +3,10 @@ date: "2018-01-01"
 draft: false
 lastmod: "2018-01-01"
 publishdate: "2018-01-01"
+categorys:
+- Core Java
 tags:
-- corejava
+- java特性
 title: java-specical-key-word
 ---
 
@@ -20,4 +22,4 @@ title: java-specical-key-word
 用来修饰类属性，经过该关键字修饰的属性值可以保持在多个线程间的可见性，但是不保证起原子性。
 
 ## 4. synchronize
-用来进行代码同步，可以包裹一段代码，也可以用来修饰一个方法标识为同步的方法。
+用来进行代码同步，可以包裹一段代码，也可以用来修饰一个方法标识为同步的方法。
