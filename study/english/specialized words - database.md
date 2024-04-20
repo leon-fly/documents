@@ -3,8 +3,10 @@ date: "2020-08-30"
 draft: false
 lastmod: "2020-08-30"
 publishdate: "2020-08-30"
+categorys:
+- 英语
 tags: 
-- English
+- en-spec
 title: specialized words - database
 ---
 
