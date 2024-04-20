@@ -3,12 +3,13 @@ date: "2020-08-30"
 draft: false
 lastmod: "2020-08-30"
 publishdate: "2020-08-30"
+categories:
+- 英语
 tags: 
-- English
-- Common Spoken English
+- en-common
+- en-pattern
 title: common expression in a conversation
 ---
-
 
 
 ## 开头用
